@@ -1,0 +1,252 @@
+LIBRARY IEEE;
+USE IEEE.STD_LOGIC_1164.ALL;
+USE IEEE.STD_LOGIC_ARITH.ALL;
+USE IEEE.STD_LOGIC_UNSIGNED.ALL;
+
+entity DTrigger is
+port(
+D, CP, Rd, Sd: in std_logic;
+Q: out std_logic:='0';
+nQ: out std_logic :='1'
+);
+end DTrigger;
+
+architecture dataflow of DTrigger is
+begin
+	process(CP, Rd, Sd)
+	begin
+		if (Rd ='0') then
+			Q<='0';
+			nQ<='1';
+		elsif (Sd ='0') then
+			Q<='1';
+			nQ<='0';
+		elsif(CP'event and CP ='1') then Q<=D;
+			nQ<=not D;
+		end if;
+	end process;
+end dataflow;
+
+
+
+
+
+
+
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.std_logic_arith.all;
+use ieee.std_logic_unsigned.all;
+
+entity Counter is
+	port(
+		clk, rst: in std_logic;
+		H, L:out std_logic_vector(6 downto 0)
+);
+end Counter;
+
+architecture Count of Counter is
+	component Digit
+		port(
+			Digit4: in std_logic_vector(3 downto 0);
+			Light6: out std_logic_vector(6 downto 0)
+		);
+	end component;
+
+	component Cnt60
+		port(
+			clk, rst: in std_logic;
+			DigitH, DigitL: out std_logic_vector(3 downto 0));
+	end component;
+	signal DigitH, DigitL: std_logic_vector(3 downto 0);
+begin
+	cnt: Cnt60 port map(clk,rst, DigitH, DigitL);
+	digL: Digit port map(DigitH,H);
+	digH: Digit port map(DigitL,L);
+end Count;
+
+
+
+
+
+
+
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.std_logic_arith.all;
+use ieee.std_logic_unsigned.all;
+
+entity Cnt6 is
+	port(
+		clk, Rd, v: in std_logic;
+		Digit: out std_logic_vector(3 downto 0)
+	);
+end Cnt6;
+
+architecture asy6 of Cnt6 is
+	component DTrigger
+		port(
+			D, CP, Rd, Sd: in std_logic;
+			Q:out std_logic:='0';
+			nQ:out std_logic:='1'
+		);
+	end component;
+	signal D, nQ, Q: std_logic_vector(2 downto 0);
+	signal tmpl, tmp2: std_logic;
+begin
+	labe10: for i in 0 to 2 generate
+		Di:DTrigger port map(D(i),clk,Rd,'1',Q(i),nQ(i));
+	end generate labe10;
+	D(0)<=v xor Q(0);
+	D(1)<=((not v) and Q(1))or (V and (nQ(2) and (Q(1) xor Q(0))));
+	D(2)<=((not v)and Q(2)) or (v and ((Q(2) and nQ(0)) or (Q(1) and Q(0))));
+	Digit(2 downto 0)<=Q;
+	Digit(3)<='0';
+end asy6;
+
+
+
+
+
+
+
+
+
+
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.std_logic_arith.all;
+use ieee.std_logic_unsigned.all;
+
+entity Cnt10 is
+	port(
+		clk, Rd: in std_logic;
+		Digit:out std_logic_vector(3 downto 0)
+	);
+end Cnt10;
+
+architecture asy10 of Cnt10 is
+	component DTrigger
+		port(
+			D, CP, Rd, Sd: in std_logic;
+			Q: out std_logic:='0';
+			nQ: out std_logic:='1'
+		);
+	end component;
+	signal D, nQ, Q: std_logic_vector(3 downto 0);
+	signal tmpl, tmp2: std_logic;
+begin
+	labe10: for i in 0 to 3 generate
+		Di:DTrigger port map(D(i),clk,Rd,'1',Q(i),nQ(i));
+	end generate labe10;
+	D(0)<=nQ(0);
+	D(1)<=(nQ(0) xor nQ(1)) and (Q(0) nand Q(3));
+	D(2)<=((not Q(0)) or (not Q(1))) xnor Q(2);
+	D(3)<=((not ((nQ(0) or nQ(1) or nQ(2)))) xnor nQ(3)) and (Q(0) nand Q(3));
+	Digit<=Q;
+end asy10;
+
+
+
+
+
+
+
+
+
+
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.std_logic_arith.all;
+use ieee.std_logic_unsigned.all;
+
+entity Digit is
+	port(
+		Digit4:in std_logic_vector(3 downto 0);
+		Light6:out std_logic_vector(6 downto 0)
+		);
+end Digit;
+
+architecture d of digit is
+begin
+	process(Digit4)
+	begin
+		case Digit4 is
+			when "0000"=>Light6<="1111110";
+			when "0001"=>Light6<="0110000";
+			when "0010"=>Light6<="1101101";
+			when "0011"=>Light6<="1111001";
+			when "0100"=>Light6<="0110011";
+			when "0101"=>Light6<="1011011";
+			when "0110"=>Light6<="1011111";
+			when "0111"=>Light6<="1110000";
+			when "1000"=>Light6<="1111111";
+			when "1001"=>Light6<="1111011";
+			when "1010"=>Light6<="1110111";
+			when "1011"=>Light6<="0011111";
+			when "1100"=>Light6<="1001110";
+			when "1101"=>Light6<="0111101";
+			when "1110"=>Light6<="1001111";
+			when "1111"=>Light6<="1000111";
+			when others=>Light6<="0000000";	
+		end case;
+	end process;
+end d;
+
+
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.std_logic_arith.all;
+use ieee.std_logic_unsigned.all;
+
+entity Cnt60 is
+	port(
+		clk, rst: in std_logic;
+		DigitL, DigitH:out std_logic_vector(3 downto 0)
+	);
+end Cnt60;
+
+architecture asy60 of Cnt60 is
+	component Cnt10
+		port(
+			clk, Rd: in std_logic;
+			Digit: out std_logic_vector(3 downto 0)
+		);
+	end component;
+	component Cnt6
+		port(
+			clk, Rd, v:in std_logic;
+			Digit: out std_logic_vector(3 downto 0)
+		);
+	end component;
+	component DTrigger
+		port (
+			D, CP, Rd, Sd: in std_logic;
+			Q:out std_logic:='0';
+			nQ:out std_logic:='1'
+		);
+	end component;
+	signal D, v, Rd: std_logic;
+	signal QL,QH:std_logic_vector(3 downto 0);
+begin
+	CL:Cnt10 port map(clk, Rd,QL);
+	CH:Cnt6 port map(clk,Rd,v, QH);
+	Dv:DTrigger port map(D=>D,CP=>clk,Rd=>Rd,Sd=>'1',Q=>V);
+	Rd <= not rst;
+	D<=(QL(3)and (not QL(2))) and ((not QL(1)) and (not QL(0)));
+	DigitL <= QL;
+	DigitH<=QH;
+end asy60;
+
+
+
+
+signal Count: integer range 0 to 59 := 0;
+signal HexCount: std_logic_vector(5 downto 0);
+
+Count <= to_integer(unsigned(QH))*10 + to_integer(unsigned(QL));
+HexCount <= std_logic_vector(to_unsigned(Count, 6));
+DigitL <= HexCount(3 downto 0);
+DigitH <= HexCount(5 downto 4);
+
+
