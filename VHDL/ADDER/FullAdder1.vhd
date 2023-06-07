@@ -1,0 +1,24 @@
+library ieee;
+use ieee.std_logic_1164.all;
+
+entity FullAdder1 is
+	port(
+		a,b,cin:in std_logic;
+		f,cout:out std_logic;
+		p,g:buffer std_logic
+	);
+end FullAdder1;
+
+architecture plus of FullAdder1 is
+	component HalfAdder1
+		port(
+			a,b:in std_logic;
+			f,cout:out std_logic
+		);
+	end component;
+	signal r:std_logic;
+begin
+	ha1:HalfAdder1 port map(a,b,p,g);
+	ha2:HalfAdder1 port map(p,cin,f,r);
+	cout <= r or g;
+end plus;

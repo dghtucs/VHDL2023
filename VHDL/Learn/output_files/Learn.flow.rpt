@@ -1,0 +1,138 @@
+Flow report for Learn
+Sun May 07 20:58:55 2023
+Quartus Prime Version 19.1.0 Build 670 09/22/2019 SJ Lite Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Flow Summary
+  3. Flow Settings
+  4. Flow Non-Default Global Settings
+  5. Flow Elapsed Time
+  6. Flow OS Summary
+  7. Flow Log
+  8. Flow Messages
+  9. Flow Suppressed Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 2019  Intel Corporation. All rights reserved.
+Your use of Intel Corporation's design tools, logic functions 
+and other software and tools, and any partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Intel Program License 
+Subscription Agreement, the Intel Quartus Prime License Agreement,
+the Intel FPGA IP License Agreement, or other applicable license
+agreement, including, without limitation, that your use is for
+the sole purpose of programming logic devices manufactured by
+Intel and sold by Intel or its authorized distributors.  Please
+refer to the applicable agreement for further details, at
+https://fpgasoftware.intel.com/eula.
+
+
+
++------------------------------------------------------------------------------+
+; Flow Summary                                                                 ;
++-----------------------+------------------------------------------------------+
+; Flow Status           ; EDA Netlist Writer Failed - Sun May 07 20:58:55 2023 ;
+; Quartus Prime Version ; 19.1.0 Build 670 09/22/2019 SJ Lite Edition          ;
+; Revision Name         ; Learn                                                ;
+; Top-level Entity Name ; HalfAdder                                            ;
+; Family                ; MAX II                                               ;
+; Device                ; EPM240M100C5                                         ;
+; Timing Models         ; Final                                                ;
+; Total logic elements  ; 2 / 240 ( < 1 % )                                    ;
+; Total pins            ; 4 / 80 ( 5 % )                                       ;
+; Total virtual pins    ; 0                                                    ;
+; UFM blocks            ; 0 / 1 ( 0 % )                                        ;
++-----------------------+------------------------------------------------------+
+
+
++-----------------------------------------+
+; Flow Settings                           ;
++-------------------+---------------------+
+; Option            ; Setting             ;
++-------------------+---------------------+
+; Start date & time ; 05/07/2023 19:49:33 ;
+; Main task         ; Compilation         ;
+; Revision Name     ; Learn               ;
++-------------------+---------------------+
+
+
++--------------------------------------------------------------------------------------------------------------------+
+; Flow Non-Default Global Settings                                                                                   ;
++---------------------------------------+---------------------------------+---------------+-------------+------------+
+; Assignment Name                       ; Value                           ; Default Value ; Entity Name ; Section Id ;
++---------------------------------------+---------------------------------+---------------+-------------+------------+
+; COMPILER_SIGNATURE_ID                 ; 176156945945052.168346017302356 ; --            ; --          ; --         ;
+; MAX_CORE_JUNCTION_TEMP                ; 85                              ; --            ; --          ; --         ;
+; MIN_CORE_JUNCTION_TEMP                ; 0                               ; --            ; --          ; --         ;
+; POWER_EXT_SUPPLY_VOLTAGE_TO_REGULATOR ; 3.3V                            ; --            ; --          ; --         ;
+; PROJECT_OUTPUT_DIRECTORY              ; output_files                    ; --            ; --          ; --         ;
+; TOP_LEVEL_ENTITY                      ; HalfAdder                       ; Learn         ; --          ; --         ;
++---------------------------------------+---------------------------------+---------------+-------------+------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------+
+; Flow Elapsed Time                                                                                                        ;
++----------------------+--------------+-------------------------+---------------------+------------------------------------+
+; Module Name          ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
++----------------------+--------------+-------------------------+---------------------+------------------------------------+
+; Analysis & Synthesis ; 00:00:07     ; 1.0                     ; 4764 MB             ; 00:00:07                           ;
+; Fitter               ; 00:00:01     ; 1.0                     ; 6015 MB             ; 00:00:01                           ;
+; Assembler            ; 00:00:01     ; 1.0                     ; 4664 MB             ; 00:00:00                           ;
+; Timing Analyzer      ; 00:00:00     ; 1.0                     ; 4679 MB             ; 00:00:00                           ;
+; EDA Netlist Writer   ; 00:00:01     ; 1.0                     ; 4615 MB             ; 00:00:00                           ;
+; EDA Netlist Writer   ; 00:00:00     ; 1.0                     ; 4613 MB             ; 00:00:00                           ;
+; EDA Netlist Writer   ; 00:00:00     ; 1.0                     ; 4613 MB             ; 00:00:00                           ;
+; EDA Netlist Writer   ; 00:00:01     ; 1.0                     ; 4613 MB             ; 00:00:00                           ;
+; EDA Netlist Writer   ; 00:00:00     ; 1.0                     ; 4613 MB             ; 00:00:00                           ;
+; EDA Netlist Writer   ; 00:00:00     ; 1.0                     ; 4615 MB             ; 00:00:00                           ;
+; EDA Netlist Writer   ; 00:00:00     ; 1.0                     ; 4613 MB             ; 00:00:00                           ;
+; Total                ; 00:00:11     ; --                      ; --                  ; 00:00:08                           ;
++----------------------+--------------+-------------------------+---------------------+------------------------------------+
+
+
++------------------------------------------------------------------------------------+
+; Flow OS Summary                                                                    ;
++----------------------+------------------+------------+------------+----------------+
+; Module Name          ; Machine Hostname ; OS Name    ; OS Version ; Processor type ;
++----------------------+------------------+------------+------------+----------------+
+; Analysis & Synthesis ; dghcs            ; Windows 10 ; 10.0       ; x86_64         ;
+; Fitter               ; dghcs            ; Windows 10 ; 10.0       ; x86_64         ;
+; Assembler            ; dghcs            ; Windows 10 ; 10.0       ; x86_64         ;
+; Timing Analyzer      ; dghcs            ; Windows 10 ; 10.0       ; x86_64         ;
+; EDA Netlist Writer   ; dghcs            ; Windows 10 ; 10.0       ; x86_64         ;
+; EDA Netlist Writer   ; dghcs            ; Windows 10 ; 10.0       ; x86_64         ;
+; EDA Netlist Writer   ; dghcs            ; Windows 10 ; 10.0       ; x86_64         ;
+; EDA Netlist Writer   ; dghcs            ; Windows 10 ; 10.0       ; x86_64         ;
+; EDA Netlist Writer   ; dghcs            ; Windows 10 ; 10.0       ; x86_64         ;
+; EDA Netlist Writer   ; dghcs            ; Windows 10 ; 10.0       ; x86_64         ;
+; EDA Netlist Writer   ; dghcs            ; Windows 10 ; 10.0       ; x86_64         ;
++----------------------+------------------+------------+------------+----------------+
+
+
+------------
+; Flow Log ;
+------------
+quartus_map --read_settings_files=on --write_settings_files=off Learn -c Learn
+quartus_fit --read_settings_files=off --write_settings_files=off Learn -c Learn
+quartus_asm --read_settings_files=off --write_settings_files=off Learn -c Learn
+quartus_sta Learn -c Learn
+quartus_eda --read_settings_files=on --write_settings_files=off Learn -c Learn --gen_testbench
+quartus_eda --gen_testbench --tool=modelsim_oem --format=vhdl --write_settings_files=off Learn -c Learn --vector_source=D:/VHDL/Learn/Waveform.vwf --testbench_file=D:/VHDL/Learn/simulation/qsim/Waveform.vwf.vht
+quartus_eda --gen_testbench --tool=modelsim_oem --format=vhdl --write_settings_files=off Learn -c Learn --vector_source=D:/VHDL/Learn/Waveform.vwf --testbench_file=D:/VHDL/Learn/simulation/qsim/Waveform.vwf.vht
+quartus_eda --gen_testbench --tool=modelsim_oem --format=vhdl --write_settings_files=off Learn -c Learn --vector_source=D:/VHDL/Learn/Waveform.vwf --testbench_file=D:/VHDL/Learn/simulation/qsim/Waveform.vwf.vht
+quartus_eda --gen_testbench --tool=modelsim_oem --format=vhdl --write_settings_files=off Learn -c Learn --vector_source=D:/VHDL/Learn/Waveform.vwf --testbench_file=D:/VHDL/Learn/simulation/qsim/Waveform.vwf.vht
+quartus_eda --read_settings_files=on --write_settings_files=off Learn -c Learn --gen_testbench
+quartus_eda --gen_testbench --tool=modelsim_oem --format=vhdl --write_settings_files=off Learn -c Learn --vector_source=D:/VHDL/Learn/Waveform.vwf --testbench_file=D:/VHDL/Learn/simulation/qsim/Waveform.vwf.vht
+
+
+

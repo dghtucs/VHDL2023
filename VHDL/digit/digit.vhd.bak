@@ -1,0 +1,29 @@
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.std_logic_arith.all;
+use ieee.std_logic_unsigned.all;
+
+entity digit is
+	port(
+		key:in std_logic_vector(3 downto 0);
+		display:out std_logic_vector(6 downto 0)
+		);
+end digit;
+
+architecture d of digit is
+begin
+	process(key)
+	begin
+		case key is
+			when "0000"=>dispaly<="1111110";
+			when "0000"=>dispaly<="1111110";
+			when "0000"=>dispaly<="1111110";
+			when "0000"=>dispaly<="1111110";
+			when "0000"=>dispaly<="1111110";
+			when "0000"=>dispaly<="1111110";
+			when "0000"=>dispaly<="1111110";
+			when "0000"=>dispaly<="1111110";
+			when others=>dispaly<="0000000";	
+		end case;
+	end process;
+end d;

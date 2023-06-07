@@ -1,0 +1,9 @@
+|HalfAdder
+a => cout.IN0
+a => carry.IN0
+b => cout.IN1
+b => carry.IN1
+cout << cout.DB_MAX_OUTPUT_PORT_TYPE
+carry << carry.DB_MAX_OUTPUT_PORT_TYPE
+
+

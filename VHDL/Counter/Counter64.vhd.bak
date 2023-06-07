@@ -1,0 +1,41 @@
+library ieee;
+use ieee.std_logic_1164.all;
+
+entity Counter64 is
+    port (
+        clk, rst: in std_logic;
+        Digit: out std_logic_vector(5 downto 0)
+    );
+end Counter64;
+
+architecture Behavioral of Counter64 is
+    component DTrigger
+        port (
+            D, CP, Rd, Sd: in std_logic;
+            Q:out std_logic:='0';
+            nQ:out std_logic:='1'
+        );
+    end component;
+    signal D0, D1, D2, D3, D4, D5: std_logic;
+    signal Q0, Q1, Q2, Q3, Q4, Q5: std_logic;
+    signal Count: integer range 0 to 63 := 0;
+    signal HexCount: std_logic_vector(5 downto 0);
+begin
+    D0 <= not Q0;
+    D1 <= (not Q0) and (not Q1);
+    D2 <= (not Q0) and (not Q1) and (not Q2);
+    D3 <= (not Q0) and (not Q1) and (not Q2) and (not Q3);
+    D4 <= (not Q0) and (not Q1) and (not Q2) and (not Q3) and (not Q4);
+    D5 <= (not Q0) and (not Q1) and (not Q2) and (not Q3) and (not Q4) and (not Q5);
+    
+    D0Trigger: DTrigger port map(D=>D0, CP=>clk, Rd=>'0', Sd=>rst, Q=>Q0);
+    D1Trigger: DTrigger port map(D=>D1, CP=>clk, Rd=>'0', Sd=>rst, Q=>Q1);
+    D2Trigger: DTrigger port map(D=>D2, CP=>clk, Rd=>'0', Sd=>rst, Q=>Q2);
+    D3Trigger: DTrigger port map(D=>D3, CP=>clk, Rd=>'0', Sd=>rst, Q=>Q3);
+    D4Trigger: DTrigger port map(D=>D4, CP=>clk, Rd=>'0', Sd=>rst, Q=>Q4);
+    D5Trigger: DTrigger port map(D=>D5, CP=>clk, Rd=>'0', Sd=>rst, Q=>Q5);
+    
+    Count <= to_integer(unsigned(Q5))*64 + to_integer(unsigned(Q4))*32 + to_integer(unsigned(Q3))*16 + to_integer(unsigned(Q2))*8 + to_integer(unsigned(Q1))*4 + to_integer(unsigned(Q0));
+    HexCount <= std_logic_vector(to_unsigned(Count, 6));
+    Digit <= HexCount;
+end Behavioral;

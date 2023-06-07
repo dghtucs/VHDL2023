@@ -1,0 +1,44 @@
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.std_logic_arith.all;
+use ieee.std_logic_unsigned.all;
+
+entity Stopwatch is
+port(
+--c1k为自动时钟，pau为暂停按键(用rst接口)
+--rst=11'时异步清零
+clk, rst, pau: in std logic;
+H, L: out std logic vector(6 downto 0)
+)；
+end Stopwatch;
+architecture watch of Stopwatch is
+component Counter
+port (
+clk, rst:in std logic;
+H, L: out std_logic_vector(6 downto 0)
+)；
+end component;
+--pause=11表示暂停
+signal clk in: std logic:='0';
+signal cnt: integer:= 0;
+begin
+--Counter作为内核，外部实现pause、rst和时钟
+Count:Counter port map(clk=>clk in,rst=>rst,H=>H,L=>L); --clk in的实现
+process (pau, clk, rst)
+begin
+if(rst='1')then
+cnt<=0;
+clk in<='01:
+elsif (clk'event and c1k='1' and pau='0') then
+if (cnt = 1000000) then
+cnt<=0;
+clk in<='1';
+elsif (cnt = 500000) then
+cnt<=cnt+1;
+clk in<='0';
+else
+cnt<=cnt+1;
+end if;
+end if;
+end process;
+end watch;

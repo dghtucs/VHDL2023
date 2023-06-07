@@ -1,0 +1,349 @@
+|Adder
+a[0] => FA1:fAdder1.a[0]
+a[0] => FA2:fAdder2.a[0]
+a[0] => FA3:fAdder3.a[0]
+a[1] => FA1:fAdder1.a[1]
+a[1] => FA2:fAdder2.a[1]
+a[1] => FA3:fAdder3.a[1]
+a[2] => FA1:fAdder1.a[2]
+a[2] => FA2:fAdder2.a[2]
+a[2] => FA3:fAdder3.a[2]
+a[3] => FA1:fAdder1.a[3]
+a[3] => FA2:fAdder2.a[3]
+a[3] => FA3:fAdder3.a[3]
+b[0] => FA1:fAdder1.b[0]
+b[0] => FA2:fAdder2.b[0]
+b[0] => FA3:fAdder3.b[0]
+b[1] => FA1:fAdder1.b[1]
+b[1] => FA2:fAdder2.b[1]
+b[1] => FA3:fAdder3.b[1]
+b[2] => FA1:fAdder1.b[2]
+b[2] => FA2:fAdder2.b[2]
+b[2] => FA3:fAdder3.b[2]
+b[3] => FA1:fAdder1.b[3]
+b[3] => FA2:fAdder2.b[3]
+b[3] => FA3:fAdder3.b[3]
+rst => imode[0].CLK
+rst => imode[1].CLK
+cin => FA1:fAdder1.cin
+cin => FA2:fAdder2.cin
+cin => FA3:fAdder3.cin
+f[0] << f.DB_MAX_OUTPUT_PORT_TYPE
+f[1] << f.DB_MAX_OUTPUT_PORT_TYPE
+f[2] << f.DB_MAX_OUTPUT_PORT_TYPE
+f[3] << f.DB_MAX_OUTPUT_PORT_TYPE
+mode[0] << imode[0].DB_MAX_OUTPUT_PORT_TYPE
+mode[1] << imode[1].DB_MAX_OUTPUT_PORT_TYPE
+cout << cout.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|Adder|FA1:fAdder1
+a[0] => FullAdder1:fa0.a
+a[1] => FullAdder1:fa1.a
+a[2] => FullAdder1:fa2.a
+a[3] => FullAdder1:fa3.a
+b[0] => FullAdder1:fa0.b
+b[1] => FullAdder1:fa1.b
+b[2] => FullAdder1:fa2.b
+b[3] => FullAdder1:fa3.b
+cin => FullAdder1:fa0.cin
+f[0] <= FullAdder1:fa0.f
+f[1] <= FullAdder1:fa1.f
+f[2] <= FullAdder1:fa2.f
+f[3] <= FullAdder1:fa3.f
+cout <= FullAdder1:fa3.cout
+
+
+|Adder|FA1:fAdder1|FullAdder1:fa0
+a => HalfAdder1:ha1.a
+b => HalfAdder1:ha1.b
+cin => HalfAdder1:ha2.b
+f <= HalfAdder1:ha2.f
+cout <= cout.DB_MAX_OUTPUT_PORT_TYPE
+p <= HalfAdder1:ha1.f
+g <= HalfAdder1:ha1.cout
+
+
+|Adder|FA1:fAdder1|FullAdder1:fa0|HalfAdder1:ha1
+a => f.IN0
+a => cout.IN0
+b => f.IN1
+b => cout.IN1
+f <= f.DB_MAX_OUTPUT_PORT_TYPE
+cout <= cout.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|Adder|FA1:fAdder1|FullAdder1:fa0|HalfAdder1:ha2
+a => f.IN0
+a => cout.IN0
+b => f.IN1
+b => cout.IN1
+f <= f.DB_MAX_OUTPUT_PORT_TYPE
+cout <= cout.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|Adder|FA1:fAdder1|FullAdder1:fa1
+a => HalfAdder1:ha1.a
+b => HalfAdder1:ha1.b
+cin => HalfAdder1:ha2.b
+f <= HalfAdder1:ha2.f
+cout <= cout.DB_MAX_OUTPUT_PORT_TYPE
+p <= HalfAdder1:ha1.f
+g <= HalfAdder1:ha1.cout
+
+
+|Adder|FA1:fAdder1|FullAdder1:fa1|HalfAdder1:ha1
+a => f.IN0
+a => cout.IN0
+b => f.IN1
+b => cout.IN1
+f <= f.DB_MAX_OUTPUT_PORT_TYPE
+cout <= cout.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|Adder|FA1:fAdder1|FullAdder1:fa1|HalfAdder1:ha2
+a => f.IN0
+a => cout.IN0
+b => f.IN1
+b => cout.IN1
+f <= f.DB_MAX_OUTPUT_PORT_TYPE
+cout <= cout.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|Adder|FA1:fAdder1|FullAdder1:fa2
+a => HalfAdder1:ha1.a
+b => HalfAdder1:ha1.b
+cin => HalfAdder1:ha2.b
+f <= HalfAdder1:ha2.f
+cout <= cout.DB_MAX_OUTPUT_PORT_TYPE
+p <= HalfAdder1:ha1.f
+g <= HalfAdder1:ha1.cout
+
+
+|Adder|FA1:fAdder1|FullAdder1:fa2|HalfAdder1:ha1
+a => f.IN0
+a => cout.IN0
+b => f.IN1
+b => cout.IN1
+f <= f.DB_MAX_OUTPUT_PORT_TYPE
+cout <= cout.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|Adder|FA1:fAdder1|FullAdder1:fa2|HalfAdder1:ha2
+a => f.IN0
+a => cout.IN0
+b => f.IN1
+b => cout.IN1
+f <= f.DB_MAX_OUTPUT_PORT_TYPE
+cout <= cout.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|Adder|FA1:fAdder1|FullAdder1:fa3
+a => HalfAdder1:ha1.a
+b => HalfAdder1:ha1.b
+cin => HalfAdder1:ha2.b
+f <= HalfAdder1:ha2.f
+cout <= cout.DB_MAX_OUTPUT_PORT_TYPE
+p <= HalfAdder1:ha1.f
+g <= HalfAdder1:ha1.cout
+
+
+|Adder|FA1:fAdder1|FullAdder1:fa3|HalfAdder1:ha1
+a => f.IN0
+a => cout.IN0
+b => f.IN1
+b => cout.IN1
+f <= f.DB_MAX_OUTPUT_PORT_TYPE
+cout <= cout.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|Adder|FA1:fAdder1|FullAdder1:fa3|HalfAdder1:ha2
+a => f.IN0
+a => cout.IN0
+b => f.IN1
+b => cout.IN1
+f <= f.DB_MAX_OUTPUT_PORT_TYPE
+cout <= cout.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|Adder|FA2:fAdder2
+a[0] => FullAdder1:fa0.a
+a[1] => FullAdder1:fa1.a
+a[2] => FullAdder1:fa2.a
+a[3] => FullAdder1:fa3.a
+b[0] => FullAdder1:fa0.b
+b[1] => FullAdder1:fa1.b
+b[2] => FullAdder1:fa2.b
+b[3] => FullAdder1:fa3.b
+cin => FullAdder1:fa0.cin
+cin => Advanced:ad.cin
+f[0] <= FullAdder1:fa0.f
+f[1] <= FullAdder1:fa1.f
+f[2] <= FullAdder1:fa2.f
+f[3] <= FullAdder1:fa3.f
+cout <= Advanced:ad.c[3]
+
+
+|Adder|FA2:fAdder2|FullAdder1:fa0
+a => HalfAdder1:ha1.a
+b => HalfAdder1:ha1.b
+cin => HalfAdder1:ha2.b
+f <= HalfAdder1:ha2.f
+cout <= cout.DB_MAX_OUTPUT_PORT_TYPE
+p <= HalfAdder1:ha1.f
+g <= HalfAdder1:ha1.cout
+
+
+|Adder|FA2:fAdder2|FullAdder1:fa0|HalfAdder1:ha1
+a => f.IN0
+a => cout.IN0
+b => f.IN1
+b => cout.IN1
+f <= f.DB_MAX_OUTPUT_PORT_TYPE
+cout <= cout.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|Adder|FA2:fAdder2|FullAdder1:fa0|HalfAdder1:ha2
+a => f.IN0
+a => cout.IN0
+b => f.IN1
+b => cout.IN1
+f <= f.DB_MAX_OUTPUT_PORT_TYPE
+cout <= cout.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|Adder|FA2:fAdder2|FullAdder1:fa1
+a => HalfAdder1:ha1.a
+b => HalfAdder1:ha1.b
+cin => HalfAdder1:ha2.b
+f <= HalfAdder1:ha2.f
+cout <= cout.DB_MAX_OUTPUT_PORT_TYPE
+p <= HalfAdder1:ha1.f
+g <= HalfAdder1:ha1.cout
+
+
+|Adder|FA2:fAdder2|FullAdder1:fa1|HalfAdder1:ha1
+a => f.IN0
+a => cout.IN0
+b => f.IN1
+b => cout.IN1
+f <= f.DB_MAX_OUTPUT_PORT_TYPE
+cout <= cout.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|Adder|FA2:fAdder2|FullAdder1:fa1|HalfAdder1:ha2
+a => f.IN0
+a => cout.IN0
+b => f.IN1
+b => cout.IN1
+f <= f.DB_MAX_OUTPUT_PORT_TYPE
+cout <= cout.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|Adder|FA2:fAdder2|FullAdder1:fa2
+a => HalfAdder1:ha1.a
+b => HalfAdder1:ha1.b
+cin => HalfAdder1:ha2.b
+f <= HalfAdder1:ha2.f
+cout <= cout.DB_MAX_OUTPUT_PORT_TYPE
+p <= HalfAdder1:ha1.f
+g <= HalfAdder1:ha1.cout
+
+
+|Adder|FA2:fAdder2|FullAdder1:fa2|HalfAdder1:ha1
+a => f.IN0
+a => cout.IN0
+b => f.IN1
+b => cout.IN1
+f <= f.DB_MAX_OUTPUT_PORT_TYPE
+cout <= cout.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|Adder|FA2:fAdder2|FullAdder1:fa2|HalfAdder1:ha2
+a => f.IN0
+a => cout.IN0
+b => f.IN1
+b => cout.IN1
+f <= f.DB_MAX_OUTPUT_PORT_TYPE
+cout <= cout.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|Adder|FA2:fAdder2|FullAdder1:fa3
+a => HalfAdder1:ha1.a
+b => HalfAdder1:ha1.b
+cin => HalfAdder1:ha2.b
+f <= HalfAdder1:ha2.f
+cout <= cout.DB_MAX_OUTPUT_PORT_TYPE
+p <= HalfAdder1:ha1.f
+g <= HalfAdder1:ha1.cout
+
+
+|Adder|FA2:fAdder2|FullAdder1:fa3|HalfAdder1:ha1
+a => f.IN0
+a => cout.IN0
+b => f.IN1
+b => cout.IN1
+f <= f.DB_MAX_OUTPUT_PORT_TYPE
+cout <= cout.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|Adder|FA2:fAdder2|FullAdder1:fa3|HalfAdder1:ha2
+a => f.IN0
+a => cout.IN0
+b => f.IN1
+b => cout.IN1
+f <= f.DB_MAX_OUTPUT_PORT_TYPE
+cout <= cout.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|Adder|FA2:fAdder2|Advanced:ad
+p[0] => c.IN0
+p[0] => c.IN0
+p[0] => c.IN1
+p[0] => c.IN1
+p[1] => c.IN0
+p[1] => c.IN1
+p[1] => c.IN0
+p[1] => c.IN1
+p[2] => c.IN0
+p[2] => c.IN1
+p[2] => c.IN0
+p[3] => c.IN0
+p[3] => c.IN1
+g[0] => c.IN1
+g[0] => c.IN1
+g[0] => c.IN1
+g[0] => c.IN1
+g[1] => c.IN1
+g[1] => c.IN1
+g[1] => c.IN1
+g[2] => c.IN1
+g[2] => c.IN1
+g[3] => c.IN1
+cin => c.IN1
+cin => c.IN1
+cin => c.IN1
+cin => c.IN1
+c[0] <= c.DB_MAX_OUTPUT_PORT_TYPE
+c[1] <= c.DB_MAX_OUTPUT_PORT_TYPE
+c[2] <= c.DB_MAX_OUTPUT_PORT_TYPE
+c[3] <= c.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|Adder|FA3:fAdder3
+a[0] => Add0.IN4
+a[1] => Add0.IN3
+a[2] => Add0.IN2
+a[3] => Add0.IN1
+b[0] => Add0.IN8
+b[1] => Add0.IN7
+b[2] => Add0.IN6
+b[3] => Add0.IN5
+cin => Add1.IN10
+f[0] <= Add1.DB_MAX_OUTPUT_PORT_TYPE
+f[1] <= Add1.DB_MAX_OUTPUT_PORT_TYPE
+f[2] <= Add1.DB_MAX_OUTPUT_PORT_TYPE
+f[3] <= Add1.DB_MAX_OUTPUT_PORT_TYPE
+cout <= Add1.DB_MAX_OUTPUT_PORT_TYPE
+
+

@@ -1,0 +1,69 @@
+|counter64
+clk => DFlipFlop:gen:0:U1.clk
+clk => temp_next[0].CLK
+clk => temp_next[1].CLK
+clk => temp_next[2].CLK
+clk => temp_next[3].CLK
+clk => temp_next[4].CLK
+clk => temp_next[5].CLK
+clk => DFlipFlop:gen:1:U1.clk
+clk => DFlipFlop:gen:2:U1.clk
+clk => DFlipFlop:gen:3:U1.clk
+clk => DFlipFlop:gen:4:U1.clk
+clk => DFlipFlop:gen:5:U1.clk
+reset => temp_next.OUTPUTSELECT
+reset => temp_next.OUTPUTSELECT
+reset => temp_next.OUTPUTSELECT
+reset => temp_next.OUTPUTSELECT
+reset => temp_next.OUTPUTSELECT
+reset => temp_next.OUTPUTSELECT
+enable => temp_next.OUTPUTSELECT
+enable => temp_next.OUTPUTSELECT
+enable => temp_next.OUTPUTSELECT
+enable => temp_next.OUTPUTSELECT
+enable => temp_next.OUTPUTSELECT
+enable => temp_next.OUTPUTSELECT
+count[0] <= DFlipFlop:gen:0:U1.Q
+count[1] <= DFlipFlop:gen:1:U1.Q
+count[2] <= DFlipFlop:gen:2:U1.Q
+count[3] <= DFlipFlop:gen:3:U1.Q
+count[4] <= DFlipFlop:gen:4:U1.Q
+count[5] <= DFlipFlop:gen:5:U1.Q
+
+
+|counter64|DFlipFlop:\gen:0:U1
+D => Q~reg0.DATAIN
+clk => Q~reg0.CLK
+Q <= Q~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|counter64|DFlipFlop:\gen:1:U1
+D => Q~reg0.DATAIN
+clk => Q~reg0.CLK
+Q <= Q~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|counter64|DFlipFlop:\gen:2:U1
+D => Q~reg0.DATAIN
+clk => Q~reg0.CLK
+Q <= Q~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|counter64|DFlipFlop:\gen:3:U1
+D => Q~reg0.DATAIN
+clk => Q~reg0.CLK
+Q <= Q~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|counter64|DFlipFlop:\gen:4:U1
+D => Q~reg0.DATAIN
+clk => Q~reg0.CLK
+Q <= Q~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|counter64|DFlipFlop:\gen:5:U1
+D => Q~reg0.DATAIN
+clk => Q~reg0.CLK
+Q <= Q~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+

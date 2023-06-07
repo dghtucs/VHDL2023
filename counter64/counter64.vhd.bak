@@ -1,0 +1,32 @@
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+use IEEE.NUMERIC_STD.ALL;
+
+entity counter64 is
+    Port (
+        clk : in STD_LOGIC;
+        reset : in STD_LOGIC;
+        enable : in STD_LOGIC;
+        count : out STD_LOGIC_VECTOR (5 downto 0)
+    );
+end counter64;
+
+architecture Behavioral of counter64 is
+    signal temp : unsigned (5 downto 0);
+begin
+    process(clk)
+    begin
+        if rising_edge(clk) then
+            if reset = '1' then
+                temp <= "000000"; -- reset counter
+            elsif enable = '1' then
+                if temp = "111111" then
+                    temp <= "000000"; -- reset counter after 63
+                else
+                    temp <= temp + 1; -- increment counter
+                end if;
+            end if;
+        end if;
+    end process;
+    count <= STD_LOGIC_VECTOR(temp);
+end Behavioral;

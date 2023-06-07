@@ -1,0 +1,23 @@
+|Count8
+clk => tem[0].CLK
+clk => tem[1].CLK
+clk => tem[2].CLK
+clk => tem[3].CLK
+clk => tem[4].CLK
+clk => tem[5].CLK
+clk => tem[6].CLK
+clk => tem[7].CLK
+clk => tem[8].CLK
+clk => tem[9].CLK
+q[0] <= tem[0].DB_MAX_OUTPUT_PORT_TYPE
+q[1] <= tem[1].DB_MAX_OUTPUT_PORT_TYPE
+q[2] <= tem[2].DB_MAX_OUTPUT_PORT_TYPE
+q[3] <= tem[3].DB_MAX_OUTPUT_PORT_TYPE
+q[4] <= tem[4].DB_MAX_OUTPUT_PORT_TYPE
+q[5] <= tem[5].DB_MAX_OUTPUT_PORT_TYPE
+q[6] <= tem[6].DB_MAX_OUTPUT_PORT_TYPE
+q[7] <= tem[7].DB_MAX_OUTPUT_PORT_TYPE
+q[8] <= tem[8].DB_MAX_OUTPUT_PORT_TYPE
+q[9] <= tem[9].DB_MAX_OUTPUT_PORT_TYPE
+
+

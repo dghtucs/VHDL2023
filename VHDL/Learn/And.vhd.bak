@@ -1,0 +1,15 @@
+library ieee;
+use ieee.std_logic_1164.all;
+
+entity And is
+	port(
+		A ,B :in std_logic;
+		Y : out std_logic
+	);
+end And;
+
+
+architecture move of And is
+begin
+	Y <= A and B;
+end move;

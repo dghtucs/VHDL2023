@@ -1,0 +1,11 @@
+Fitter Status : Successful - Fri May 12 09:03:47 2023
+Quartus Prime Version : 19.1.0 Build 670 09/22/2019 SJ Lite Edition
+Revision Name : digit
+Top-level Entity Name : digit
+Family : MAX II
+Device : EPM240T100C5
+Timing Models : Final
+Total logic elements : 7 / 240 ( 3 % )
+Total pins : 11 / 80 ( 14 % )
+Total virtual pins : 0
+UFM blocks : 0 / 1 ( 0 % )
