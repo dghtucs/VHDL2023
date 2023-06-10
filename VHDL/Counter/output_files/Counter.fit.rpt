@@ -1,5 +1,5 @@
 Fitter report for Counter
-Fri May 12 17:15:58 2023
+Thu Jun 08 16:56:33 2023
 Quartus Prime Version 19.1.0 Build 670 09/22/2019 SJ Lite Edition
 
 
@@ -20,10 +20,17 @@ Quartus Prime Version 19.1.0 Build 670 09/22/2019 SJ Lite Edition
  12. Output Pin Default Load For Reported TCO
  13. Fitter Resource Utilization by Entity
  14. Delay Chain Summary
- 15. Routing Usage Summary
- 16. Fitter Device Options
- 17. Fitter Messages
- 18. Fitter Suppressed Messages
+ 15. Control Signals
+ 16. Global & Other Fast Signals
+ 17. Routing Usage Summary
+ 18. LAB Logic Elements
+ 19. LAB-wide Signals
+ 20. LAB Signals Sourced
+ 21. LAB Signals Sourced Out
+ 22. LAB Distinct Inputs
+ 23. Fitter Device Options
+ 24. Fitter Messages
+ 25. Fitter Suppressed Messages
 
 
 
@@ -50,14 +57,14 @@ https://fpgasoftware.intel.com/eula.
 +---------------------------------------------------------------------+
 ; Fitter Summary                                                      ;
 +-----------------------+---------------------------------------------+
-; Fitter Status         ; Successful - Fri May 12 17:15:58 2023       ;
+; Fitter Status         ; Successful - Thu Jun 08 16:56:33 2023       ;
 ; Quartus Prime Version ; 19.1.0 Build 670 09/22/2019 SJ Lite Edition ;
 ; Revision Name         ; Counter                                     ;
 ; Top-level Entity Name ; Counter                                     ;
 ; Family                ; MAX II                                      ;
 ; Device                ; EPM240T100C5                                ;
 ; Timing Models         ; Final                                       ;
-; Total logic elements  ; 0 / 240 ( 0 % )                             ;
+; Total logic elements  ; 22 / 240 ( 9 % )                            ;
 ; Total pins            ; 16 / 80 ( 20 % )                            ;
 ; Total virtual pins    ; 0                                           ;
 ; UFM blocks            ; 0 / 1 ( 0 % )                               ;
@@ -121,11 +128,12 @@ https://fpgasoftware.intel.com/eula.
 ; Number detected on machine ; 20          ;
 ; Maximum allowed            ; 14          ;
 ;                            ;             ;
-; Average used               ; 1.00        ;
-; Maximum used               ; 1           ;
+; Average used               ; 1.01        ;
+; Maximum used               ; 14          ;
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
+;     Processors 2-14        ;   0.1%      ;
 +----------------------------+-------------+
 
 
@@ -134,14 +142,14 @@ https://fpgasoftware.intel.com/eula.
 +----------+----------------+--------------+------------+---------------+----------------+
 ; Name     ; Ignored Entity ; Ignored From ; Ignored To ; Ignored Value ; Ignored Source ;
 +----------+----------------+--------------+------------+---------------+----------------+
-; Location ;                ;              ; pau        ; PIN_12        ; QSF Assignment ;
+; Location ;                ;              ; pau        ; PIN_21        ; QSF Assignment ;
 +----------+----------------+--------------+------------+---------------+----------------+
 
 
 +--------------+
 ; Pin-Out File ;
 +--------------+
-The pin-out file can be found in D:/VHDL/Counter/output_files/Counter.pin.
+The pin-out file can be found in D:/GitHub/VHDL2023/VHDL/Counter/output_files/Counter.pin.
 
 
 +------------------------------------------------------------------+
@@ -149,28 +157,28 @@ The pin-out file can be found in D:/VHDL/Counter/output_files/Counter.pin.
 +---------------------------------------------+--------------------+
 ; Resource                                    ; Usage              ;
 +---------------------------------------------+--------------------+
-; Total logic elements                        ; 0 / 240 ( 0 % )    ;
-;     -- Combinational with no register       ; 0                  ;
+; Total logic elements                        ; 22 / 240 ( 9 % )   ;
+;     -- Combinational with no register       ; 14                 ;
 ;     -- Register only                        ; 0                  ;
-;     -- Combinational with a register        ; 0                  ;
+;     -- Combinational with a register        ; 8                  ;
 ;                                             ;                    ;
 ; Logic element usage by number of LUT inputs ;                    ;
-;     -- 4 input functions                    ; 0                  ;
-;     -- 3 input functions                    ; 0                  ;
+;     -- 4 input functions                    ; 10                 ;
+;     -- 3 input functions                    ; 10                 ;
 ;     -- 2 input functions                    ; 0                  ;
-;     -- 1 input functions                    ; 0                  ;
+;     -- 1 input functions                    ; 2                  ;
 ;     -- 0 input functions                    ; 0                  ;
 ;                                             ;                    ;
 ; Logic elements by mode                      ;                    ;
-;     -- normal mode                          ; 0                  ;
+;     -- normal mode                          ; 22                 ;
 ;     -- arithmetic mode                      ; 0                  ;
 ;     -- qfbk mode                            ; 0                  ;
 ;     -- register cascade mode                ; 0                  ;
 ;     -- synchronous clear/load mode          ; 0                  ;
-;     -- asynchronous clear/load mode         ; 0                  ;
+;     -- asynchronous clear/load mode         ; 8                  ;
 ;                                             ;                    ;
-; Total registers                             ; 0 / 240 ( 0 % )    ;
-; Total LABs                                  ; 0 / 24 ( 0 % )     ;
+; Total registers                             ; 8 / 240 ( 3 % )    ;
+; Total LABs                                  ; 3 / 24 ( 13 % )    ;
 ; Logic elements in carry chains              ; 0                  ;
 ; Virtual pins                                ; 0                  ;
 ; I/O pins                                    ; 16 / 80 ( 20 % )   ;
@@ -181,11 +189,15 @@ The pin-out file can be found in D:/VHDL/Counter/output_files/Counter.pin.
 ;     -- Total Fixed Point DSP Blocks         ; 0                  ;
 ;     -- Total Floating Point DSP Blocks      ; 0                  ;
 ;                                             ;                    ;
-; Global signals                              ; 0                  ;
-;     -- Global clocks                        ; 0 / 4 ( 0 % )      ;
+; Global signals                              ; 2                  ;
+;     -- Global clocks                        ; 2 / 4 ( 50 % )     ;
 ; JTAGs                                       ; 0 / 1 ( 0 % )      ;
-; Average interconnect usage (total/H/V)      ; 0.0% / 0.0% / 0.0% ;
-; Peak interconnect usage (total/H/V)         ; 0.0% / 0.0% / 0.0% ;
+; Average interconnect usage (total/H/V)      ; 1.1% / 0.5% / 1.6% ;
+; Peak interconnect usage (total/H/V)         ; 1.1% / 0.5% / 1.6% ;
+; Maximum fan-out                             ; 12                 ;
+; Highest non-global fan-out                  ; 12                 ;
+; Total fan-out                               ; 104                ;
+; Average fan-out                             ; 2.74               ;
 +---------------------------------------------+--------------------+
 
 
@@ -194,8 +206,8 @@ The pin-out file can be found in D:/VHDL/Counter/output_files/Counter.pin.
 +------+-------+----------+--------------+--------------+-------------+-----------------------+--------------------+--------+-----------------+----------+--------------+--------------+----------------------+----------------+
 ; Name ; Pin # ; I/O Bank ; X coordinate ; Y coordinate ; Cell number ; Combinational Fan-Out ; Registered Fan-Out ; Global ; PCI I/O Enabled ; Bus Hold ; Weak Pull Up ; I/O Standard ; Location assigned by ; Slow Slew Rate ;
 +------+-------+----------+--------------+--------------+-------------+-----------------------+--------------------+--------+-----------------+----------+--------------+--------------+----------------------+----------------+
-; clk  ; 21    ; 1        ; 1            ; 1            ; 3           ; 0                     ; 0                  ; no     ; no              ; no       ; Off          ; 3.3-V LVTTL  ; User                 ; no             ;
-; rst  ; 44    ; 1        ; 6            ; 0            ; 2           ; 0                     ; 0                  ; no     ; no              ; no       ; Off          ; 3.3-V LVTTL  ; User                 ; no             ;
+; clk  ; 8     ; 1        ; 1            ; 3            ; 2           ; 8                     ; 0                  ; yes    ; no              ; no       ; Off          ; 3.3-V LVTTL  ; User                 ; no             ;
+; rst  ; 44    ; 1        ; 6            ; 0            ; 2           ; 8                     ; 0                  ; yes    ; no              ; no       ; Off          ; 3.3-V LVTTL  ; User                 ; no             ;
 +------+-------+----------+--------------+--------------+-------------+-----------------------+--------------------+--------+-----------------+----------+--------------+--------------+----------------------+----------------+
 
 
@@ -208,16 +220,16 @@ The pin-out file can be found in D:/VHDL/Counter/output_files/Counter.pin.
 ; H[1] ; 2     ; 1        ; 1            ; 4            ; 0           ; no              ; no             ; no              ; no         ; no            ; no       ; Off          ; 3.3-V LVTTL  ; 16mA             ; no                     ; User                 ; 10 pF ; -                    ; -                   ;
 ; H[2] ; 3     ; 1        ; 1            ; 4            ; 1           ; no              ; no             ; no              ; no         ; no            ; no       ; Off          ; 3.3-V LVTTL  ; 16mA             ; no                     ; User                 ; 10 pF ; -                    ; -                   ;
 ; H[3] ; 4     ; 1        ; 1            ; 4            ; 2           ; no              ; no             ; no              ; no         ; no            ; no       ; Off          ; 3.3-V LVTTL  ; 16mA             ; no                     ; User                 ; 10 pF ; -                    ; -                   ;
-; H[4] ; 17    ; 1        ; 1            ; 2            ; 3           ; no              ; no             ; no              ; no         ; no            ; no       ; Off          ; 3.3-V LVTTL  ; 16mA             ; no                     ; User                 ; 10 pF ; -                    ; -                   ;
-; H[5] ; 18    ; 1        ; 1            ; 1            ; 0           ; no              ; no             ; no              ; no         ; no            ; no       ; Off          ; 3.3-V LVTTL  ; 16mA             ; no                     ; User                 ; 10 pF ; -                    ; -                   ;
-; H[6] ; 19    ; 1        ; 1            ; 1            ; 1           ; no              ; no             ; no              ; no         ; no            ; no       ; Off          ; 3.3-V LVTTL  ; 16mA             ; no                     ; User                 ; 10 pF ; -                    ; -                   ;
-; L[0] ; 5     ; 1        ; 1            ; 4            ; 3           ; no              ; no             ; no              ; no         ; no            ; no       ; Off          ; 3.3-V LVTTL  ; 16mA             ; no                     ; User                 ; 10 pF ; -                    ; -                   ;
-; L[1] ; 6     ; 1        ; 1            ; 3            ; 0           ; no              ; no             ; no              ; no         ; no            ; no       ; Off          ; 3.3-V LVTTL  ; 16mA             ; no                     ; User                 ; 10 pF ; -                    ; -                   ;
-; L[2] ; 7     ; 1        ; 1            ; 3            ; 1           ; no              ; no             ; no              ; no         ; no            ; no       ; Off          ; 3.3-V LVTTL  ; 16mA             ; no                     ; User                 ; 10 pF ; -                    ; -                   ;
-; L[3] ; 8     ; 1        ; 1            ; 3            ; 2           ; no              ; no             ; no              ; no         ; no            ; no       ; Off          ; 3.3-V LVTTL  ; 16mA             ; no                     ; User                 ; 10 pF ; -                    ; -                   ;
-; L[4] ; 14    ; 1        ; 1            ; 2            ; 0           ; no              ; no             ; no              ; no         ; no            ; no       ; Off          ; 3.3-V LVTTL  ; 16mA             ; no                     ; User                 ; 10 pF ; -                    ; -                   ;
-; L[5] ; 15    ; 1        ; 1            ; 2            ; 1           ; no              ; no             ; no              ; no         ; no            ; no       ; Off          ; 3.3-V LVTTL  ; 16mA             ; no                     ; User                 ; 10 pF ; -                    ; -                   ;
-; L[6] ; 16    ; 1        ; 1            ; 2            ; 2           ; no              ; no             ; no              ; no         ; no            ; no       ; Off          ; 3.3-V LVTTL  ; 16mA             ; no                     ; User                 ; 10 pF ; -                    ; -                   ;
+; H[4] ; 5     ; 1        ; 1            ; 4            ; 3           ; no              ; no             ; no              ; no         ; no            ; no       ; Off          ; 3.3-V LVTTL  ; 16mA             ; no                     ; User                 ; 10 pF ; -                    ; -                   ;
+; H[5] ; 6     ; 1        ; 1            ; 3            ; 0           ; no              ; no             ; no              ; no         ; no            ; no       ; Off          ; 3.3-V LVTTL  ; 16mA             ; yes                    ; User                 ; 10 pF ; -                    ; -                   ;
+; H[6] ; 7     ; 1        ; 1            ; 3            ; 1           ; no              ; no             ; no              ; no         ; no            ; no       ; Off          ; 3.3-V LVTTL  ; 16mA             ; yes                    ; User                 ; 10 pF ; -                    ; -                   ;
+; L[0] ; 14    ; 1        ; 1            ; 2            ; 0           ; no              ; no             ; no              ; no         ; no            ; no       ; Off          ; 3.3-V LVTTL  ; 16mA             ; yes                    ; User                 ; 10 pF ; -                    ; -                   ;
+; L[1] ; 15    ; 1        ; 1            ; 2            ; 1           ; no              ; no             ; no              ; no         ; no            ; no       ; Off          ; 3.3-V LVTTL  ; 16mA             ; yes                    ; User                 ; 10 pF ; -                    ; -                   ;
+; L[2] ; 16    ; 1        ; 1            ; 2            ; 2           ; no              ; no             ; no              ; no         ; no            ; no       ; Off          ; 3.3-V LVTTL  ; 16mA             ; yes                    ; User                 ; 10 pF ; -                    ; -                   ;
+; L[3] ; 17    ; 1        ; 1            ; 2            ; 3           ; no              ; no             ; no              ; no         ; no            ; no       ; Off          ; 3.3-V LVTTL  ; 16mA             ; yes                    ; User                 ; 10 pF ; -                    ; -                   ;
+; L[4] ; 18    ; 1        ; 1            ; 1            ; 0           ; no              ; no             ; no              ; no         ; no            ; no       ; Off          ; 3.3-V LVTTL  ; 16mA             ; no                     ; User                 ; 10 pF ; -                    ; -                   ;
+; L[5] ; 19    ; 1        ; 1            ; 1            ; 1           ; no              ; no             ; no              ; no         ; no            ; no       ; Off          ; 3.3-V LVTTL  ; 16mA             ; no                     ; User                 ; 10 pF ; -                    ; -                   ;
+; L[6] ; 20    ; 1        ; 1            ; 1            ; 2           ; no              ; no             ; no              ; no         ; no            ; no       ; Off          ; 3.3-V LVTTL  ; 16mA             ; no                     ; User                 ; 10 pF ; -                    ; -                   ;
 +------+-------+----------+--------------+--------------+-------------+-----------------+----------------+-----------------+------------+---------------+----------+--------------+--------------+------------------+------------------------+----------------------+-------+----------------------+---------------------+
 
 
@@ -240,23 +252,23 @@ The pin-out file can be found in D:/VHDL/Counter/output_files/Counter.pin.
 ; 2        ; 0          ; 1        ; H[1]           ; output ; 3.3-V LVTTL  ;           ; Row I/O    ; Y               ; no       ; Off          ;
 ; 3        ; 1          ; 1        ; H[2]           ; output ; 3.3-V LVTTL  ;           ; Row I/O    ; Y               ; no       ; Off          ;
 ; 4        ; 2          ; 1        ; H[3]           ; output ; 3.3-V LVTTL  ;           ; Row I/O    ; Y               ; no       ; Off          ;
-; 5        ; 3          ; 1        ; L[0]           ; output ; 3.3-V LVTTL  ;           ; Row I/O    ; Y               ; no       ; Off          ;
-; 6        ; 4          ; 1        ; L[1]           ; output ; 3.3-V LVTTL  ;           ; Row I/O    ; Y               ; no       ; Off          ;
-; 7        ; 5          ; 1        ; L[2]           ; output ; 3.3-V LVTTL  ;           ; Row I/O    ; Y               ; no       ; Off          ;
-; 8        ; 6          ; 1        ; L[3]           ; output ; 3.3-V LVTTL  ;           ; Row I/O    ; Y               ; no       ; Off          ;
+; 5        ; 3          ; 1        ; H[4]           ; output ; 3.3-V LVTTL  ;           ; Row I/O    ; Y               ; no       ; Off          ;
+; 6        ; 4          ; 1        ; H[5]           ; output ; 3.3-V LVTTL  ;           ; Row I/O    ; Y               ; no       ; Off          ;
+; 7        ; 5          ; 1        ; H[6]           ; output ; 3.3-V LVTTL  ;           ; Row I/O    ; Y               ; no       ; Off          ;
+; 8        ; 6          ; 1        ; clk            ; input  ; 3.3-V LVTTL  ;           ; Row I/O    ; Y               ; no       ; Off          ;
 ; 9        ;            ; 1        ; VCCIO1         ; power  ;              ; 3.3V      ; --         ;                 ; --       ; --           ;
 ; 10       ;            ;          ; GNDIO          ; gnd    ;              ;           ; --         ;                 ; --       ; --           ;
 ; 11       ;            ;          ; GNDINT         ; gnd    ;              ;           ; --         ;                 ; --       ; --           ;
 ; 12       ; 7          ; 1        ; GND*           ;        ;              ;           ; Row I/O    ;                 ; no       ; Off          ;
 ; 13       ;            ;          ; VCCINT         ; power  ;              ; 2.5V/3.3V ; --         ;                 ; --       ; --           ;
-; 14       ; 8          ; 1        ; L[4]           ; output ; 3.3-V LVTTL  ;           ; Row I/O    ; Y               ; no       ; Off          ;
-; 15       ; 9          ; 1        ; L[5]           ; output ; 3.3-V LVTTL  ;           ; Row I/O    ; Y               ; no       ; Off          ;
-; 16       ; 10         ; 1        ; L[6]           ; output ; 3.3-V LVTTL  ;           ; Row I/O    ; Y               ; no       ; Off          ;
-; 17       ; 11         ; 1        ; H[4]           ; output ; 3.3-V LVTTL  ;           ; Row I/O    ; Y               ; no       ; Off          ;
-; 18       ; 12         ; 1        ; H[5]           ; output ; 3.3-V LVTTL  ;           ; Row I/O    ; Y               ; no       ; Off          ;
-; 19       ; 13         ; 1        ; H[6]           ; output ; 3.3-V LVTTL  ;           ; Row I/O    ; Y               ; no       ; Off          ;
-; 20       ; 14         ; 1        ; GND*           ;        ;              ;           ; Row I/O    ;                 ; no       ; Off          ;
-; 21       ; 15         ; 1        ; clk            ; input  ; 3.3-V LVTTL  ;           ; Row I/O    ; Y               ; no       ; Off          ;
+; 14       ; 8          ; 1        ; L[0]           ; output ; 3.3-V LVTTL  ;           ; Row I/O    ; Y               ; no       ; Off          ;
+; 15       ; 9          ; 1        ; L[1]           ; output ; 3.3-V LVTTL  ;           ; Row I/O    ; Y               ; no       ; Off          ;
+; 16       ; 10         ; 1        ; L[2]           ; output ; 3.3-V LVTTL  ;           ; Row I/O    ; Y               ; no       ; Off          ;
+; 17       ; 11         ; 1        ; L[3]           ; output ; 3.3-V LVTTL  ;           ; Row I/O    ; Y               ; no       ; Off          ;
+; 18       ; 12         ; 1        ; L[4]           ; output ; 3.3-V LVTTL  ;           ; Row I/O    ; Y               ; no       ; Off          ;
+; 19       ; 13         ; 1        ; L[5]           ; output ; 3.3-V LVTTL  ;           ; Row I/O    ; Y               ; no       ; Off          ;
+; 20       ; 14         ; 1        ; L[6]           ; output ; 3.3-V LVTTL  ;           ; Row I/O    ; Y               ; no       ; Off          ;
+; 21       ; 15         ; 1        ; GND*           ;        ;              ;           ; Row I/O    ;                 ; no       ; Off          ;
 ; 22       ; 16         ; 1        ; #TMS           ; input  ;              ;           ; --         ;                 ; --       ; --           ;
 ; 23       ; 17         ; 1        ; #TDI           ; input  ;              ;           ; --         ;                 ; --       ; --           ;
 ; 24       ; 18         ; 1        ; #TCK           ; input  ;              ;           ; --         ;                 ; --       ; --           ;
@@ -356,13 +368,26 @@ Note: Pin directions (input, output or bidir) are based on device operating in u
 Note: User assignments will override these defaults. The user specified values are listed in the Output Pins and Bidir Pins tables.
 
 
-+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Fitter Resource Utilization by Entity                                                                                                                                                                                              ;
-+----------------------------+-------------+--------------+------------+------+--------------+--------------+-------------------+------------------+-----------------+------------+---------------------+-------------+--------------+
-; Compilation Hierarchy Node ; Logic Cells ; LC Registers ; UFM Blocks ; Pins ; Virtual Pins ; LUT-Only LCs ; Register-Only LCs ; LUT/Register LCs ; Carry Chain LCs ; Packed LCs ; Full Hierarchy Name ; Entity Name ; Library Name ;
-+----------------------------+-------------+--------------+------------+------+--------------+--------------+-------------------+------------------+-----------------+------------+---------------------+-------------+--------------+
-; |Counter                   ; 0 (0)       ; 0            ; 0          ; 16   ; 0            ; 0 (0)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |Counter            ; Counter     ; work         ;
-+----------------------------+-------------+--------------+------------+------+--------------+--------------+-------------------+------------------+-----------------+------------+---------------------+-------------+--------------+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Fitter Resource Utilization by Entity                                                                                                                                                                                                                                  ;
++----------------------------------+-------------+--------------+------------+------+--------------+--------------+-------------------+------------------+-----------------+------------+---------------------------------------------------+-------------+--------------+
+; Compilation Hierarchy Node       ; Logic Cells ; LC Registers ; UFM Blocks ; Pins ; Virtual Pins ; LUT-Only LCs ; Register-Only LCs ; LUT/Register LCs ; Carry Chain LCs ; Packed LCs ; Full Hierarchy Name                               ; Entity Name ; Library Name ;
++----------------------------------+-------------+--------------+------------+------+--------------+--------------+-------------------+------------------+-----------------+------------+---------------------------------------------------+-------------+--------------+
+; |Counter                         ; 22 (0)      ; 8            ; 0          ; 16   ; 0            ; 14 (0)       ; 0 (0)             ; 8 (0)            ; 0 (0)           ; 0 (0)      ; |Counter                                          ; Counter     ; work         ;
+;    |Cnt60:cnt|                   ; 8 (0)       ; 8            ; 0          ; 0    ; 0            ; 0 (0)        ; 0 (0)             ; 8 (0)            ; 0 (0)           ; 0 (0)      ; |Counter|Cnt60:cnt                                ; Cnt60       ; work         ;
+;       |Cnt10:CL|                 ; 4 (0)       ; 4            ; 0          ; 0    ; 0            ; 0 (0)        ; 0 (0)             ; 4 (0)            ; 0 (0)           ; 0 (0)      ; |Counter|Cnt60:cnt|Cnt10:CL                       ; Cnt10       ; work         ;
+;          |DTrigger:\labe10:0:Di| ; 1 (1)       ; 1            ; 0          ; 0    ; 0            ; 0 (0)        ; 0 (0)             ; 1 (1)            ; 0 (0)           ; 0 (0)      ; |Counter|Cnt60:cnt|Cnt10:CL|DTrigger:\labe10:0:Di ; DTrigger    ; work         ;
+;          |DTrigger:\labe10:1:Di| ; 1 (1)       ; 1            ; 0          ; 0    ; 0            ; 0 (0)        ; 0 (0)             ; 1 (1)            ; 0 (0)           ; 0 (0)      ; |Counter|Cnt60:cnt|Cnt10:CL|DTrigger:\labe10:1:Di ; DTrigger    ; work         ;
+;          |DTrigger:\labe10:2:Di| ; 1 (1)       ; 1            ; 0          ; 0    ; 0            ; 0 (0)        ; 0 (0)             ; 1 (1)            ; 0 (0)           ; 0 (0)      ; |Counter|Cnt60:cnt|Cnt10:CL|DTrigger:\labe10:2:Di ; DTrigger    ; work         ;
+;          |DTrigger:\labe10:3:Di| ; 1 (1)       ; 1            ; 0          ; 0    ; 0            ; 0 (0)        ; 0 (0)             ; 1 (1)            ; 0 (0)           ; 0 (0)      ; |Counter|Cnt60:cnt|Cnt10:CL|DTrigger:\labe10:3:Di ; DTrigger    ; work         ;
+;       |Cnt6:CH|                  ; 3 (0)       ; 3            ; 0          ; 0    ; 0            ; 0 (0)        ; 0 (0)             ; 3 (0)            ; 0 (0)           ; 0 (0)      ; |Counter|Cnt60:cnt|Cnt6:CH                        ; Cnt6        ; work         ;
+;          |DTrigger:\labe10:0:Di| ; 1 (1)       ; 1            ; 0          ; 0    ; 0            ; 0 (0)        ; 0 (0)             ; 1 (1)            ; 0 (0)           ; 0 (0)      ; |Counter|Cnt60:cnt|Cnt6:CH|DTrigger:\labe10:0:Di  ; DTrigger    ; work         ;
+;          |DTrigger:\labe10:1:Di| ; 1 (1)       ; 1            ; 0          ; 0    ; 0            ; 0 (0)        ; 0 (0)             ; 1 (1)            ; 0 (0)           ; 0 (0)      ; |Counter|Cnt60:cnt|Cnt6:CH|DTrigger:\labe10:1:Di  ; DTrigger    ; work         ;
+;          |DTrigger:\labe10:2:Di| ; 1 (1)       ; 1            ; 0          ; 0    ; 0            ; 0 (0)        ; 0 (0)             ; 1 (1)            ; 0 (0)           ; 0 (0)      ; |Counter|Cnt60:cnt|Cnt6:CH|DTrigger:\labe10:2:Di  ; DTrigger    ; work         ;
+;       |DTrigger:Dv|              ; 1 (1)       ; 1            ; 0          ; 0    ; 0            ; 0 (0)        ; 0 (0)             ; 1 (1)            ; 0 (0)           ; 0 (0)      ; |Counter|Cnt60:cnt|DTrigger:Dv                    ; DTrigger    ; work         ;
+;    |Digit:digH|                  ; 7 (7)       ; 0            ; 0          ; 0    ; 0            ; 7 (7)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |Counter|Digit:digH                               ; Digit       ; work         ;
+;    |Digit:digL|                  ; 7 (7)       ; 0            ; 0          ; 0    ; 0            ; 7 (7)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |Counter|Digit:digL                               ; Digit       ; work         ;
++----------------------------------+-------------+--------------+------------+------+--------------+--------------+-------------------+------------------+-----------------+------------+---------------------------------------------------+-------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
 
@@ -371,8 +396,6 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +------+----------+---------------+
 ; Name ; Pin Type ; Pad to Core 0 ;
 +------+----------+---------------+
-; clk  ; Input    ; (0)           ;
-; rst  ; Input    ; (0)           ;
 ; H[0] ; Output   ; --            ;
 ; H[1] ; Output   ; --            ;
 ; H[2] ; Output   ; --            ;
@@ -387,22 +410,119 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; L[4] ; Output   ; --            ;
 ; L[5] ; Output   ; --            ;
 ; L[6] ; Output   ; --            ;
+; clk  ; Input    ; (0)           ;
+; rst  ; Input    ; (1)           ;
 +------+----------+---------------+
 
 
-+-----------------------------------------+
-; Routing Usage Summary                   ;
-+-----------------------+-----------------+
-; Routing Resource Type ; Usage           ;
-+-----------------------+-----------------+
-; C4s                   ; 0 / 784 ( 0 % ) ;
-; Direct links          ; 0 / 888 ( 0 % ) ;
-; Global clocks         ; 0 / 4 ( 0 % )   ;
-; LAB clocks            ; 0 / 32 ( 0 % )  ;
-; LUT chains            ; 0 / 216 ( 0 % ) ;
-; Local interconnects   ; 0 / 888 ( 0 % ) ;
-; R4s                   ; 0 / 704 ( 0 % ) ;
-+-----------------------+-----------------+
++-------------------------------------------------------------------------------------------------------------------+
+; Control Signals                                                                                                   ;
++-------------------------+-------------+---------+--------------+--------+----------------------+------------------+
+; Name                    ; Location    ; Fan-Out ; Usage        ; Global ; Global Resource Used ; Global Line Name ;
++-------------------------+-------------+---------+--------------+--------+----------------------+------------------+
+; Cnt60:cnt|DTrigger:Dv|Q ; LC_X3_Y3_N2 ; 3       ; Clock enable ; no     ; --                   ; --               ;
+; clk                     ; PIN_8       ; 8       ; Clock        ; yes    ; Global Clock         ; GCLK2            ;
+; rst                     ; PIN_44      ; 8       ; Async. clear ; yes    ; Global Clock         ; GCLK3            ;
++-------------------------+-------------+---------+--------------+--------+----------------------+------------------+
+
+
++---------------------------------------------------------------------+
+; Global & Other Fast Signals                                         ;
++------+----------+---------+----------------------+------------------+
+; Name ; Location ; Fan-Out ; Global Resource Used ; Global Line Name ;
++------+----------+---------+----------------------+------------------+
+; clk  ; PIN_8    ; 8       ; Global Clock         ; GCLK2            ;
+; rst  ; PIN_44   ; 8       ; Global Clock         ; GCLK3            ;
++------+----------+---------+----------------------+------------------+
+
+
++-------------------------------------------+
+; Routing Usage Summary                     ;
++-----------------------+-------------------+
+; Routing Resource Type ; Usage             ;
++-----------------------+-------------------+
+; C4s                   ; 13 / 784 ( 2 % )  ;
+; Direct links          ; 3 / 888 ( < 1 % ) ;
+; Global clocks         ; 2 / 4 ( 50 % )    ;
+; LAB clocks            ; 2 / 32 ( 6 % )    ;
+; LUT chains            ; 0 / 216 ( 0 % )   ;
+; Local interconnects   ; 17 / 888 ( 2 % )  ;
+; R4s                   ; 5 / 704 ( < 1 % ) ;
++-----------------------+-------------------+
+
+
++--------------------------------------------------------------------------+
+; LAB Logic Elements                                                       ;
++--------------------------------------------+-----------------------------+
+; Number of Logic Elements  (Average = 7.33) ; Number of LABs  (Total = 3) ;
++--------------------------------------------+-----------------------------+
+; 1                                          ; 0                           ;
+; 2                                          ; 0                           ;
+; 3                                          ; 0                           ;
+; 4                                          ; 0                           ;
+; 5                                          ; 0                           ;
+; 6                                          ; 0                           ;
+; 7                                          ; 2                           ;
+; 8                                          ; 1                           ;
+; 9                                          ; 0                           ;
+; 10                                         ; 0                           ;
++--------------------------------------------+-----------------------------+
+
+
++------------------------------------------------------------------+
+; LAB-wide Signals                                                 ;
++------------------------------------+-----------------------------+
+; LAB-wide Signals  (Average = 0.67) ; Number of LABs  (Total = 3) ;
++------------------------------------+-----------------------------+
+; 1 Async. clear                     ; 1                           ;
+; 1 Clock                            ; 1                           ;
++------------------------------------+-----------------------------+
+
+
++---------------------------------------------------------------------------+
+; LAB Signals Sourced                                                       ;
++---------------------------------------------+-----------------------------+
+; Number of Signals Sourced  (Average = 7.33) ; Number of LABs  (Total = 3) ;
++---------------------------------------------+-----------------------------+
+; 0                                           ; 0                           ;
+; 1                                           ; 0                           ;
+; 2                                           ; 0                           ;
+; 3                                           ; 0                           ;
+; 4                                           ; 0                           ;
+; 5                                           ; 0                           ;
+; 6                                           ; 0                           ;
+; 7                                           ; 2                           ;
+; 8                                           ; 1                           ;
++---------------------------------------------+-----------------------------+
+
+
++-------------------------------------------------------------------------------+
+; LAB Signals Sourced Out                                                       ;
++-------------------------------------------------+-----------------------------+
+; Number of Signals Sourced Out  (Average = 7.00) ; Number of LABs  (Total = 3) ;
++-------------------------------------------------+-----------------------------+
+; 0                                               ; 0                           ;
+; 1                                               ; 0                           ;
+; 2                                               ; 0                           ;
+; 3                                               ; 0                           ;
+; 4                                               ; 0                           ;
+; 5                                               ; 0                           ;
+; 6                                               ; 0                           ;
+; 7                                               ; 3                           ;
++-------------------------------------------------+-----------------------------+
+
+
++---------------------------------------------------------------------------+
+; LAB Distinct Inputs                                                       ;
++---------------------------------------------+-----------------------------+
+; Number of Distinct Inputs  (Average = 3.00) ; Number of LABs  (Total = 3) ;
++---------------------------------------------+-----------------------------+
+; 0                                           ; 0                           ;
+; 1                                           ; 0                           ;
+; 2                                           ; 1                           ;
+; 3                                           ; 1                           ;
+; 4                                           ; 1                           ;
++---------------------------------------------+-----------------------------+
 
 
 +-------------------------------------------------------------------------+
@@ -437,13 +557,17 @@ Info (176444): Device migration not selected. If you intend to use device migrat
     Info (176445): Device EPM570T100A5 is compatible
 Critical Warning (332012): Synopsys Design Constraints File file not found: 'Counter.sdc'. A Synopsys Design Constraints File is required by the Timing Analyzer to get proper timing constraints. Without it, the Compiler will not properly optimize the design.
 Info (332144): No user constrained base clocks found in the design
-Info (332096): The command derive_clocks did not find any clocks to derive.  No clocks were created or changed.
-Warning (332068): No clocks defined in design.
 Info (332128): Timing requirements not specified -- optimizing circuit to achieve the following default global requirements
     Info (332127): Assuming a default timing requirement
-Info (332159): No clocks to report
-Warning (332068): No clocks defined in design.
+Info (332111): Found 1 clocks
+    Info (332111):   Period   Clock Name
+    Info (332111): ======== ============
+    Info (332111):    1.000          clk
 Info (186079): Completed User Assigned Global Signals Promotion Operation
+Info (186215): Automatically promoted signal "clk" to use Global clock File: D:/GitHub/VHDL2023/VHDL/Counter/Counter.vhd Line: 8
+Info (186228): Pin "clk" drives global clock, but is not placed in a dedicated clock pin position File: D:/GitHub/VHDL2023/VHDL/Counter/Counter.vhd Line: 8
+Info (186215): Automatically promoted signal "rst" to use Global clock File: D:/GitHub/VHDL2023/VHDL/Counter/Counter.vhd Line: 8
+Info (186228): Pin "rst" drives global clock, but is not placed in a dedicated clock pin position File: D:/GitHub/VHDL2023/VHDL/Counter/Counter.vhd Line: 8
 Info (186079): Completed Auto Global Promotion Operation
 Info (176234): Starting register packing
 Info (186468): Started processing fast register assignments
@@ -463,23 +587,22 @@ Info (170195): Router estimated average interconnect usage is 0% of the availabl
     Info (170196): Router estimated peak interconnect usage is 0% of the available device resources in the region that extends from location X0_Y0 to location X8_Y5
 Info (170199): The Fitter performed an Auto Fit compilation.  Optimizations were skipped to reduce compilation time.
     Info (170201): Optimizations that may affect the design's routability were skipped
-    Info (170200): Optimizations that may affect the design's timing were skipped
 Info (170194): Fitter routing operations ending: elapsed time is 00:00:00
-Info (11888): Total time spent on timing analysis during the Fitter is 0.01 seconds.
+Info (11888): Total time spent on timing analysis during the Fitter is 0.12 seconds.
 Info (11218): Fitter post-fit operations ending: elapsed time is 00:00:00
 Warning (171167): Found invalid Fitter assignments. See the Ignored Assignments panel in the Fitter Compilation Report for more information.
 Warning (169174): The Reserve All Unused Pins setting has not been specified, and will default to 'As output driving ground'.
-Info (144001): Generated suppressed messages file D:/VHDL/Counter/output_files/Counter.fit.smsg
-Info: Quartus Prime Fitter was successful. 0 errors, 9 warnings
-    Info: Peak virtual memory: 5838 megabytes
-    Info: Processing ended: Fri May 12 17:15:58 2023
-    Info: Elapsed time: 00:00:01
-    Info: Total CPU time (on all processors): 00:00:00
+Info (144001): Generated suppressed messages file D:/GitHub/VHDL2023/VHDL/Counter/output_files/Counter.fit.smsg
+Info: Quartus Prime Fitter was successful. 0 errors, 7 warnings
+    Info: Peak virtual memory: 6019 megabytes
+    Info: Processing ended: Thu Jun 08 16:56:33 2023
+    Info: Elapsed time: 00:00:02
+    Info: Total CPU time (on all processors): 00:00:01
 
 
 +----------------------------+
 ; Fitter Suppressed Messages ;
 +----------------------------+
-The suppressed messages can be found in D:/VHDL/Counter/output_files/Counter.fit.smsg.
+The suppressed messages can be found in D:/GitHub/VHDL2023/VHDL/Counter/output_files/Counter.fit.smsg.
 
 

@@ -1,0 +1,33 @@
+LIBRARY IEEE;
+USE IEEE.STD_LOGIC_1164.ALL;
+USE IEEE.STD_LOGIC_ARITH.ALL;
+USE IEEE.STD_LOGIC_UNSIGNED.ALL;
+
+entity ntl is
+	port(
+	 N: in STD_LOGIC_VECTOR(3 downto 0);
+	 L: out STD_LOGIC_VECTOR(7 downto 0)
+	 );
+	 end ntl;
+	 
+architecture bhv of ntl is
+	begin
+	case N is
+		when "0000" =>L<="1111110";--0
+		when "0001" =>L<="0110000";--1
+		when "0010" =>L<="1101101";--2
+		when "0011" =>L<="1111001";--3
+		when "0100" => L <= "0110011";--4
+		when "0101" => L <= "1011011";--5
+		when "0110" => L <= "1011111";--6
+		when "0111" => L <= "1110000";--7
+		when "1000" => L <= "1111111";--8
+		when "1001" => L <= "1111011";--9
+		when "1010" => L <= "1110111";
+		when "1011" => L <= "0111110";
+		when "1100" => L <= "1001110";
+		when "1101" => L <= "0111110";
+		when "1110" => L <= "1001111";
+		when "1111" => L <= "1000111";
+		when others=>L<="0000000";
+	end case;

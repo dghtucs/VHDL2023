@@ -1,0 +1,11 @@
+Fitter Status : Successful - Fri Jun 09 02:28:04 2023
+Quartus Prime Version : 19.1.0 Build 670 09/22/2019 SJ Lite Edition
+Revision Name : testcounter
+Top-level Entity Name : testcounter
+Family : MAX II
+Device : EPM240T100C5
+Timing Models : Final
+Total logic elements : 126 / 240 ( 53 % )
+Total pins : 16 / 80 ( 20 % )
+Total virtual pins : 0
+UFM blocks : 0 / 1 ( 0 % )

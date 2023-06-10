@@ -1,5 +1,5 @@
 Timing Analyzer report for counter64
-Wed Jun 07 15:34:10 2023
+Fri Jun 09 01:35:27 2023
 Quartus Prime Version 19.1.0 Build 670 09/22/2019 SJ Lite Edition
 
 
@@ -17,18 +17,30 @@ Quartus Prime Version 19.1.0 Build 670 09/22/2019 SJ Lite Edition
   9. Removal Summary
  10. Minimum Pulse Width Summary
  11. Setup: 'clk'
- 12. Hold: 'clk'
- 13. Setup Transfers
- 14. Hold Transfers
- 15. Report TCCS
- 16. Report RSKM
- 17. Unconstrained Paths Summary
- 18. Clock Status Summary
- 19. Unconstrained Input Ports
- 20. Unconstrained Output Ports
- 21. Unconstrained Input Ports
- 22. Unconstrained Output Ports
- 23. Timing Analyzer Messages
+ 12. Setup: 'dtrigger:d5|not_Q'
+ 13. Setup: 'resume'
+ 14. Setup: 'dtrigger:d4|not_Q'
+ 15. Setup: 'dtrigger:d3|not_Q'
+ 16. Setup: 'dtrigger:d2|not_Q'
+ 17. Setup: 'counter_trigger:d1|not_Q'
+ 18. Hold: 'clk'
+ 19. Hold: 'counter_trigger:d1|not_Q'
+ 20. Hold: 'dtrigger:d2|not_Q'
+ 21. Hold: 'dtrigger:d3|not_Q'
+ 22. Hold: 'dtrigger:d4|not_Q'
+ 23. Hold: 'resume'
+ 24. Hold: 'dtrigger:d5|not_Q'
+ 25. Setup Transfers
+ 26. Hold Transfers
+ 27. Report TCCS
+ 28. Report RSKM
+ 29. Unconstrained Paths Summary
+ 30. Clock Status Summary
+ 31. Unconstrained Input Ports
+ 32. Unconstrained Output Ports
+ 33. Unconstrained Input Ports
+ 34. Unconstrained Output Ports
+ 35. Timing Analyzer Messages
 
 
 
@@ -75,48 +87,69 @@ https://fpgasoftware.intel.com/eula.
 ; Maximum allowed            ; 14          ;
 ;                            ;             ;
 ; Average used               ; 1.00        ;
-; Maximum used               ; 1           ;
+; Maximum used               ; 2           ;
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
+;     Processor 2            ;   0.0%      ;
 +----------------------------+-------------+
 
 
-+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Clocks                                                                                                                                                                          ;
-+------------+------+--------+------------+-------+-------+------------+-----------+-------------+-------+--------+-----------+------------+----------+--------+--------+---------+
-; Clock Name ; Type ; Period ; Frequency  ; Rise  ; Fall  ; Duty Cycle ; Divide by ; Multiply by ; Phase ; Offset ; Edge List ; Edge Shift ; Inverted ; Master ; Source ; Targets ;
-+------------+------+--------+------------+-------+-------+------------+-----------+-------------+-------+--------+-----------+------------+----------+--------+--------+---------+
-; clk        ; Base ; 1.000  ; 1000.0 MHz ; 0.000 ; 0.500 ;            ;           ;             ;       ;        ;           ;            ;          ;        ;        ; { clk } ;
-+------------+------+--------+------------+-------+-------+------------+-----------+-------------+-------+--------+-----------+------------+----------+--------+--------+---------+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Clocks                                                                                                                                                                                                             ;
++--------------------------+------+--------+------------+-------+-------+------------+-----------+-------------+-------+--------+-----------+------------+----------+--------+--------+------------------------------+
+; Clock Name               ; Type ; Period ; Frequency  ; Rise  ; Fall  ; Duty Cycle ; Divide by ; Multiply by ; Phase ; Offset ; Edge List ; Edge Shift ; Inverted ; Master ; Source ; Targets                      ;
++--------------------------+------+--------+------------+-------+-------+------------+-----------+-------------+-------+--------+-----------+------------+----------+--------+--------+------------------------------+
+; clk                      ; Base ; 1.000  ; 1000.0 MHz ; 0.000 ; 0.500 ;            ;           ;             ;       ;        ;           ;            ;          ;        ;        ; { clk }                      ;
+; counter_trigger:d1|not_Q ; Base ; 1.000  ; 1000.0 MHz ; 0.000 ; 0.500 ;            ;           ;             ;       ;        ;           ;            ;          ;        ;        ; { counter_trigger:d1|not_Q } ;
+; dtrigger:d2|not_Q        ; Base ; 1.000  ; 1000.0 MHz ; 0.000 ; 0.500 ;            ;           ;             ;       ;        ;           ;            ;          ;        ;        ; { dtrigger:d2|not_Q }        ;
+; dtrigger:d3|not_Q        ; Base ; 1.000  ; 1000.0 MHz ; 0.000 ; 0.500 ;            ;           ;             ;       ;        ;           ;            ;          ;        ;        ; { dtrigger:d3|not_Q }        ;
+; dtrigger:d4|not_Q        ; Base ; 1.000  ; 1000.0 MHz ; 0.000 ; 0.500 ;            ;           ;             ;       ;        ;           ;            ;          ;        ;        ; { dtrigger:d4|not_Q }        ;
+; dtrigger:d5|not_Q        ; Base ; 1.000  ; 1000.0 MHz ; 0.000 ; 0.500 ;            ;           ;             ;       ;        ;           ;            ;          ;        ;        ; { dtrigger:d5|not_Q }        ;
+; resume                   ; Base ; 1.000  ; 1000.0 MHz ; 0.000 ; 0.500 ;            ;           ;             ;       ;        ;           ;            ;          ;        ;        ; { resume }                   ;
++--------------------------+------+--------+------------+-------+-------+------------+-----------+-------------+-------+--------+-----------+------------+----------+--------+--------+------------------------------+
 
 
-+--------------------------------------------------+
-; Fmax Summary                                     ;
-+------------+-----------------+------------+------+
-; Fmax       ; Restricted Fmax ; Clock Name ; Note ;
-+------------+-----------------+------------+------+
-; 171.03 MHz ; 171.03 MHz      ; clk        ;      ;
-+------------+-----------------+------------+------+
++------------------------------------------------------------------------------------------------------------------+
+; Fmax Summary                                                                                                     ;
++------------+-----------------+-------------------+---------------------------------------------------------------+
+; Fmax       ; Restricted Fmax ; Clock Name        ; Note                                                          ;
++------------+-----------------+-------------------+---------------------------------------------------------------+
+; 121.68 MHz ; 121.68 MHz      ; clk               ;                                                               ;
+; 453.72 MHz ; 453.72 MHz      ; dtrigger:d5|not_Q ;                                                               ;
+; 455.79 MHz ; 304.04 MHz      ; resume            ; limit due to minimum period restriction (max I/O toggle rate) ;
++------------+-----------------+-------------------+---------------------------------------------------------------+
 This panel reports FMAX for every clock in the design, regardless of the user-specified clock periods.  FMAX is only computed for paths where the source and destination registers or ports are driven by the same clock.  Paths of different clocks, including generated clocks, are ignored.  For paths between a clock and its inversion, FMAX is computed as if the rising and falling edges are scaled along with FMAX, such that the duty cycle (in terms of a percentage) is maintained. Altera recommends that you always use clock constraints and other slack reports for sign-off analysis.
 
 
-+--------------------------------+
-; Setup Summary                  ;
-+-------+--------+---------------+
-; Clock ; Slack  ; End Point TNS ;
-+-------+--------+---------------+
-; clk   ; -4.847 ; -38.594       ;
-+-------+--------+---------------+
++---------------------------------------------------+
+; Setup Summary                                     ;
++--------------------------+--------+---------------+
+; Clock                    ; Slack  ; End Point TNS ;
++--------------------------+--------+---------------+
+; clk                      ; -7.218 ; -139.104      ;
+; dtrigger:d5|not_Q        ; -1.204 ; -1.204        ;
+; resume                   ; -1.194 ; -1.194        ;
+; dtrigger:d4|not_Q        ; 0.783  ; 0.000         ;
+; dtrigger:d3|not_Q        ; 2.037  ; 0.000         ;
+; dtrigger:d2|not_Q        ; 2.065  ; 0.000         ;
+; counter_trigger:d1|not_Q ; 3.254  ; 0.000         ;
++--------------------------+--------+---------------+
 
 
-+-------------------------------+
-; Hold Summary                  ;
-+-------+-------+---------------+
-; Clock ; Slack ; End Point TNS ;
-+-------+-------+---------------+
-; clk   ; 1.784 ; 0.000         ;
-+-------+-------+---------------+
++---------------------------------------------------+
+; Hold Summary                                      ;
++--------------------------+--------+---------------+
+; Clock                    ; Slack  ; End Point TNS ;
++--------------------------+--------+---------------+
+; clk                      ; -4.120 ; -8.239        ;
+; counter_trigger:d1|not_Q ; -3.314 ; -6.622        ;
+; dtrigger:d2|not_Q        ; -2.120 ; -4.239        ;
+; dtrigger:d3|not_Q        ; -2.097 ; -4.188        ;
+; dtrigger:d4|not_Q        ; -0.844 ; -1.681        ;
+; resume                   ; 1.640  ; 0.000         ;
+; dtrigger:d5|not_Q        ; 1.650  ; 0.000         ;
++--------------------------+--------+---------------+
 
 
 --------------------
@@ -131,132 +164,400 @@ No paths to report.
 No paths to report.
 
 
-+--------------------------------+
-; Minimum Pulse Width Summary    ;
-+-------+--------+---------------+
-; Clock ; Slack  ; End Point TNS ;
-+-------+--------+---------------+
-; clk   ; -2.289 ; -2.289        ;
-+-------+--------+---------------+
++---------------------------------------------------+
+; Minimum Pulse Width Summary                       ;
++--------------------------+--------+---------------+
+; Clock                    ; Slack  ; End Point TNS ;
++--------------------------+--------+---------------+
+; clk                      ; -2.289 ; -2.289        ;
+; resume                   ; -2.289 ; -2.289        ;
+; counter_trigger:d1|not_Q ; 0.234  ; 0.000         ;
+; dtrigger:d2|not_Q        ; 0.234  ; 0.000         ;
+; dtrigger:d3|not_Q        ; 0.234  ; 0.000         ;
+; dtrigger:d4|not_Q        ; 0.234  ; 0.000         ;
+; dtrigger:d5|not_Q        ; 0.234  ; 0.000         ;
++--------------------------+--------+---------------+
 
 
-+------------------------------------------------------------------------------------------------------------------------------+
-; Setup: 'clk'                                                                                                                 ;
-+--------+-----------------------+-----------------------+--------------+-------------+--------------+------------+------------+
-; Slack  ; From Node             ; To Node               ; Launch Clock ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
-+--------+-----------------------+-----------------------+--------------+-------------+--------------+------------+------------+
-; -4.847 ; DFlipFlop:\gen:1:U1|Q ; temp_next[0]          ; clk          ; clk         ; 1.000        ; 0.000      ; 5.514      ;
-; -4.847 ; DFlipFlop:\gen:1:U1|Q ; temp_next[1]          ; clk          ; clk         ; 1.000        ; 0.000      ; 5.514      ;
-; -4.847 ; DFlipFlop:\gen:1:U1|Q ; temp_next[2]          ; clk          ; clk         ; 1.000        ; 0.000      ; 5.514      ;
-; -4.847 ; DFlipFlop:\gen:1:U1|Q ; temp_next[3]          ; clk          ; clk         ; 1.000        ; 0.000      ; 5.514      ;
-; -4.847 ; DFlipFlop:\gen:1:U1|Q ; temp_next[4]          ; clk          ; clk         ; 1.000        ; 0.000      ; 5.514      ;
-; -4.847 ; DFlipFlop:\gen:1:U1|Q ; temp_next[5]          ; clk          ; clk         ; 1.000        ; 0.000      ; 5.514      ;
-; -4.695 ; DFlipFlop:\gen:2:U1|Q ; temp_next[0]          ; clk          ; clk         ; 1.000        ; 0.000      ; 5.362      ;
-; -4.695 ; DFlipFlop:\gen:2:U1|Q ; temp_next[1]          ; clk          ; clk         ; 1.000        ; 0.000      ; 5.362      ;
-; -4.695 ; DFlipFlop:\gen:2:U1|Q ; temp_next[2]          ; clk          ; clk         ; 1.000        ; 0.000      ; 5.362      ;
-; -4.695 ; DFlipFlop:\gen:2:U1|Q ; temp_next[3]          ; clk          ; clk         ; 1.000        ; 0.000      ; 5.362      ;
-; -4.695 ; DFlipFlop:\gen:2:U1|Q ; temp_next[4]          ; clk          ; clk         ; 1.000        ; 0.000      ; 5.362      ;
-; -4.695 ; DFlipFlop:\gen:2:U1|Q ; temp_next[5]          ; clk          ; clk         ; 1.000        ; 0.000      ; 5.362      ;
-; -4.189 ; DFlipFlop:\gen:5:U1|Q ; temp_next[0]          ; clk          ; clk         ; 1.000        ; 0.000      ; 4.856      ;
-; -4.189 ; DFlipFlop:\gen:5:U1|Q ; temp_next[1]          ; clk          ; clk         ; 1.000        ; 0.000      ; 4.856      ;
-; -4.189 ; DFlipFlop:\gen:5:U1|Q ; temp_next[2]          ; clk          ; clk         ; 1.000        ; 0.000      ; 4.856      ;
-; -4.189 ; DFlipFlop:\gen:5:U1|Q ; temp_next[3]          ; clk          ; clk         ; 1.000        ; 0.000      ; 4.856      ;
-; -4.189 ; DFlipFlop:\gen:5:U1|Q ; temp_next[4]          ; clk          ; clk         ; 1.000        ; 0.000      ; 4.856      ;
-; -4.189 ; DFlipFlop:\gen:5:U1|Q ; temp_next[5]          ; clk          ; clk         ; 1.000        ; 0.000      ; 4.856      ;
-; -4.156 ; DFlipFlop:\gen:3:U1|Q ; temp_next[0]          ; clk          ; clk         ; 1.000        ; 0.000      ; 4.823      ;
-; -4.156 ; DFlipFlop:\gen:3:U1|Q ; temp_next[1]          ; clk          ; clk         ; 1.000        ; 0.000      ; 4.823      ;
-; -4.156 ; DFlipFlop:\gen:3:U1|Q ; temp_next[2]          ; clk          ; clk         ; 1.000        ; 0.000      ; 4.823      ;
-; -4.156 ; DFlipFlop:\gen:3:U1|Q ; temp_next[3]          ; clk          ; clk         ; 1.000        ; 0.000      ; 4.823      ;
-; -4.156 ; DFlipFlop:\gen:3:U1|Q ; temp_next[4]          ; clk          ; clk         ; 1.000        ; 0.000      ; 4.823      ;
-; -4.156 ; DFlipFlop:\gen:3:U1|Q ; temp_next[5]          ; clk          ; clk         ; 1.000        ; 0.000      ; 4.823      ;
-; -3.665 ; DFlipFlop:\gen:4:U1|Q ; temp_next[5]          ; clk          ; clk         ; 1.000        ; 0.000      ; 4.332      ;
-; -3.652 ; DFlipFlop:\gen:0:U1|Q ; temp_next[4]          ; clk          ; clk         ; 1.000        ; 0.000      ; 4.319      ;
-; -3.652 ; DFlipFlop:\gen:0:U1|Q ; temp_next[5]          ; clk          ; clk         ; 1.000        ; 0.000      ; 4.319      ;
-; -3.642 ; DFlipFlop:\gen:0:U1|Q ; temp_next[0]          ; clk          ; clk         ; 1.000        ; 0.000      ; 4.309      ;
-; -3.642 ; DFlipFlop:\gen:0:U1|Q ; temp_next[1]          ; clk          ; clk         ; 1.000        ; 0.000      ; 4.309      ;
-; -3.642 ; DFlipFlop:\gen:0:U1|Q ; temp_next[2]          ; clk          ; clk         ; 1.000        ; 0.000      ; 4.309      ;
-; -3.642 ; DFlipFlop:\gen:0:U1|Q ; temp_next[3]          ; clk          ; clk         ; 1.000        ; 0.000      ; 4.309      ;
-; -3.137 ; DFlipFlop:\gen:4:U1|Q ; temp_next[0]          ; clk          ; clk         ; 1.000        ; 0.000      ; 3.804      ;
-; -3.137 ; DFlipFlop:\gen:4:U1|Q ; temp_next[1]          ; clk          ; clk         ; 1.000        ; 0.000      ; 3.804      ;
-; -3.137 ; DFlipFlop:\gen:4:U1|Q ; temp_next[2]          ; clk          ; clk         ; 1.000        ; 0.000      ; 3.804      ;
-; -3.137 ; DFlipFlop:\gen:4:U1|Q ; temp_next[3]          ; clk          ; clk         ; 1.000        ; 0.000      ; 3.804      ;
-; -3.137 ; DFlipFlop:\gen:4:U1|Q ; temp_next[4]          ; clk          ; clk         ; 1.000        ; 0.000      ; 3.804      ;
-; -1.888 ; temp_next[4]          ; DFlipFlop:\gen:4:U1|Q ; clk          ; clk         ; 1.000        ; 0.000      ; 2.555      ;
-; -1.794 ; temp_next[2]          ; DFlipFlop:\gen:2:U1|Q ; clk          ; clk         ; 1.000        ; 0.000      ; 2.461      ;
-; -1.576 ; temp_next[1]          ; DFlipFlop:\gen:1:U1|Q ; clk          ; clk         ; 1.000        ; 0.000      ; 2.243      ;
-; -1.564 ; temp_next[3]          ; DFlipFlop:\gen:3:U1|Q ; clk          ; clk         ; 1.000        ; 0.000      ; 2.231      ;
-; -1.352 ; temp_next[0]          ; DFlipFlop:\gen:0:U1|Q ; clk          ; clk         ; 1.000        ; 0.000      ; 2.019      ;
-; -1.338 ; temp_next[5]          ; DFlipFlop:\gen:5:U1|Q ; clk          ; clk         ; 1.000        ; 0.000      ; 2.005      ;
-+--------+-----------------------+-----------------------+--------------+-------------+--------------+------------+------------+
++------------------------------------------------------------------------------------------------------------------------------------------------+
+; Setup: 'clk'                                                                                                                                   ;
++--------+--------------------------------+--------------------------------+--------------+-------------+--------------+------------+------------+
+; Slack  ; From Node                      ; To Node                        ; Launch Clock ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
++--------+--------------------------------+--------------------------------+--------------+-------------+--------------+------------+------------+
+; -7.218 ; counter_trigger:d1|counter[1]  ; counter_trigger:d1|counter[15] ; clk          ; clk         ; 1.000        ; 0.000      ; 7.885      ;
+; -7.131 ; counter_trigger:d1|counter[1]  ; counter_trigger:d1|counter[17] ; clk          ; clk         ; 1.000        ; 0.000      ; 7.798      ;
+; -7.058 ; counter_trigger:d1|counter[3]  ; counter_trigger:d1|counter[9]  ; clk          ; clk         ; 1.000        ; 0.000      ; 7.725      ;
+; -7.056 ; counter_trigger:d1|counter[3]  ; counter_trigger:d1|counter[19] ; clk          ; clk         ; 1.000        ; 0.000      ; 7.723      ;
+; -7.048 ; counter_trigger:d1|counter[3]  ; counter_trigger:d1|counter[6]  ; clk          ; clk         ; 1.000        ; 0.000      ; 7.715      ;
+; -7.013 ; counter_trigger:d1|counter[1]  ; counter_trigger:d1|counter[16] ; clk          ; clk         ; 1.000        ; 0.000      ; 7.680      ;
+; -7.003 ; counter_trigger:d1|counter[2]  ; counter_trigger:d1|counter[15] ; clk          ; clk         ; 1.000        ; 0.000      ; 7.670      ;
+; -6.979 ; counter_trigger:d1|counter[3]  ; counter_trigger:d1|counter[15] ; clk          ; clk         ; 1.000        ; 0.000      ; 7.646      ;
+; -6.977 ; counter_trigger:d1|counter[5]  ; counter_trigger:d1|counter[15] ; clk          ; clk         ; 1.000        ; 0.000      ; 7.644      ;
+; -6.971 ; counter_trigger:d1|counter[1]  ; counter_trigger:d1|counter[19] ; clk          ; clk         ; 1.000        ; 0.000      ; 7.638      ;
+; -6.916 ; counter_trigger:d1|counter[2]  ; counter_trigger:d1|counter[17] ; clk          ; clk         ; 1.000        ; 0.000      ; 7.583      ;
+; -6.893 ; counter_trigger:d1|counter[1]  ; counter_trigger:d1|counter[14] ; clk          ; clk         ; 1.000        ; 0.000      ; 7.560      ;
+; -6.892 ; counter_trigger:d1|counter[3]  ; counter_trigger:d1|counter[17] ; clk          ; clk         ; 1.000        ; 0.000      ; 7.559      ;
+; -6.890 ; counter_trigger:d1|counter[5]  ; counter_trigger:d1|counter[17] ; clk          ; clk         ; 1.000        ; 0.000      ; 7.557      ;
+; -6.877 ; counter_trigger:d1|counter[10] ; counter_trigger:d1|counter[15] ; clk          ; clk         ; 1.000        ; 0.000      ; 7.544      ;
+; -6.860 ; counter_trigger:d1|counter[1]  ; counter_trigger:d1|counter[18] ; clk          ; clk         ; 1.000        ; 0.000      ; 7.527      ;
+; -6.853 ; counter_trigger:d1|counter[1]  ; counter_trigger:d1|counter[10] ; clk          ; clk         ; 1.000        ; 0.000      ; 7.520      ;
+; -6.820 ; counter_trigger:d1|counter[10] ; counter_trigger:d1|counter[9]  ; clk          ; clk         ; 1.000        ; 0.000      ; 7.487      ;
+; -6.818 ; counter_trigger:d1|counter[10] ; counter_trigger:d1|counter[19] ; clk          ; clk         ; 1.000        ; 0.000      ; 7.485      ;
+; -6.810 ; counter_trigger:d1|counter[10] ; counter_trigger:d1|counter[6]  ; clk          ; clk         ; 1.000        ; 0.000      ; 7.477      ;
+; -6.802 ; counter_trigger:d1|counter[4]  ; counter_trigger:d1|counter[15] ; clk          ; clk         ; 1.000        ; 0.000      ; 7.469      ;
+; -6.799 ; counter_trigger:d1|counter[1]  ; counter_trigger:d1|counter[12] ; clk          ; clk         ; 1.000        ; 0.000      ; 7.466      ;
+; -6.798 ; counter_trigger:d1|counter[2]  ; counter_trigger:d1|counter[16] ; clk          ; clk         ; 1.000        ; 0.000      ; 7.465      ;
+; -6.793 ; counter_trigger:d1|counter[1]  ; counter_trigger:d1|counter[13] ; clk          ; clk         ; 1.000        ; 0.000      ; 7.460      ;
+; -6.790 ; counter_trigger:d1|counter[10] ; counter_trigger:d1|counter[17] ; clk          ; clk         ; 1.000        ; 0.000      ; 7.457      ;
+; -6.774 ; counter_trigger:d1|counter[3]  ; counter_trigger:d1|counter[16] ; clk          ; clk         ; 1.000        ; 0.000      ; 7.441      ;
+; -6.772 ; counter_trigger:d1|counter[5]  ; counter_trigger:d1|counter[16] ; clk          ; clk         ; 1.000        ; 0.000      ; 7.439      ;
+; -6.756 ; counter_trigger:d1|counter[2]  ; counter_trigger:d1|counter[19] ; clk          ; clk         ; 1.000        ; 0.000      ; 7.423      ;
+; -6.744 ; counter_trigger:d1|counter[16] ; counter_trigger:d1|counter[9]  ; clk          ; clk         ; 1.000        ; 0.000      ; 7.411      ;
+; -6.742 ; counter_trigger:d1|counter[16] ; counter_trigger:d1|counter[19] ; clk          ; clk         ; 1.000        ; 0.000      ; 7.409      ;
+; -6.736 ; counter_trigger:d1|counter[0]  ; counter_trigger:d1|counter[15] ; clk          ; clk         ; 1.000        ; 0.000      ; 7.403      ;
+; -6.734 ; counter_trigger:d1|counter[16] ; counter_trigger:d1|counter[6]  ; clk          ; clk         ; 1.000        ; 0.000      ; 7.401      ;
+; -6.730 ; counter_trigger:d1|counter[5]  ; counter_trigger:d1|counter[19] ; clk          ; clk         ; 1.000        ; 0.000      ; 7.397      ;
+; -6.716 ; counter_trigger:d1|counter[1]  ; counter_trigger:d1|counter[9]  ; clk          ; clk         ; 1.000        ; 0.000      ; 7.383      ;
+; -6.715 ; counter_trigger:d1|counter[4]  ; counter_trigger:d1|counter[17] ; clk          ; clk         ; 1.000        ; 0.000      ; 7.382      ;
+; -6.706 ; counter_trigger:d1|counter[1]  ; counter_trigger:d1|counter[6]  ; clk          ; clk         ; 1.000        ; 0.000      ; 7.373      ;
+; -6.692 ; counter_trigger:d1|counter[1]  ; counter_trigger:d1|counter[11] ; clk          ; clk         ; 1.000        ; 0.000      ; 7.359      ;
+; -6.678 ; counter_trigger:d1|counter[2]  ; counter_trigger:d1|counter[14] ; clk          ; clk         ; 1.000        ; 0.000      ; 7.345      ;
+; -6.672 ; counter_trigger:d1|counter[10] ; counter_trigger:d1|counter[16] ; clk          ; clk         ; 1.000        ; 0.000      ; 7.339      ;
+; -6.654 ; counter_trigger:d1|counter[3]  ; counter_trigger:d1|counter[14] ; clk          ; clk         ; 1.000        ; 0.000      ; 7.321      ;
+; -6.652 ; counter_trigger:d1|counter[5]  ; counter_trigger:d1|counter[14] ; clk          ; clk         ; 1.000        ; 0.000      ; 7.319      ;
+; -6.650 ; counter_trigger:d1|counter[9]  ; counter_trigger:d1|counter[9]  ; clk          ; clk         ; 1.000        ; 0.000      ; 7.317      ;
+; -6.649 ; counter_trigger:d1|counter[0]  ; counter_trigger:d1|counter[17] ; clk          ; clk         ; 1.000        ; 0.000      ; 7.316      ;
+; -6.648 ; counter_trigger:d1|counter[9]  ; counter_trigger:d1|counter[19] ; clk          ; clk         ; 1.000        ; 0.000      ; 7.315      ;
+; -6.645 ; counter_trigger:d1|counter[2]  ; counter_trigger:d1|counter[18] ; clk          ; clk         ; 1.000        ; 0.000      ; 7.312      ;
+; -6.640 ; counter_trigger:d1|counter[9]  ; counter_trigger:d1|counter[6]  ; clk          ; clk         ; 1.000        ; 0.000      ; 7.307      ;
+; -6.638 ; counter_trigger:d1|counter[2]  ; counter_trigger:d1|counter[10] ; clk          ; clk         ; 1.000        ; 0.000      ; 7.305      ;
+; -6.630 ; counter_trigger:d1|counter[8]  ; counter_trigger:d1|counter[9]  ; clk          ; clk         ; 1.000        ; 0.000      ; 7.297      ;
+; -6.628 ; counter_trigger:d1|counter[8]  ; counter_trigger:d1|counter[19] ; clk          ; clk         ; 1.000        ; 0.000      ; 7.295      ;
+; -6.621 ; counter_trigger:d1|counter[3]  ; counter_trigger:d1|counter[18] ; clk          ; clk         ; 1.000        ; 0.000      ; 7.288      ;
+; -6.620 ; counter_trigger:d1|counter[8]  ; counter_trigger:d1|counter[6]  ; clk          ; clk         ; 1.000        ; 0.000      ; 7.287      ;
+; -6.619 ; counter_trigger:d1|counter[5]  ; counter_trigger:d1|counter[18] ; clk          ; clk         ; 1.000        ; 0.000      ; 7.286      ;
+; -6.614 ; counter_trigger:d1|counter[3]  ; counter_trigger:d1|counter[10] ; clk          ; clk         ; 1.000        ; 0.000      ; 7.281      ;
+; -6.612 ; counter_trigger:d1|counter[5]  ; counter_trigger:d1|counter[10] ; clk          ; clk         ; 1.000        ; 0.000      ; 7.279      ;
+; -6.597 ; counter_trigger:d1|counter[4]  ; counter_trigger:d1|counter[16] ; clk          ; clk         ; 1.000        ; 0.000      ; 7.264      ;
+; -6.584 ; counter_trigger:d1|counter[2]  ; counter_trigger:d1|counter[12] ; clk          ; clk         ; 1.000        ; 0.000      ; 7.251      ;
+; -6.578 ; counter_trigger:d1|counter[2]  ; counter_trigger:d1|counter[13] ; clk          ; clk         ; 1.000        ; 0.000      ; 7.245      ;
+; -6.560 ; counter_trigger:d1|counter[3]  ; counter_trigger:d1|counter[12] ; clk          ; clk         ; 1.000        ; 0.000      ; 7.227      ;
+; -6.559 ; counter_trigger:d1|counter[2]  ; counter_trigger:d1|counter[9]  ; clk          ; clk         ; 1.000        ; 0.000      ; 7.226      ;
+; -6.558 ; counter_trigger:d1|counter[5]  ; counter_trigger:d1|counter[12] ; clk          ; clk         ; 1.000        ; 0.000      ; 7.225      ;
+; -6.555 ; counter_trigger:d1|counter[4]  ; counter_trigger:d1|counter[19] ; clk          ; clk         ; 1.000        ; 0.000      ; 7.222      ;
+; -6.554 ; counter_trigger:d1|counter[3]  ; counter_trigger:d1|counter[13] ; clk          ; clk         ; 1.000        ; 0.000      ; 7.221      ;
+; -6.552 ; counter_trigger:d1|counter[5]  ; counter_trigger:d1|counter[13] ; clk          ; clk         ; 1.000        ; 0.000      ; 7.219      ;
+; -6.549 ; counter_trigger:d1|counter[2]  ; counter_trigger:d1|counter[6]  ; clk          ; clk         ; 1.000        ; 0.000      ; 7.216      ;
+; -6.531 ; counter_trigger:d1|counter[0]  ; counter_trigger:d1|counter[16] ; clk          ; clk         ; 1.000        ; 0.000      ; 7.198      ;
+; -6.519 ; counter_trigger:d1|counter[10] ; counter_trigger:d1|counter[18] ; clk          ; clk         ; 1.000        ; 0.000      ; 7.186      ;
+; -6.496 ; counter_trigger:d1|counter[7]  ; counter_trigger:d1|counter[9]  ; clk          ; clk         ; 1.000        ; 0.000      ; 7.163      ;
+; -6.494 ; counter_trigger:d1|counter[7]  ; counter_trigger:d1|counter[19] ; clk          ; clk         ; 1.000        ; 0.000      ; 7.161      ;
+; -6.489 ; counter_trigger:d1|counter[0]  ; counter_trigger:d1|counter[19] ; clk          ; clk         ; 1.000        ; 0.000      ; 7.156      ;
+; -6.486 ; counter_trigger:d1|counter[7]  ; counter_trigger:d1|counter[6]  ; clk          ; clk         ; 1.000        ; 0.000      ; 7.153      ;
+; -6.477 ; counter_trigger:d1|counter[4]  ; counter_trigger:d1|counter[14] ; clk          ; clk         ; 1.000        ; 0.000      ; 7.144      ;
+; -6.477 ; counter_trigger:d1|counter[2]  ; counter_trigger:d1|counter[11] ; clk          ; clk         ; 1.000        ; 0.000      ; 7.144      ;
+; -6.453 ; counter_trigger:d1|counter[3]  ; counter_trigger:d1|counter[11] ; clk          ; clk         ; 1.000        ; 0.000      ; 7.120      ;
+; -6.451 ; counter_trigger:d1|counter[5]  ; counter_trigger:d1|counter[11] ; clk          ; clk         ; 1.000        ; 0.000      ; 7.118      ;
+; -6.444 ; counter_trigger:d1|counter[4]  ; counter_trigger:d1|counter[18] ; clk          ; clk         ; 1.000        ; 0.000      ; 7.111      ;
+; -6.437 ; counter_trigger:d1|counter[4]  ; counter_trigger:d1|counter[10] ; clk          ; clk         ; 1.000        ; 0.000      ; 7.104      ;
+; -6.412 ; counter_trigger:d1|counter[16] ; counter_trigger:d1|counter[17] ; clk          ; clk         ; 1.000        ; 0.000      ; 7.079      ;
+; -6.411 ; counter_trigger:d1|counter[0]  ; counter_trigger:d1|counter[14] ; clk          ; clk         ; 1.000        ; 0.000      ; 7.078      ;
+; -6.395 ; counter_trigger:d1|counter[14] ; counter_trigger:d1|counter[15] ; clk          ; clk         ; 1.000        ; 0.000      ; 7.062      ;
+; -6.383 ; counter_trigger:d1|counter[4]  ; counter_trigger:d1|counter[12] ; clk          ; clk         ; 1.000        ; 0.000      ; 7.050      ;
+; -6.378 ; counter_trigger:d1|counter[0]  ; counter_trigger:d1|counter[18] ; clk          ; clk         ; 1.000        ; 0.000      ; 7.045      ;
+; -6.377 ; counter_trigger:d1|counter[4]  ; counter_trigger:d1|counter[13] ; clk          ; clk         ; 1.000        ; 0.000      ; 7.044      ;
+; -6.375 ; counter_trigger:d1|counter[14] ; counter_trigger:d1|counter[9]  ; clk          ; clk         ; 1.000        ; 0.000      ; 7.042      ;
+; -6.373 ; counter_trigger:d1|counter[14] ; counter_trigger:d1|counter[19] ; clk          ; clk         ; 1.000        ; 0.000      ; 7.040      ;
+; -6.371 ; counter_trigger:d1|counter[0]  ; counter_trigger:d1|counter[10] ; clk          ; clk         ; 1.000        ; 0.000      ; 7.038      ;
+; -6.365 ; counter_trigger:d1|counter[14] ; counter_trigger:d1|counter[6]  ; clk          ; clk         ; 1.000        ; 0.000      ; 7.032      ;
+; -6.343 ; counter_trigger:d1|counter[11] ; counter_trigger:d1|counter[15] ; clk          ; clk         ; 1.000        ; 0.000      ; 7.010      ;
+; -6.317 ; counter_trigger:d1|counter[0]  ; counter_trigger:d1|counter[12] ; clk          ; clk         ; 1.000        ; 0.000      ; 6.984      ;
+; -6.311 ; counter_trigger:d1|counter[3]  ; counter_trigger:d1|not_Q       ; clk          ; clk         ; 1.000        ; 0.000      ; 6.978      ;
+; -6.311 ; counter_trigger:d1|counter[3]  ; counter_trigger:d1|Q           ; clk          ; clk         ; 1.000        ; 0.000      ; 6.978      ;
+; -6.311 ; counter_trigger:d1|counter[0]  ; counter_trigger:d1|counter[13] ; clk          ; clk         ; 1.000        ; 0.000      ; 6.978      ;
+; -6.308 ; counter_trigger:d1|counter[14] ; counter_trigger:d1|counter[17] ; clk          ; clk         ; 1.000        ; 0.000      ; 6.975      ;
+; -6.306 ; counter_trigger:d1|counter[12] ; counter_trigger:d1|counter[15] ; clk          ; clk         ; 1.000        ; 0.000      ; 6.973      ;
+; -6.287 ; counter_trigger:d1|counter[7]  ; counter_trigger:d1|counter[15] ; clk          ; clk         ; 1.000        ; 0.000      ; 6.954      ;
+; -6.276 ; counter_trigger:d1|counter[4]  ; counter_trigger:d1|counter[11] ; clk          ; clk         ; 1.000        ; 0.000      ; 6.943      ;
+; -6.266 ; counter_trigger:d1|counter[13] ; counter_trigger:d1|counter[15] ; clk          ; clk         ; 1.000        ; 0.000      ; 6.933      ;
+; -6.264 ; counter_trigger:d1|counter[16] ; counter_trigger:d1|counter[18] ; clk          ; clk         ; 1.000        ; 0.000      ; 6.931      ;
+; -6.256 ; counter_trigger:d1|counter[11] ; counter_trigger:d1|counter[17] ; clk          ; clk         ; 1.000        ; 0.000      ; 6.923      ;
+; -6.232 ; counter_trigger:d1|counter[1]  ; counter_trigger:d1|counter[5]  ; clk          ; clk         ; 1.000        ; 0.000      ; 6.899      ;
+; -6.227 ; counter_trigger:d1|counter[13] ; counter_trigger:d1|counter[9]  ; clk          ; clk         ; 1.000        ; 0.000      ; 6.894      ;
++--------+--------------------------------+--------------------------------+--------------+-------------+--------------+------------+------------+
 
 
-+-----------------------------------------------------------------------------------------------------------------------------+
-; Hold: 'clk'                                                                                                                 ;
-+-------+-----------------------+-----------------------+--------------+-------------+--------------+------------+------------+
-; Slack ; From Node             ; To Node               ; Launch Clock ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
-+-------+-----------------------+-----------------------+--------------+-------------+--------------+------------+------------+
-; 1.784 ; temp_next[5]          ; DFlipFlop:\gen:5:U1|Q ; clk          ; clk         ; 0.000        ; 0.000      ; 2.005      ;
-; 1.798 ; temp_next[0]          ; DFlipFlop:\gen:0:U1|Q ; clk          ; clk         ; 0.000        ; 0.000      ; 2.019      ;
-; 2.010 ; temp_next[3]          ; DFlipFlop:\gen:3:U1|Q ; clk          ; clk         ; 0.000        ; 0.000      ; 2.231      ;
-; 2.022 ; temp_next[1]          ; DFlipFlop:\gen:1:U1|Q ; clk          ; clk         ; 0.000        ; 0.000      ; 2.243      ;
-; 2.240 ; temp_next[2]          ; DFlipFlop:\gen:2:U1|Q ; clk          ; clk         ; 0.000        ; 0.000      ; 2.461      ;
-; 2.334 ; temp_next[4]          ; DFlipFlop:\gen:4:U1|Q ; clk          ; clk         ; 0.000        ; 0.000      ; 2.555      ;
-; 2.522 ; DFlipFlop:\gen:5:U1|Q ; temp_next[5]          ; clk          ; clk         ; 0.000        ; 0.000      ; 2.743      ;
-; 2.538 ; DFlipFlop:\gen:0:U1|Q ; temp_next[0]          ; clk          ; clk         ; 0.000        ; 0.000      ; 2.759      ;
-; 2.563 ; DFlipFlop:\gen:1:U1|Q ; temp_next[1]          ; clk          ; clk         ; 0.000        ; 0.000      ; 2.784      ;
-; 2.635 ; DFlipFlop:\gen:2:U1|Q ; temp_next[2]          ; clk          ; clk         ; 0.000        ; 0.000      ; 2.856      ;
-; 3.243 ; DFlipFlop:\gen:3:U1|Q ; temp_next[3]          ; clk          ; clk         ; 0.000        ; 0.000      ; 3.464      ;
-; 3.264 ; DFlipFlop:\gen:4:U1|Q ; temp_next[4]          ; clk          ; clk         ; 0.000        ; 0.000      ; 3.485      ;
-; 3.370 ; DFlipFlop:\gen:0:U1|Q ; temp_next[1]          ; clk          ; clk         ; 0.000        ; 0.000      ; 3.591      ;
-; 3.395 ; DFlipFlop:\gen:1:U1|Q ; temp_next[2]          ; clk          ; clk         ; 0.000        ; 0.000      ; 3.616      ;
-; 3.481 ; DFlipFlop:\gen:0:U1|Q ; temp_next[2]          ; clk          ; clk         ; 0.000        ; 0.000      ; 3.702      ;
-; 3.506 ; DFlipFlop:\gen:1:U1|Q ; temp_next[3]          ; clk          ; clk         ; 0.000        ; 0.000      ; 3.727      ;
-; 3.575 ; DFlipFlop:\gen:2:U1|Q ; temp_next[3]          ; clk          ; clk         ; 0.000        ; 0.000      ; 3.796      ;
-; 3.583 ; DFlipFlop:\gen:4:U1|Q ; temp_next[0]          ; clk          ; clk         ; 0.000        ; 0.000      ; 3.804      ;
-; 3.583 ; DFlipFlop:\gen:4:U1|Q ; temp_next[1]          ; clk          ; clk         ; 0.000        ; 0.000      ; 3.804      ;
-; 3.583 ; DFlipFlop:\gen:4:U1|Q ; temp_next[2]          ; clk          ; clk         ; 0.000        ; 0.000      ; 3.804      ;
-; 3.583 ; DFlipFlop:\gen:4:U1|Q ; temp_next[3]          ; clk          ; clk         ; 0.000        ; 0.000      ; 3.804      ;
-; 3.583 ; DFlipFlop:\gen:4:U1|Q ; temp_next[5]          ; clk          ; clk         ; 0.000        ; 0.000      ; 3.804      ;
-; 3.592 ; DFlipFlop:\gen:0:U1|Q ; temp_next[3]          ; clk          ; clk         ; 0.000        ; 0.000      ; 3.813      ;
-; 3.975 ; DFlipFlop:\gen:1:U1|Q ; temp_next[4]          ; clk          ; clk         ; 0.000        ; 0.000      ; 4.196      ;
-; 3.975 ; DFlipFlop:\gen:1:U1|Q ; temp_next[5]          ; clk          ; clk         ; 0.000        ; 0.000      ; 4.196      ;
-; 4.044 ; DFlipFlop:\gen:2:U1|Q ; temp_next[4]          ; clk          ; clk         ; 0.000        ; 0.000      ; 4.265      ;
-; 4.044 ; DFlipFlop:\gen:2:U1|Q ; temp_next[5]          ; clk          ; clk         ; 0.000        ; 0.000      ; 4.265      ;
-; 4.061 ; DFlipFlop:\gen:0:U1|Q ; temp_next[4]          ; clk          ; clk         ; 0.000        ; 0.000      ; 4.282      ;
-; 4.061 ; DFlipFlop:\gen:0:U1|Q ; temp_next[5]          ; clk          ; clk         ; 0.000        ; 0.000      ; 4.282      ;
-; 4.503 ; DFlipFlop:\gen:3:U1|Q ; temp_next[4]          ; clk          ; clk         ; 0.000        ; 0.000      ; 4.724      ;
-; 4.503 ; DFlipFlop:\gen:3:U1|Q ; temp_next[5]          ; clk          ; clk         ; 0.000        ; 0.000      ; 4.724      ;
-; 4.602 ; DFlipFlop:\gen:3:U1|Q ; temp_next[0]          ; clk          ; clk         ; 0.000        ; 0.000      ; 4.823      ;
-; 4.602 ; DFlipFlop:\gen:3:U1|Q ; temp_next[1]          ; clk          ; clk         ; 0.000        ; 0.000      ; 4.823      ;
-; 4.602 ; DFlipFlop:\gen:3:U1|Q ; temp_next[2]          ; clk          ; clk         ; 0.000        ; 0.000      ; 4.823      ;
-; 4.635 ; DFlipFlop:\gen:5:U1|Q ; temp_next[0]          ; clk          ; clk         ; 0.000        ; 0.000      ; 4.856      ;
-; 4.635 ; DFlipFlop:\gen:5:U1|Q ; temp_next[1]          ; clk          ; clk         ; 0.000        ; 0.000      ; 4.856      ;
-; 4.635 ; DFlipFlop:\gen:5:U1|Q ; temp_next[2]          ; clk          ; clk         ; 0.000        ; 0.000      ; 4.856      ;
-; 4.635 ; DFlipFlop:\gen:5:U1|Q ; temp_next[3]          ; clk          ; clk         ; 0.000        ; 0.000      ; 4.856      ;
-; 4.635 ; DFlipFlop:\gen:5:U1|Q ; temp_next[4]          ; clk          ; clk         ; 0.000        ; 0.000      ; 4.856      ;
-; 5.141 ; DFlipFlop:\gen:2:U1|Q ; temp_next[0]          ; clk          ; clk         ; 0.000        ; 0.000      ; 5.362      ;
-; 5.141 ; DFlipFlop:\gen:2:U1|Q ; temp_next[1]          ; clk          ; clk         ; 0.000        ; 0.000      ; 5.362      ;
-; 5.293 ; DFlipFlop:\gen:1:U1|Q ; temp_next[0]          ; clk          ; clk         ; 0.000        ; 0.000      ; 5.514      ;
-+-------+-----------------------+-----------------------+--------------+-------------+--------------+------------+------------+
++-------------------------------------------------------------------------------------------------------------------------+
+; Setup: 'dtrigger:d5|not_Q'                                                                                              ;
++--------+---------------+---------------+-------------------+-------------------+--------------+------------+------------+
+; Slack  ; From Node     ; To Node       ; Launch Clock      ; Latch Clock       ; Relationship ; Clock Skew ; Data Delay ;
++--------+---------------+---------------+-------------------+-------------------+--------------+------------+------------+
+; -1.204 ; dtrigger:d6|Q ; dtrigger:d6|Q ; dtrigger:d5|not_Q ; dtrigger:d5|not_Q ; 1.000        ; 0.000      ; 1.871      ;
++--------+---------------+---------------+-------------------+-------------------+--------------+------------+------------+
 
 
-+-------------------------------------------------------------------+
-; Setup Transfers                                                   ;
-+------------+----------+----------+----------+----------+----------+
-; From Clock ; To Clock ; RR Paths ; FR Paths ; RF Paths ; FF Paths ;
-+------------+----------+----------+----------+----------+----------+
-; clk        ; clk      ; 76       ; 0        ; 0        ; 0        ;
-+------------+----------+----------+----------+----------+----------+
++----------------------------------------------------------------------------------------------------+
+; Setup: 'resume'                                                                                    ;
++--------+-----------+---------+--------------+-------------+--------------+------------+------------+
+; Slack  ; From Node ; To Node ; Launch Clock ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
++--------+-----------+---------+--------------+-------------+--------------+------------+------------+
+; -1.194 ; r         ; r       ; resume       ; resume      ; 1.000        ; 0.000      ; 1.861      ;
++--------+-----------+---------+--------------+-------------+--------------+------------+------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------+
+; Setup: 'dtrigger:d4|not_Q'                                                                                                     ;
++-------+-------------------+-------------------+-------------------+-------------------+--------------+------------+------------+
+; Slack ; From Node         ; To Node           ; Launch Clock      ; Latch Clock       ; Relationship ; Clock Skew ; Data Delay ;
++-------+-------------------+-------------------+-------------------+-------------------+--------------+------------+------------+
+; 0.783 ; dtrigger:d5|not_Q ; dtrigger:d5|Q     ; dtrigger:d5|not_Q ; dtrigger:d4|not_Q ; 0.500        ; 2.184      ; 1.944      ;
+; 0.790 ; dtrigger:d5|not_Q ; dtrigger:d5|not_Q ; dtrigger:d5|not_Q ; dtrigger:d4|not_Q ; 0.500        ; 2.184      ; 1.937      ;
+; 1.283 ; dtrigger:d5|not_Q ; dtrigger:d5|Q     ; dtrigger:d5|not_Q ; dtrigger:d4|not_Q ; 1.000        ; 2.184      ; 1.944      ;
+; 1.290 ; dtrigger:d5|not_Q ; dtrigger:d5|not_Q ; dtrigger:d5|not_Q ; dtrigger:d4|not_Q ; 1.000        ; 2.184      ; 1.937      ;
++-------+-------------------+-------------------+-------------------+-------------------+--------------+------------+------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------+
+; Setup: 'dtrigger:d3|not_Q'                                                                                                     ;
++-------+-------------------+-------------------+-------------------+-------------------+--------------+------------+------------+
+; Slack ; From Node         ; To Node           ; Launch Clock      ; Latch Clock       ; Relationship ; Clock Skew ; Data Delay ;
++-------+-------------------+-------------------+-------------------+-------------------+--------------+------------+------------+
+; 2.037 ; dtrigger:d4|not_Q ; dtrigger:d4|Q     ; dtrigger:d4|not_Q ; dtrigger:d3|not_Q ; 0.500        ; 3.649      ; 2.155      ;
+; 2.043 ; dtrigger:d4|not_Q ; dtrigger:d4|not_Q ; dtrigger:d4|not_Q ; dtrigger:d3|not_Q ; 0.500        ; 3.649      ; 2.149      ;
+; 2.537 ; dtrigger:d4|not_Q ; dtrigger:d4|Q     ; dtrigger:d4|not_Q ; dtrigger:d3|not_Q ; 1.000        ; 3.649      ; 2.155      ;
+; 2.543 ; dtrigger:d4|not_Q ; dtrigger:d4|not_Q ; dtrigger:d4|not_Q ; dtrigger:d3|not_Q ; 1.000        ; 3.649      ; 2.149      ;
++-------+-------------------+-------------------+-------------------+-------------------+--------------+------------+------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------+
+; Setup: 'dtrigger:d2|not_Q'                                                                                                     ;
++-------+-------------------+-------------------+-------------------+-------------------+--------------+------------+------------+
+; Slack ; From Node         ; To Node           ; Launch Clock      ; Latch Clock       ; Relationship ; Clock Skew ; Data Delay ;
++-------+-------------------+-------------------+-------------------+-------------------+--------------+------------+------------+
+; 2.065 ; dtrigger:d3|not_Q ; dtrigger:d3|Q     ; dtrigger:d3|not_Q ; dtrigger:d2|not_Q ; 0.500        ; 3.664      ; 2.142      ;
+; 2.066 ; dtrigger:d3|not_Q ; dtrigger:d3|not_Q ; dtrigger:d3|not_Q ; dtrigger:d2|not_Q ; 0.500        ; 3.664      ; 2.141      ;
+; 2.565 ; dtrigger:d3|not_Q ; dtrigger:d3|Q     ; dtrigger:d3|not_Q ; dtrigger:d2|not_Q ; 1.000        ; 3.664      ; 2.142      ;
+; 2.566 ; dtrigger:d3|not_Q ; dtrigger:d3|not_Q ; dtrigger:d3|not_Q ; dtrigger:d2|not_Q ; 1.000        ; 3.664      ; 2.141      ;
++-------+-------------------+-------------------+-------------------+-------------------+--------------+------------+------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------+
+; Setup: 'counter_trigger:d1|not_Q'                                                                                                     ;
++-------+-------------------+-------------------+-------------------+--------------------------+--------------+------------+------------+
+; Slack ; From Node         ; To Node           ; Launch Clock      ; Latch Clock              ; Relationship ; Clock Skew ; Data Delay ;
++-------+-------------------+-------------------+-------------------+--------------------------+--------------+------------+------------+
+; 3.254 ; dtrigger:d2|not_Q ; dtrigger:d2|Q     ; dtrigger:d2|not_Q ; counter_trigger:d1|not_Q ; 0.500        ; 4.857      ; 2.146      ;
+; 3.260 ; dtrigger:d2|not_Q ; dtrigger:d2|not_Q ; dtrigger:d2|not_Q ; counter_trigger:d1|not_Q ; 0.500        ; 4.857      ; 2.140      ;
+; 3.754 ; dtrigger:d2|not_Q ; dtrigger:d2|Q     ; dtrigger:d2|not_Q ; counter_trigger:d1|not_Q ; 1.000        ; 4.857      ; 2.146      ;
+; 3.760 ; dtrigger:d2|not_Q ; dtrigger:d2|not_Q ; dtrigger:d2|not_Q ; counter_trigger:d1|not_Q ; 1.000        ; 4.857      ; 2.140      ;
++-------+-------------------+-------------------+-------------------+--------------------------+--------------+------------+------------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Hold: 'clk'                                                                                                                                                ;
++--------+--------------------------------+--------------------------------+--------------------------+-------------+--------------+------------+------------+
+; Slack  ; From Node                      ; To Node                        ; Launch Clock             ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
++--------+--------------------------------+--------------------------------+--------------------------+-------------+--------------+------------+------------+
+; -4.120 ; counter_trigger:d1|not_Q       ; counter_trigger:d1|not_Q       ; counter_trigger:d1|not_Q ; clk         ; 0.000        ; 6.066      ; 2.543      ;
+; -4.119 ; counter_trigger:d1|not_Q       ; counter_trigger:d1|Q           ; counter_trigger:d1|not_Q ; clk         ; 0.000        ; 6.066      ; 2.544      ;
+; -3.620 ; counter_trigger:d1|not_Q       ; counter_trigger:d1|not_Q       ; counter_trigger:d1|not_Q ; clk         ; -0.500       ; 6.066      ; 2.543      ;
+; -3.619 ; counter_trigger:d1|not_Q       ; counter_trigger:d1|Q           ; counter_trigger:d1|not_Q ; clk         ; -0.500       ; 6.066      ; 2.544      ;
+; 3.516  ; counter_trigger:d1|counter[18] ; counter_trigger:d1|counter[17] ; clk                      ; clk         ; 0.000        ; 0.000      ; 3.737      ;
+; 3.676  ; counter_trigger:d1|counter[17] ; counter_trigger:d1|counter[17] ; clk                      ; clk         ; 0.000        ; 0.000      ; 3.897      ;
+; 3.801  ; counter_trigger:d1|counter[0]  ; counter_trigger:d1|counter[0]  ; clk                      ; clk         ; 0.000        ; 0.000      ; 4.022      ;
+; 3.872  ; counter_trigger:d1|counter[8]  ; counter_trigger:d1|counter[8]  ; clk                      ; clk         ; 0.000        ; 0.000      ; 4.093      ;
+; 4.045  ; counter_trigger:d1|counter[7]  ; counter_trigger:d1|counter[7]  ; clk                      ; clk         ; 0.000        ; 0.000      ; 4.266      ;
+; 4.094  ; counter_trigger:d1|counter[18] ; counter_trigger:d1|counter[16] ; clk                      ; clk         ; 0.000        ; 0.000      ; 4.315      ;
+; 4.095  ; counter_trigger:d1|counter[18] ; counter_trigger:d1|counter[18] ; clk                      ; clk         ; 0.000        ; 0.000      ; 4.316      ;
+; 4.103  ; counter_trigger:d1|counter[18] ; counter_trigger:d1|counter[14] ; clk                      ; clk         ; 0.000        ; 0.000      ; 4.324      ;
+; 4.129  ; counter_trigger:d1|counter[18] ; counter_trigger:d1|not_Q       ; clk                      ; clk         ; 0.000        ; 0.000      ; 4.350      ;
+; 4.129  ; counter_trigger:d1|counter[18] ; counter_trigger:d1|Q           ; clk                      ; clk         ; 0.000        ; 0.000      ; 4.350      ;
+; 4.254  ; counter_trigger:d1|counter[17] ; counter_trigger:d1|counter[16] ; clk                      ; clk         ; 0.000        ; 0.000      ; 4.475      ;
+; 4.255  ; counter_trigger:d1|counter[17] ; counter_trigger:d1|counter[18] ; clk                      ; clk         ; 0.000        ; 0.000      ; 4.476      ;
+; 4.258  ; counter_trigger:d1|counter[15] ; counter_trigger:d1|counter[17] ; clk                      ; clk         ; 0.000        ; 0.000      ; 4.479      ;
+; 4.263  ; counter_trigger:d1|counter[17] ; counter_trigger:d1|counter[14] ; clk                      ; clk         ; 0.000        ; 0.000      ; 4.484      ;
+; 4.289  ; counter_trigger:d1|counter[17] ; counter_trigger:d1|not_Q       ; clk                      ; clk         ; 0.000        ; 0.000      ; 4.510      ;
+; 4.289  ; counter_trigger:d1|counter[17] ; counter_trigger:d1|Q           ; clk                      ; clk         ; 0.000        ; 0.000      ; 4.510      ;
+; 4.436  ; counter_trigger:d1|counter[9]  ; counter_trigger:d1|counter[9]  ; clk                      ; clk         ; 0.000        ; 0.000      ; 4.657      ;
+; 4.485  ; counter_trigger:d1|counter[6]  ; counter_trigger:d1|counter[6]  ; clk                      ; clk         ; 0.000        ; 0.000      ; 4.706      ;
+; 4.519  ; counter_trigger:d1|counter[5]  ; counter_trigger:d1|counter[17] ; clk                      ; clk         ; 0.000        ; 0.000      ; 4.740      ;
+; 4.602  ; counter_trigger:d1|counter[4]  ; counter_trigger:d1|counter[17] ; clk                      ; clk         ; 0.000        ; 0.000      ; 4.823      ;
+; 4.698  ; counter_trigger:d1|counter[12] ; counter_trigger:d1|counter[17] ; clk                      ; clk         ; 0.000        ; 0.000      ; 4.919      ;
+; 4.704  ; counter_trigger:d1|counter[6]  ; counter_trigger:d1|counter[7]  ; clk                      ; clk         ; 0.000        ; 0.000      ; 4.925      ;
+; 4.707  ; counter_trigger:d1|counter[19] ; counter_trigger:d1|counter[19] ; clk                      ; clk         ; 0.000        ; 0.000      ; 4.928      ;
+; 4.761  ; counter_trigger:d1|counter[11] ; counter_trigger:d1|counter[11] ; clk                      ; clk         ; 0.000        ; 0.000      ; 4.982      ;
+; 4.765  ; counter_trigger:d1|counter[0]  ; counter_trigger:d1|counter[17] ; clk                      ; clk         ; 0.000        ; 0.000      ; 4.986      ;
+; 4.814  ; counter_trigger:d1|counter[6]  ; counter_trigger:d1|counter[8]  ; clk                      ; clk         ; 0.000        ; 0.000      ; 5.035      ;
+; 4.836  ; counter_trigger:d1|counter[15] ; counter_trigger:d1|counter[16] ; clk                      ; clk         ; 0.000        ; 0.000      ; 5.057      ;
+; 4.837  ; counter_trigger:d1|counter[15] ; counter_trigger:d1|counter[18] ; clk                      ; clk         ; 0.000        ; 0.000      ; 5.058      ;
+; 4.845  ; counter_trigger:d1|counter[15] ; counter_trigger:d1|counter[14] ; clk                      ; clk         ; 0.000        ; 0.000      ; 5.066      ;
+; 4.857  ; counter_trigger:d1|counter[4]  ; counter_trigger:d1|counter[4]  ; clk                      ; clk         ; 0.000        ; 0.000      ; 5.078      ;
+; 4.866  ; counter_trigger:d1|counter[18] ; counter_trigger:d1|counter[6]  ; clk                      ; clk         ; 0.000        ; 0.000      ; 5.087      ;
+; 4.871  ; counter_trigger:d1|counter[15] ; counter_trigger:d1|not_Q       ; clk                      ; clk         ; 0.000        ; 0.000      ; 5.092      ;
+; 4.871  ; counter_trigger:d1|counter[15] ; counter_trigger:d1|Q           ; clk                      ; clk         ; 0.000        ; 0.000      ; 5.092      ;
+; 4.874  ; counter_trigger:d1|counter[18] ; counter_trigger:d1|counter[19] ; clk                      ; clk         ; 0.000        ; 0.000      ; 5.095      ;
+; 4.876  ; counter_trigger:d1|counter[18] ; counter_trigger:d1|counter[9]  ; clk                      ; clk         ; 0.000        ; 0.000      ; 5.097      ;
+; 4.907  ; counter_trigger:d1|counter[7]  ; counter_trigger:d1|counter[8]  ; clk                      ; clk         ; 0.000        ; 0.000      ; 5.128      ;
+; 4.954  ; counter_trigger:d1|counter[12] ; counter_trigger:d1|counter[12] ; clk                      ; clk         ; 0.000        ; 0.000      ; 5.175      ;
+; 4.985  ; counter_trigger:d1|counter[1]  ; counter_trigger:d1|counter[1]  ; clk                      ; clk         ; 0.000        ; 0.000      ; 5.206      ;
+; 5.026  ; counter_trigger:d1|counter[17] ; counter_trigger:d1|counter[6]  ; clk                      ; clk         ; 0.000        ; 0.000      ; 5.247      ;
+; 5.031  ; counter_trigger:d1|counter[13] ; counter_trigger:d1|counter[13] ; clk                      ; clk         ; 0.000        ; 0.000      ; 5.252      ;
+; 5.034  ; counter_trigger:d1|counter[17] ; counter_trigger:d1|counter[19] ; clk                      ; clk         ; 0.000        ; 0.000      ; 5.255      ;
+; 5.036  ; counter_trigger:d1|counter[5]  ; counter_trigger:d1|counter[5]  ; clk                      ; clk         ; 0.000        ; 0.000      ; 5.257      ;
+; 5.036  ; counter_trigger:d1|counter[17] ; counter_trigger:d1|counter[9]  ; clk                      ; clk         ; 0.000        ; 0.000      ; 5.257      ;
+; 5.044  ; counter_trigger:d1|counter[6]  ; counter_trigger:d1|counter[17] ; clk                      ; clk         ; 0.000        ; 0.000      ; 5.265      ;
+; 5.097  ; counter_trigger:d1|counter[5]  ; counter_trigger:d1|counter[16] ; clk                      ; clk         ; 0.000        ; 0.000      ; 5.318      ;
+; 5.098  ; counter_trigger:d1|counter[5]  ; counter_trigger:d1|counter[18] ; clk                      ; clk         ; 0.000        ; 0.000      ; 5.319      ;
+; 5.106  ; counter_trigger:d1|counter[5]  ; counter_trigger:d1|counter[14] ; clk                      ; clk         ; 0.000        ; 0.000      ; 5.327      ;
+; 5.110  ; counter_trigger:d1|counter[3]  ; counter_trigger:d1|counter[3]  ; clk                      ; clk         ; 0.000        ; 0.000      ; 5.331      ;
+; 5.132  ; counter_trigger:d1|counter[5]  ; counter_trigger:d1|not_Q       ; clk                      ; clk         ; 0.000        ; 0.000      ; 5.353      ;
+; 5.132  ; counter_trigger:d1|counter[5]  ; counter_trigger:d1|Q           ; clk                      ; clk         ; 0.000        ; 0.000      ; 5.353      ;
+; 5.180  ; counter_trigger:d1|counter[4]  ; counter_trigger:d1|counter[16] ; clk                      ; clk         ; 0.000        ; 0.000      ; 5.401      ;
+; 5.181  ; counter_trigger:d1|counter[4]  ; counter_trigger:d1|counter[18] ; clk                      ; clk         ; 0.000        ; 0.000      ; 5.402      ;
+; 5.186  ; counter_trigger:d1|counter[0]  ; counter_trigger:d1|counter[1]  ; clk                      ; clk         ; 0.000        ; 0.000      ; 5.407      ;
+; 5.189  ; counter_trigger:d1|counter[4]  ; counter_trigger:d1|counter[14] ; clk                      ; clk         ; 0.000        ; 0.000      ; 5.410      ;
+; 5.206  ; counter_trigger:d1|counter[8]  ; counter_trigger:d1|counter[9]  ; clk                      ; clk         ; 0.000        ; 0.000      ; 5.427      ;
+; 5.208  ; counter_trigger:d1|counter[11] ; counter_trigger:d1|counter[17] ; clk                      ; clk         ; 0.000        ; 0.000      ; 5.429      ;
+; 5.215  ; counter_trigger:d1|counter[4]  ; counter_trigger:d1|not_Q       ; clk                      ; clk         ; 0.000        ; 0.000      ; 5.436      ;
+; 5.215  ; counter_trigger:d1|counter[4]  ; counter_trigger:d1|Q           ; clk                      ; clk         ; 0.000        ; 0.000      ; 5.436      ;
+; 5.276  ; counter_trigger:d1|counter[10] ; counter_trigger:d1|counter[10] ; clk                      ; clk         ; 0.000        ; 0.000      ; 5.497      ;
+; 5.276  ; counter_trigger:d1|counter[12] ; counter_trigger:d1|counter[16] ; clk                      ; clk         ; 0.000        ; 0.000      ; 5.497      ;
+; 5.277  ; counter_trigger:d1|counter[12] ; counter_trigger:d1|counter[18] ; clk                      ; clk         ; 0.000        ; 0.000      ; 5.498      ;
+; 5.285  ; counter_trigger:d1|counter[12] ; counter_trigger:d1|counter[14] ; clk                      ; clk         ; 0.000        ; 0.000      ; 5.506      ;
+; 5.288  ; counter_trigger:d1|counter[19] ; counter_trigger:d1|counter[17] ; clk                      ; clk         ; 0.000        ; 0.000      ; 5.509      ;
+; 5.311  ; counter_trigger:d1|counter[12] ; counter_trigger:d1|not_Q       ; clk                      ; clk         ; 0.000        ; 0.000      ; 5.532      ;
+; 5.311  ; counter_trigger:d1|counter[12] ; counter_trigger:d1|Q           ; clk                      ; clk         ; 0.000        ; 0.000      ; 5.532      ;
+; 5.313  ; counter_trigger:d1|counter[13] ; counter_trigger:d1|counter[17] ; clk                      ; clk         ; 0.000        ; 0.000      ; 5.534      ;
+; 5.343  ; counter_trigger:d1|counter[0]  ; counter_trigger:d1|counter[16] ; clk                      ; clk         ; 0.000        ; 0.000      ; 5.564      ;
+; 5.344  ; counter_trigger:d1|counter[0]  ; counter_trigger:d1|counter[18] ; clk                      ; clk         ; 0.000        ; 0.000      ; 5.565      ;
+; 5.352  ; counter_trigger:d1|counter[0]  ; counter_trigger:d1|counter[14] ; clk                      ; clk         ; 0.000        ; 0.000      ; 5.573      ;
+; 5.365  ; counter_trigger:d1|counter[14] ; counter_trigger:d1|counter[14] ; clk                      ; clk         ; 0.000        ; 0.000      ; 5.586      ;
+; 5.378  ; counter_trigger:d1|counter[0]  ; counter_trigger:d1|not_Q       ; clk                      ; clk         ; 0.000        ; 0.000      ; 5.599      ;
+; 5.378  ; counter_trigger:d1|counter[0]  ; counter_trigger:d1|Q           ; clk                      ; clk         ; 0.000        ; 0.000      ; 5.599      ;
+; 5.452  ; counter_trigger:d1|counter[6]  ; counter_trigger:d1|counter[9]  ; clk                      ; clk         ; 0.000        ; 0.000      ; 5.673      ;
+; 5.461  ; counter_trigger:d1|counter[14] ; counter_trigger:d1|counter[17] ; clk                      ; clk         ; 0.000        ; 0.000      ; 5.682      ;
+; 5.464  ; counter_trigger:d1|counter[5]  ; counter_trigger:d1|counter[7]  ; clk                      ; clk         ; 0.000        ; 0.000      ; 5.685      ;
+; 5.507  ; counter_trigger:d1|counter[0]  ; counter_trigger:d1|counter[4]  ; clk                      ; clk         ; 0.000        ; 0.000      ; 5.728      ;
+; 5.526  ; counter_trigger:d1|counter[0]  ; counter_trigger:d1|counter[3]  ; clk                      ; clk         ; 0.000        ; 0.000      ; 5.747      ;
+; 5.545  ; counter_trigger:d1|counter[7]  ; counter_trigger:d1|counter[9]  ; clk                      ; clk         ; 0.000        ; 0.000      ; 5.766      ;
+; 5.574  ; counter_trigger:d1|counter[5]  ; counter_trigger:d1|counter[8]  ; clk                      ; clk         ; 0.000        ; 0.000      ; 5.795      ;
+; 5.577  ; counter_trigger:d1|counter[2]  ; counter_trigger:d1|counter[2]  ; clk                      ; clk         ; 0.000        ; 0.000      ; 5.798      ;
+; 5.582  ; counter_trigger:d1|counter[7]  ; counter_trigger:d1|counter[17] ; clk                      ; clk         ; 0.000        ; 0.000      ; 5.803      ;
+; 5.586  ; counter_trigger:d1|counter[15] ; counter_trigger:d1|counter[15] ; clk                      ; clk         ; 0.000        ; 0.000      ; 5.807      ;
+; 5.608  ; counter_trigger:d1|counter[15] ; counter_trigger:d1|counter[6]  ; clk                      ; clk         ; 0.000        ; 0.000      ; 5.829      ;
+; 5.616  ; counter_trigger:d1|counter[15] ; counter_trigger:d1|counter[19] ; clk                      ; clk         ; 0.000        ; 0.000      ; 5.837      ;
+; 5.618  ; counter_trigger:d1|counter[15] ; counter_trigger:d1|counter[9]  ; clk                      ; clk         ; 0.000        ; 0.000      ; 5.839      ;
+; 5.622  ; counter_trigger:d1|counter[6]  ; counter_trigger:d1|counter[16] ; clk                      ; clk         ; 0.000        ; 0.000      ; 5.843      ;
+; 5.623  ; counter_trigger:d1|counter[6]  ; counter_trigger:d1|counter[18] ; clk                      ; clk         ; 0.000        ; 0.000      ; 5.844      ;
+; 5.631  ; counter_trigger:d1|counter[6]  ; counter_trigger:d1|counter[14] ; clk                      ; clk         ; 0.000        ; 0.000      ; 5.852      ;
+; 5.645  ; counter_trigger:d1|counter[2]  ; counter_trigger:d1|counter[17] ; clk                      ; clk         ; 0.000        ; 0.000      ; 5.866      ;
+; 5.655  ; counter_trigger:d1|counter[0]  ; counter_trigger:d1|counter[8]  ; clk                      ; clk         ; 0.000        ; 0.000      ; 5.876      ;
+; 5.656  ; counter_trigger:d1|counter[0]  ; counter_trigger:d1|counter[7]  ; clk                      ; clk         ; 0.000        ; 0.000      ; 5.877      ;
+; 5.657  ; counter_trigger:d1|counter[6]  ; counter_trigger:d1|not_Q       ; clk                      ; clk         ; 0.000        ; 0.000      ; 5.878      ;
+; 5.657  ; counter_trigger:d1|counter[6]  ; counter_trigger:d1|Q           ; clk                      ; clk         ; 0.000        ; 0.000      ; 5.878      ;
+; 5.675  ; counter_trigger:d1|counter[11] ; counter_trigger:d1|counter[12] ; clk                      ; clk         ; 0.000        ; 0.000      ; 5.896      ;
+; 5.716  ; counter_trigger:d1|counter[8]  ; counter_trigger:d1|counter[17] ; clk                      ; clk         ; 0.000        ; 0.000      ; 5.937      ;
+; 5.736  ; counter_trigger:d1|counter[9]  ; counter_trigger:d1|counter[17] ; clk                      ; clk         ; 0.000        ; 0.000      ; 5.957      ;
++--------+--------------------------------+--------------------------------+--------------------------+-------------+--------------+------------+------------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------------+
+; Hold: 'counter_trigger:d1|not_Q'                                                                                                       ;
++--------+-------------------+-------------------+-------------------+--------------------------+--------------+------------+------------+
+; Slack  ; From Node         ; To Node           ; Launch Clock      ; Latch Clock              ; Relationship ; Clock Skew ; Data Delay ;
++--------+-------------------+-------------------+-------------------+--------------------------+--------------+------------+------------+
+; -3.314 ; dtrigger:d2|not_Q ; dtrigger:d2|not_Q ; dtrigger:d2|not_Q ; counter_trigger:d1|not_Q ; 0.000        ; 4.857      ; 2.140      ;
+; -3.308 ; dtrigger:d2|not_Q ; dtrigger:d2|Q     ; dtrigger:d2|not_Q ; counter_trigger:d1|not_Q ; 0.000        ; 4.857      ; 2.146      ;
+; -2.814 ; dtrigger:d2|not_Q ; dtrigger:d2|not_Q ; dtrigger:d2|not_Q ; counter_trigger:d1|not_Q ; -0.500       ; 4.857      ; 2.140      ;
+; -2.808 ; dtrigger:d2|not_Q ; dtrigger:d2|Q     ; dtrigger:d2|not_Q ; counter_trigger:d1|not_Q ; -0.500       ; 4.857      ; 2.146      ;
++--------+-------------------+-------------------+-------------------+--------------------------+--------------+------------+------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------+
+; Hold: 'dtrigger:d2|not_Q'                                                                                                       ;
++--------+-------------------+-------------------+-------------------+-------------------+--------------+------------+------------+
+; Slack  ; From Node         ; To Node           ; Launch Clock      ; Latch Clock       ; Relationship ; Clock Skew ; Data Delay ;
++--------+-------------------+-------------------+-------------------+-------------------+--------------+------------+------------+
+; -2.120 ; dtrigger:d3|not_Q ; dtrigger:d3|not_Q ; dtrigger:d3|not_Q ; dtrigger:d2|not_Q ; 0.000        ; 3.664      ; 2.141      ;
+; -2.119 ; dtrigger:d3|not_Q ; dtrigger:d3|Q     ; dtrigger:d3|not_Q ; dtrigger:d2|not_Q ; 0.000        ; 3.664      ; 2.142      ;
+; -1.620 ; dtrigger:d3|not_Q ; dtrigger:d3|not_Q ; dtrigger:d3|not_Q ; dtrigger:d2|not_Q ; -0.500       ; 3.664      ; 2.141      ;
+; -1.619 ; dtrigger:d3|not_Q ; dtrigger:d3|Q     ; dtrigger:d3|not_Q ; dtrigger:d2|not_Q ; -0.500       ; 3.664      ; 2.142      ;
++--------+-------------------+-------------------+-------------------+-------------------+--------------+------------+------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------+
+; Hold: 'dtrigger:d3|not_Q'                                                                                                       ;
++--------+-------------------+-------------------+-------------------+-------------------+--------------+------------+------------+
+; Slack  ; From Node         ; To Node           ; Launch Clock      ; Latch Clock       ; Relationship ; Clock Skew ; Data Delay ;
++--------+-------------------+-------------------+-------------------+-------------------+--------------+------------+------------+
+; -2.097 ; dtrigger:d4|not_Q ; dtrigger:d4|not_Q ; dtrigger:d4|not_Q ; dtrigger:d3|not_Q ; 0.000        ; 3.649      ; 2.149      ;
+; -2.091 ; dtrigger:d4|not_Q ; dtrigger:d4|Q     ; dtrigger:d4|not_Q ; dtrigger:d3|not_Q ; 0.000        ; 3.649      ; 2.155      ;
+; -1.597 ; dtrigger:d4|not_Q ; dtrigger:d4|not_Q ; dtrigger:d4|not_Q ; dtrigger:d3|not_Q ; -0.500       ; 3.649      ; 2.149      ;
+; -1.591 ; dtrigger:d4|not_Q ; dtrigger:d4|Q     ; dtrigger:d4|not_Q ; dtrigger:d3|not_Q ; -0.500       ; 3.649      ; 2.155      ;
++--------+-------------------+-------------------+-------------------+-------------------+--------------+------------+------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------+
+; Hold: 'dtrigger:d4|not_Q'                                                                                                       ;
++--------+-------------------+-------------------+-------------------+-------------------+--------------+------------+------------+
+; Slack  ; From Node         ; To Node           ; Launch Clock      ; Latch Clock       ; Relationship ; Clock Skew ; Data Delay ;
++--------+-------------------+-------------------+-------------------+-------------------+--------------+------------+------------+
+; -0.844 ; dtrigger:d5|not_Q ; dtrigger:d5|not_Q ; dtrigger:d5|not_Q ; dtrigger:d4|not_Q ; 0.000        ; 2.184      ; 1.937      ;
+; -0.837 ; dtrigger:d5|not_Q ; dtrigger:d5|Q     ; dtrigger:d5|not_Q ; dtrigger:d4|not_Q ; 0.000        ; 2.184      ; 1.944      ;
+; -0.344 ; dtrigger:d5|not_Q ; dtrigger:d5|not_Q ; dtrigger:d5|not_Q ; dtrigger:d4|not_Q ; -0.500       ; 2.184      ; 1.937      ;
+; -0.337 ; dtrigger:d5|not_Q ; dtrigger:d5|Q     ; dtrigger:d5|not_Q ; dtrigger:d4|not_Q ; -0.500       ; 2.184      ; 1.944      ;
++--------+-------------------+-------------------+-------------------+-------------------+--------------+------------+------------+
+
+
++---------------------------------------------------------------------------------------------------+
+; Hold: 'resume'                                                                                    ;
++-------+-----------+---------+--------------+-------------+--------------+------------+------------+
+; Slack ; From Node ; To Node ; Launch Clock ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
++-------+-----------+---------+--------------+-------------+--------------+------------+------------+
+; 1.640 ; r         ; r       ; resume       ; resume      ; 0.000        ; 0.000      ; 1.861      ;
++-------+-----------+---------+--------------+-------------+--------------+------------+------------+
+
+
++------------------------------------------------------------------------------------------------------------------------+
+; Hold: 'dtrigger:d5|not_Q'                                                                                              ;
++-------+---------------+---------------+-------------------+-------------------+--------------+------------+------------+
+; Slack ; From Node     ; To Node       ; Launch Clock      ; Latch Clock       ; Relationship ; Clock Skew ; Data Delay ;
++-------+---------------+---------------+-------------------+-------------------+--------------+------------+------------+
+; 1.650 ; dtrigger:d6|Q ; dtrigger:d6|Q ; dtrigger:d5|not_Q ; dtrigger:d5|not_Q ; 0.000        ; 0.000      ; 1.871      ;
++-------+---------------+---------------+-------------------+-------------------+--------------+------------+------------+
+
+
++-------------------------------------------------------------------------------------------------+
+; Setup Transfers                                                                                 ;
++--------------------------+--------------------------+----------+----------+----------+----------+
+; From Clock               ; To Clock                 ; RR Paths ; FR Paths ; RF Paths ; FF Paths ;
++--------------------------+--------------------------+----------+----------+----------+----------+
+; clk                      ; clk                      ; 550      ; 0        ; 0        ; 0        ;
+; counter_trigger:d1|not_Q ; clk                      ; 2        ; 2        ; 0        ; 0        ;
+; dtrigger:d2|not_Q        ; counter_trigger:d1|not_Q ; 0        ; 0        ; 2        ; 2        ;
+; dtrigger:d3|not_Q        ; dtrigger:d2|not_Q        ; 0        ; 0        ; 2        ; 2        ;
+; dtrigger:d4|not_Q        ; dtrigger:d3|not_Q        ; 0        ; 0        ; 2        ; 2        ;
+; dtrigger:d5|not_Q        ; dtrigger:d4|not_Q        ; 0        ; 0        ; 2        ; 2        ;
+; dtrigger:d5|not_Q        ; dtrigger:d5|not_Q        ; 0        ; 0        ; 0        ; 1        ;
+; resume                   ; resume                   ; 1        ; 0        ; 0        ; 0        ;
++--------------------------+--------------------------+----------+----------+----------+----------+
 Entries labeled "false path" only account for clock-to-clock false paths and not path-based false paths. As a result, actual path counts may be lower than reported.
 
 
-+-------------------------------------------------------------------+
-; Hold Transfers                                                    ;
-+------------+----------+----------+----------+----------+----------+
-; From Clock ; To Clock ; RR Paths ; FR Paths ; RF Paths ; FF Paths ;
-+------------+----------+----------+----------+----------+----------+
-; clk        ; clk      ; 76       ; 0        ; 0        ; 0        ;
-+------------+----------+----------+----------+----------+----------+
++-------------------------------------------------------------------------------------------------+
+; Hold Transfers                                                                                  ;
++--------------------------+--------------------------+----------+----------+----------+----------+
+; From Clock               ; To Clock                 ; RR Paths ; FR Paths ; RF Paths ; FF Paths ;
++--------------------------+--------------------------+----------+----------+----------+----------+
+; clk                      ; clk                      ; 550      ; 0        ; 0        ; 0        ;
+; counter_trigger:d1|not_Q ; clk                      ; 2        ; 2        ; 0        ; 0        ;
+; dtrigger:d2|not_Q        ; counter_trigger:d1|not_Q ; 0        ; 0        ; 2        ; 2        ;
+; dtrigger:d3|not_Q        ; dtrigger:d2|not_Q        ; 0        ; 0        ; 2        ; 2        ;
+; dtrigger:d4|not_Q        ; dtrigger:d3|not_Q        ; 0        ; 0        ; 2        ; 2        ;
+; dtrigger:d5|not_Q        ; dtrigger:d4|not_Q        ; 0        ; 0        ; 2        ; 2        ;
+; dtrigger:d5|not_Q        ; dtrigger:d5|not_Q        ; 0        ; 0        ; 0        ; 1        ;
+; resume                   ; resume                   ; 1        ; 0        ; 0        ; 0        ;
++--------------------------+--------------------------+----------+----------+----------+----------+
 Entries labeled "false path" only account for clock-to-clock false paths and not path-based false paths. As a result, actual path counts may be lower than reported.
 
 
@@ -279,20 +580,26 @@ No non-DPA dedicated SERDES Receiver circuitry present in device or used in desi
 +---------------------------------+-------+------+
 ; Illegal Clocks                  ; 0     ; 0    ;
 ; Unconstrained Clocks            ; 0     ; 0    ;
-; Unconstrained Input Ports       ; 2     ; 2    ;
-; Unconstrained Input Port Paths  ; 12    ; 12   ;
-; Unconstrained Output Ports      ; 6     ; 6    ;
-; Unconstrained Output Port Paths ; 6     ; 6    ;
+; Unconstrained Input Ports       ; 1     ; 1    ;
+; Unconstrained Input Port Paths  ; 31    ; 31   ;
+; Unconstrained Output Ports      ; 14    ; 14   ;
+; Unconstrained Output Port Paths ; 76    ; 76   ;
 +---------------------------------+-------+------+
 
 
-+-------------------------------------+
-; Clock Status Summary                ;
-+--------+-------+------+-------------+
-; Target ; Clock ; Type ; Status      ;
-+--------+-------+------+-------------+
-; clk    ; clk   ; Base ; Constrained ;
-+--------+-------+------+-------------+
++--------------------------------------------------------------------------+
+; Clock Status Summary                                                     ;
++--------------------------+--------------------------+------+-------------+
+; Target                   ; Clock                    ; Type ; Status      ;
++--------------------------+--------------------------+------+-------------+
+; clk                      ; clk                      ; Base ; Constrained ;
+; counter_trigger:d1|not_Q ; counter_trigger:d1|not_Q ; Base ; Constrained ;
+; dtrigger:d2|not_Q        ; dtrigger:d2|not_Q        ; Base ; Constrained ;
+; dtrigger:d3|not_Q        ; dtrigger:d3|not_Q        ; Base ; Constrained ;
+; dtrigger:d4|not_Q        ; dtrigger:d4|not_Q        ; Base ; Constrained ;
+; dtrigger:d5|not_Q        ; dtrigger:d5|not_Q        ; Base ; Constrained ;
+; resume                   ; resume                   ; Base ; Constrained ;
++--------------------------+--------------------------+------+-------------+
 
 
 +---------------------------------------------------------------------------------------------------+
@@ -300,8 +607,7 @@ No non-DPA dedicated SERDES Receiver circuitry present in device or used in desi
 +------------+--------------------------------------------------------------------------------------+
 ; Input Port ; Comment                                                                              ;
 +------------+--------------------------------------------------------------------------------------+
-; enable     ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; reset      ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; rst        ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
 +------------+--------------------------------------------------------------------------------------+
 
 
@@ -310,12 +616,20 @@ No non-DPA dedicated SERDES Receiver circuitry present in device or used in desi
 +-------------+---------------------------------------------------------------------------------------+
 ; Output Port ; Comment                                                                               ;
 +-------------+---------------------------------------------------------------------------------------+
-; count[0]    ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; count[1]    ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; count[2]    ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; count[3]    ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; count[4]    ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; count[5]    ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; H[0]        ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; H[1]        ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; H[2]        ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; H[3]        ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; H[4]        ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; H[5]        ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; H[6]        ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; L[0]        ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; L[1]        ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; L[2]        ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; L[3]        ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; L[4]        ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; L[5]        ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; L[6]        ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
 +-------------+---------------------------------------------------------------------------------------+
 
 
@@ -324,8 +638,7 @@ No non-DPA dedicated SERDES Receiver circuitry present in device or used in desi
 +------------+--------------------------------------------------------------------------------------+
 ; Input Port ; Comment                                                                              ;
 +------------+--------------------------------------------------------------------------------------+
-; enable     ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; reset      ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; rst        ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
 +------------+--------------------------------------------------------------------------------------+
 
 
@@ -334,12 +647,20 @@ No non-DPA dedicated SERDES Receiver circuitry present in device or used in desi
 +-------------+---------------------------------------------------------------------------------------+
 ; Output Port ; Comment                                                                               ;
 +-------------+---------------------------------------------------------------------------------------+
-; count[0]    ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; count[1]    ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; count[2]    ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; count[3]    ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; count[4]    ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; count[5]    ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; H[0]        ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; H[1]        ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; H[2]        ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; H[3]        ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; H[4]        ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; H[5]        ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; H[6]        ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; L[0]        ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; L[1]        ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; L[2]        ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; L[3]        ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; L[4]        ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; L[5]        ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; L[6]        ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
 +-------------+---------------------------------------------------------------------------------------+
 
 
@@ -349,7 +670,7 @@ No non-DPA dedicated SERDES Receiver circuitry present in device or used in desi
 Info: *******************************************************************
 Info: Running Quartus Prime Timing Analyzer
     Info: Version 19.1.0 Build 670 09/22/2019 SJ Lite Edition
-    Info: Processing started: Wed Jun 07 15:34:10 2023
+    Info: Processing started: Fri Jun 09 01:35:26 2023
 Info: Command: quartus_sta counter64 -c counter64
 Info: qsta_default_script.tcl version: #1
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
@@ -361,31 +682,55 @@ Info (334004): Delay annotation completed successfully
 Critical Warning (332012): Synopsys Design Constraints File file not found: 'counter64.sdc'. A Synopsys Design Constraints File is required by the Timing Analyzer to get proper timing constraints. Without it, the Compiler will not properly optimize the design.
 Info (332142): No user constrained base clocks found in the design. Calling "derive_clocks -period 1.0"
 Info (332105): Deriving Clocks
+    Info (332105): create_clock -period 1.000 -name dtrigger:d5|not_Q dtrigger:d5|not_Q
+    Info (332105): create_clock -period 1.000 -name dtrigger:d4|not_Q dtrigger:d4|not_Q
+    Info (332105): create_clock -period 1.000 -name dtrigger:d3|not_Q dtrigger:d3|not_Q
+    Info (332105): create_clock -period 1.000 -name dtrigger:d2|not_Q dtrigger:d2|not_Q
+    Info (332105): create_clock -period 1.000 -name counter_trigger:d1|not_Q counter_trigger:d1|not_Q
     Info (332105): create_clock -period 1.000 -name clk clk
+    Info (332105): create_clock -period 1.000 -name resume resume
 Info: Found TIMING_ANALYZER_REPORT_SCRIPT_INCLUDE_DEFAULT_ANALYSIS = ON
 Info: Can't run Report Timing Closure Recommendations. The current device family is not supported.
 Critical Warning (332148): Timing requirements not met
-Info (332146): Worst-case setup slack is -4.847
+Info (332146): Worst-case setup slack is -7.218
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    -4.847             -38.594 clk 
-Info (332146): Worst-case hold slack is 1.784
+    Info (332119):    -7.218            -139.104 clk 
+    Info (332119):    -1.204              -1.204 dtrigger:d5|not_Q 
+    Info (332119):    -1.194              -1.194 resume 
+    Info (332119):     0.783               0.000 dtrigger:d4|not_Q 
+    Info (332119):     2.037               0.000 dtrigger:d3|not_Q 
+    Info (332119):     2.065               0.000 dtrigger:d2|not_Q 
+    Info (332119):     3.254               0.000 counter_trigger:d1|not_Q 
+Info (332146): Worst-case hold slack is -4.120
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):     1.784               0.000 clk 
+    Info (332119):    -4.120              -8.239 clk 
+    Info (332119):    -3.314              -6.622 counter_trigger:d1|not_Q 
+    Info (332119):    -2.120              -4.239 dtrigger:d2|not_Q 
+    Info (332119):    -2.097              -4.188 dtrigger:d3|not_Q 
+    Info (332119):    -0.844              -1.681 dtrigger:d4|not_Q 
+    Info (332119):     1.640               0.000 resume 
+    Info (332119):     1.650               0.000 dtrigger:d5|not_Q 
 Info (332140): No Recovery paths to report
 Info (332140): No Removal paths to report
 Info (332146): Worst-case minimum pulse width slack is -2.289
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
     Info (332119):    -2.289              -2.289 clk 
+    Info (332119):    -2.289              -2.289 resume 
+    Info (332119):     0.234               0.000 counter_trigger:d1|not_Q 
+    Info (332119):     0.234               0.000 dtrigger:d2|not_Q 
+    Info (332119):     0.234               0.000 dtrigger:d3|not_Q 
+    Info (332119):     0.234               0.000 dtrigger:d4|not_Q 
+    Info (332119):     0.234               0.000 dtrigger:d5|not_Q 
 Info (332001): The selected device family is not supported by the report_metastability command.
 Info (332102): Design is not fully constrained for setup requirements
 Info (332102): Design is not fully constrained for hold requirements
 Info: Quartus Prime Timing Analyzer was successful. 0 errors, 3 warnings
-    Info: Peak virtual memory: 4679 megabytes
-    Info: Processing ended: Wed Jun 07 15:34:10 2023
-    Info: Elapsed time: 00:00:00
+    Info: Peak virtual memory: 4681 megabytes
+    Info: Processing ended: Fri Jun 09 01:35:27 2023
+    Info: Elapsed time: 00:00:01
     Info: Total CPU time (on all processors): 00:00:00
 
 

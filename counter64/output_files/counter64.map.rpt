@@ -1,5 +1,5 @@
 Analysis & Synthesis report for counter64
-Wed Jun 07 15:34:06 2023
+Fri Jun 09 01:35:23 2023
 Quartus Prime Version 19.1.0 Build 670 09/22/2019 SJ Lite Edition
 
 
@@ -13,9 +13,12 @@ Quartus Prime Version 19.1.0 Build 670 09/22/2019 SJ Lite Edition
   5. Analysis & Synthesis Source Files Read
   6. Analysis & Synthesis Resource Usage Summary
   7. Analysis & Synthesis Resource Utilization by Entity
-  8. General Register Statistics
-  9. Multiplexer Restructuring Statistics (Restructuring Performed)
- 10. Analysis & Synthesis Messages
+  8. Registers Removed During Synthesis
+  9. General Register Statistics
+ 10. Inverted Register Statistics
+ 11. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 12. Port Connectivity Checks: "output_transformer:out1|ntl:n1"
+ 13. Analysis & Synthesis Messages
 
 
 
@@ -42,13 +45,13 @@ https://fpgasoftware.intel.com/eula.
 +---------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                              ;
 +-----------------------------+---------------------------------------------+
-; Analysis & Synthesis Status ; Successful - Wed Jun 07 15:34:06 2023       ;
+; Analysis & Synthesis Status ; Successful - Fri Jun 09 01:35:23 2023       ;
 ; Quartus Prime Version       ; 19.1.0 Build 670 09/22/2019 SJ Lite Edition ;
 ; Revision Name               ; counter64                                   ;
 ; Top-level Entity Name       ; counter64                                   ;
 ; Family                      ; MAX II                                      ;
-; Total logic elements        ; 15                                          ;
-; Total pins                  ; 9                                           ;
+; Total logic elements        ; 96                                          ;
+; Total pins                  ; 17                                          ;
 ; Total virtual pins          ; 0                                           ;
 ; UFM blocks                  ; 0 / 1 ( 0 % )                               ;
 +-----------------------------+---------------------------------------------+
@@ -141,14 +144,17 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------+-------------+
 
 
-+-----------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Source Files Read                                                                                      ;
-+----------------------------------+-----------------+-----------------+--------------------------------------------+---------+
-; File Name with User-Entered Path ; Used in Netlist ; File Type       ; File Name with Absolute Path               ; Library ;
-+----------------------------------+-----------------+-----------------+--------------------------------------------+---------+
-; counter64.vhd                    ; yes             ; User VHDL File  ; D:/GitHub/VHDL2023/counter64/counter64.vhd ;         ;
-; DFlipFlop.vhd                    ; yes             ; User VHDL File  ; D:/GitHub/VHDL2023/counter64/DFlipFlop.vhd ;         ;
-+----------------------------------+-----------------+-----------------+--------------------------------------------+---------+
++--------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                               ;
++----------------------------------+-----------------+-----------------+-----------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type       ; File Name with Absolute Path                        ; Library ;
++----------------------------------+-----------------+-----------------+-----------------------------------------------------+---------+
+; dtrigger.vhd                     ; yes             ; User VHDL File  ; D:/GitHub/VHDL2023/counter64/dtrigger.vhd           ;         ;
+; counter64.vhd                    ; yes             ; User VHDL File  ; D:/GitHub/VHDL2023/counter64/counter64.vhd          ;         ;
+; counter_trigger.vhd              ; yes             ; User VHDL File  ; D:/GitHub/VHDL2023/counter64/counter_trigger.vhd    ;         ;
+; output_transformer.vhd           ; yes             ; User VHDL File  ; D:/GitHub/VHDL2023/counter64/output_transformer.vhd ;         ;
+; ntl.vhd                          ; yes             ; User VHDL File  ; D:/GitHub/VHDL2023/counter64/ntl.vhd                ;         ;
++----------------------------------+-----------------+-----------------+-----------------------------------------------------+---------+
 
 
 +-----------------------------------------------------+
@@ -156,50 +162,63 @@ https://fpgasoftware.intel.com/eula.
 +---------------------------------------------+-------+
 ; Resource                                    ; Usage ;
 +---------------------------------------------+-------+
-; Total logic elements                        ; 15    ;
-;     -- Combinational with no register       ; 3     ;
-;     -- Register only                        ; 6     ;
-;     -- Combinational with a register        ; 6     ;
+; Total logic elements                        ; 96    ;
+;     -- Combinational with no register       ; 64    ;
+;     -- Register only                        ; 13    ;
+;     -- Combinational with a register        ; 19    ;
 ;                                             ;       ;
 ; Logic element usage by number of LUT inputs ;       ;
-;     -- 4 input functions                    ; 2     ;
-;     -- 3 input functions                    ; 0     ;
-;     -- 2 input functions                    ; 6     ;
-;     -- 1 input functions                    ; 1     ;
+;     -- 4 input functions                    ; 32    ;
+;     -- 3 input functions                    ; 6     ;
+;     -- 2 input functions                    ; 32    ;
+;     -- 1 input functions                    ; 13    ;
 ;     -- 0 input functions                    ; 0     ;
 ;                                             ;       ;
 ; Logic elements by mode                      ;       ;
-;     -- normal mode                          ; 10    ;
-;     -- arithmetic mode                      ; 5     ;
+;     -- normal mode                          ; 77    ;
+;     -- arithmetic mode                      ; 19    ;
 ;     -- qfbk mode                            ; 0     ;
 ;     -- register cascade mode                ; 0     ;
-;     -- synchronous clear/load mode          ; 6     ;
-;     -- asynchronous clear/load mode         ; 0     ;
+;     -- synchronous clear/load mode          ; 0     ;
+;     -- asynchronous clear/load mode         ; 31    ;
 ;                                             ;       ;
-; Total registers                             ; 12    ;
-; Total logic cells in carry chains           ; 6     ;
-; I/O pins                                    ; 9     ;
-; Maximum fan-out node                        ; clk   ;
-; Maximum fan-out                             ; 12    ;
-; Total fan-out                               ; 57    ;
-; Average fan-out                             ; 2.38  ;
+; Total registers                             ; 32    ;
+; Total logic cells in carry chains           ; 20    ;
+; I/O pins                                    ; 17    ;
+; Maximum fan-out node                        ; rst   ;
+; Maximum fan-out                             ; 31    ;
+; Total fan-out                               ; 315   ;
+; Average fan-out                             ; 2.79  ;
 +---------------------------------------------+-------+
 
 
-+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                           ;
-+----------------------------+-------------+--------------+------------+------+--------------+--------------+-------------------+------------------+-----------------+------------+--------------------------------+-------------+--------------+
-; Compilation Hierarchy Node ; Logic Cells ; LC Registers ; UFM Blocks ; Pins ; Virtual Pins ; LUT-Only LCs ; Register-Only LCs ; LUT/Register LCs ; Carry Chain LCs ; Packed LCs ; Full Hierarchy Name            ; Entity Name ; Library Name ;
-+----------------------------+-------------+--------------+------------+------+--------------+--------------+-------------------+------------------+-----------------+------------+--------------------------------+-------------+--------------+
-; |counter64                 ; 15 (9)      ; 12           ; 0          ; 9    ; 0            ; 3 (3)        ; 6 (0)             ; 6 (6)            ; 6 (6)           ; 0 (0)      ; |counter64                     ; counter64   ; work         ;
-;    |DFlipFlop:\gen:0:U1|   ; 1 (1)       ; 1            ; 0          ; 0    ; 0            ; 0 (0)        ; 1 (1)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |counter64|DFlipFlop:\gen:0:U1 ; DFlipFlop   ; work         ;
-;    |DFlipFlop:\gen:1:U1|   ; 1 (1)       ; 1            ; 0          ; 0    ; 0            ; 0 (0)        ; 1 (1)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |counter64|DFlipFlop:\gen:1:U1 ; DFlipFlop   ; work         ;
-;    |DFlipFlop:\gen:2:U1|   ; 1 (1)       ; 1            ; 0          ; 0    ; 0            ; 0 (0)        ; 1 (1)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |counter64|DFlipFlop:\gen:2:U1 ; DFlipFlop   ; work         ;
-;    |DFlipFlop:\gen:3:U1|   ; 1 (1)       ; 1            ; 0          ; 0    ; 0            ; 0 (0)        ; 1 (1)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |counter64|DFlipFlop:\gen:3:U1 ; DFlipFlop   ; work         ;
-;    |DFlipFlop:\gen:4:U1|   ; 1 (1)       ; 1            ; 0          ; 0    ; 0            ; 0 (0)        ; 1 (1)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |counter64|DFlipFlop:\gen:4:U1 ; DFlipFlop   ; work         ;
-;    |DFlipFlop:\gen:5:U1|   ; 1 (1)       ; 1            ; 0          ; 0    ; 0            ; 0 (0)        ; 1 (1)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |counter64|DFlipFlop:\gen:5:U1 ; DFlipFlop   ; work         ;
-+----------------------------+-------------+--------------+------------+------+--------------+--------------+-------------------+------------------+-----------------+------------+--------------------------------+-------------+--------------+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                               ;
++------------------------------+-------------+--------------+------------+------+--------------+--------------+-------------------+------------------+-----------------+------------+-------------------------------------------+--------------------+--------------+
+; Compilation Hierarchy Node   ; Logic Cells ; LC Registers ; UFM Blocks ; Pins ; Virtual Pins ; LUT-Only LCs ; Register-Only LCs ; LUT/Register LCs ; Carry Chain LCs ; Packed LCs ; Full Hierarchy Name                       ; Entity Name        ; Library Name ;
++------------------------------+-------------+--------------+------------+------+--------------+--------------+-------------------+------------------+-----------------+------------+-------------------------------------------+--------------------+--------------+
+; |counter64                   ; 96 (2)      ; 32           ; 0          ; 17   ; 0            ; 64 (1)       ; 13 (0)            ; 19 (1)           ; 20 (0)          ; 0 (0)      ; |counter64                                ; counter64          ; work         ;
+;    |counter_trigger:d1|      ; 49 (49)     ; 22           ; 0          ; 0    ; 0            ; 27 (27)      ; 13 (13)           ; 9 (9)            ; 20 (20)         ; 0 (0)      ; |counter64|counter_trigger:d1             ; counter_trigger    ; work         ;
+;    |dtrigger:d2|             ; 2 (2)       ; 2            ; 0          ; 0    ; 0            ; 0 (0)        ; 0 (0)             ; 2 (2)            ; 0 (0)           ; 0 (0)      ; |counter64|dtrigger:d2                    ; dtrigger           ; work         ;
+;    |dtrigger:d3|             ; 2 (2)       ; 2            ; 0          ; 0    ; 0            ; 0 (0)        ; 0 (0)             ; 2 (2)            ; 0 (0)           ; 0 (0)      ; |counter64|dtrigger:d3                    ; dtrigger           ; work         ;
+;    |dtrigger:d4|             ; 2 (2)       ; 2            ; 0          ; 0    ; 0            ; 0 (0)        ; 0 (0)             ; 2 (2)            ; 0 (0)           ; 0 (0)      ; |counter64|dtrigger:d4                    ; dtrigger           ; work         ;
+;    |dtrigger:d5|             ; 2 (2)       ; 2            ; 0          ; 0    ; 0            ; 0 (0)        ; 0 (0)             ; 2 (2)            ; 0 (0)           ; 0 (0)      ; |counter64|dtrigger:d5                    ; dtrigger           ; work         ;
+;    |dtrigger:d6|             ; 1 (1)       ; 1            ; 0          ; 0    ; 0            ; 0 (0)        ; 0 (0)             ; 1 (1)            ; 0 (0)           ; 0 (0)      ; |counter64|dtrigger:d6                    ; dtrigger           ; work         ;
+;    |output_transformer:out1| ; 36 (20)     ; 0            ; 0          ; 0    ; 0            ; 36 (20)      ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |counter64|output_transformer:out1        ; output_transformer ; work         ;
+;       |ntl:n1|               ; 9 (9)       ; 0            ; 0          ; 0    ; 0            ; 9 (9)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |counter64|output_transformer:out1|ntl:n1 ; ntl                ; work         ;
+;       |ntl:n2|               ; 7 (7)       ; 0            ; 0          ; 0    ; 0            ; 7 (7)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |counter64|output_transformer:out1|ntl:n2 ; ntl                ; work         ;
++------------------------------+-------------+--------------+------------+------+--------------+--------------+-------------------+------------------+-----------------+------------+-------------------------------------------+--------------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
++-------------------------------------------------------------------+
+; Registers Removed During Synthesis                                ;
++---------------------------------------+---------------------------+
+; Register name                         ; Reason for Removal        ;
++---------------------------------------+---------------------------+
+; dtrigger:d6|not_Q                     ; Merged with dtrigger:d6|Q ;
+; Total Number of Removed Registers = 1 ;                           ;
++---------------------------------------+---------------------------+
 
 
 +------------------------------------------------------+
@@ -207,23 +226,46 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 12    ;
-; Number of registers using Synchronous Clear  ; 6     ;
+; Total registers                              ; 32    ;
+; Number of registers using Synchronous Clear  ; 0     ;
 ; Number of registers using Synchronous Load   ; 0     ;
-; Number of registers using Asynchronous Clear ; 0     ;
+; Number of registers using Asynchronous Clear ; 31    ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 6     ;
+; Number of registers using Clock Enable       ; 2     ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
 
-+------------------------------------------------------------------------------------------------------------------------------------------+
-; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                           ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
-; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
-; 4:1                ; 6 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |counter64|temp_next[0]    ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
++--------------------------------------------------+
+; Inverted Register Statistics                     ;
++----------------------------------------+---------+
+; Inverted Register                      ; Fan out ;
++----------------------------------------+---------+
+; dtrigger:d5|not_Q                      ; 3       ;
+; dtrigger:d4|not_Q                      ; 4       ;
+; dtrigger:d3|not_Q                      ; 4       ;
+; dtrigger:d2|not_Q                      ; 4       ;
+; counter_trigger:d1|not_Q               ; 4       ;
+; Total number of inverted registers = 5 ;         ;
++----------------------------------------+---------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                         ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output               ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------------+
+; 6:1                ; 2 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; No         ; |counter64|output_transformer:out1|h1[0] ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------------+
+
+
++------------------------------------------------------------+
+; Port Connectivity Checks: "output_transformer:out1|ntl:n1" ;
++------+-------+----------+----------------------------------+
+; Port ; Type  ; Severity ; Details                          ;
++------+-------+----------+----------------------------------+
+; n[3] ; Input ; Info     ; Stuck at GND                     ;
++------+-------+----------+----------------------------------+
 
 
 +-------------------------------+
@@ -232,26 +274,41 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 19.1.0 Build 670 09/22/2019 SJ Lite Edition
-    Info: Processing started: Wed Jun 07 15:34:01 2023
+    Info: Processing started: Fri Jun 09 01:35:16 2023
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off counter64 -c counter64
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 14 of the 14 processors detected
+Info (12021): Found 2 design units, including 1 entities, in source file dtrigger.vhd
+    Info (12022): Found design unit 1: dtrigger-bhv File: D:/GitHub/VHDL2023/counter64/dtrigger.vhd Line: 13
+    Info (12023): Found entity 1: dtrigger File: D:/GitHub/VHDL2023/counter64/dtrigger.vhd Line: 6
 Info (12021): Found 2 design units, including 1 entities, in source file counter64.vhd
-    Info (12022): Found design unit 1: counter64-Behavioral File: D:/GitHub/VHDL2023/counter64/counter64.vhd Line: 15
+    Info (12022): Found design unit 1: counter64-bhv File: D:/GitHub/VHDL2023/counter64/counter64.vhd Line: 13
     Info (12023): Found entity 1: counter64 File: D:/GitHub/VHDL2023/counter64/counter64.vhd Line: 6
-Info (12021): Found 2 design units, including 1 entities, in source file dflipflop.vhd
-    Info (12022): Found design unit 1: DFlipFlop-Behavioral File: D:/GitHub/VHDL2023/counter64/DFlipFlop.vhd Line: 13
-    Info (12023): Found entity 1: DFlipFlop File: D:/GitHub/VHDL2023/counter64/DFlipFlop.vhd Line: 5
+Info (12021): Found 2 design units, including 1 entities, in source file counter_trigger.vhd
+    Info (12022): Found design unit 1: counter_trigger-bhv File: D:/GitHub/VHDL2023/counter64/counter_trigger.vhd Line: 13
+    Info (12023): Found entity 1: counter_trigger File: D:/GitHub/VHDL2023/counter64/counter_trigger.vhd Line: 6
+Info (12021): Found 2 design units, including 1 entities, in source file output_transformer.vhd
+    Info (12022): Found design unit 1: output_transformer-bhv File: D:/GitHub/VHDL2023/counter64/output_transformer.vhd Line: 14
+    Info (12023): Found entity 1: output_transformer File: D:/GitHub/VHDL2023/counter64/output_transformer.vhd Line: 6
+Info (12021): Found 2 design units, including 1 entities, in source file ntl.vhd
+    Info (12022): Found design unit 1: ntl-bhv File: D:/GitHub/VHDL2023/counter64/ntl.vhd Line: 13
+    Info (12023): Found entity 1: ntl File: D:/GitHub/VHDL2023/counter64/ntl.vhd Line: 6
 Info (12127): Elaborating entity "counter64" for the top level hierarchy
-Info (12128): Elaborating entity "DFlipFlop" for hierarchy "DFlipFlop:\gen:0:U1" File: D:/GitHub/VHDL2023/counter64/counter64.vhd Line: 28
-Info (21057): Implemented 24 device resources after synthesis - the final resource count might be different
+Warning (10492): VHDL Process Statement warning at counter64.vhd(42): signal "r" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/GitHub/VHDL2023/counter64/counter64.vhd Line: 42
+Info (12128): Elaborating entity "counter_trigger" for hierarchy "counter_trigger:d1" File: D:/GitHub/VHDL2023/counter64/counter64.vhd Line: 54
+Info (12128): Elaborating entity "dtrigger" for hierarchy "dtrigger:d2" File: D:/GitHub/VHDL2023/counter64/counter64.vhd Line: 55
+Info (12128): Elaborating entity "output_transformer" for hierarchy "output_transformer:out1" File: D:/GitHub/VHDL2023/counter64/counter64.vhd Line: 60
+Warning (10492): VHDL Process Statement warning at output_transformer.vhd(49): signal "t1" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/GitHub/VHDL2023/counter64/output_transformer.vhd Line: 49
+Info (12128): Elaborating entity "ntl" for hierarchy "output_transformer:out1|ntl:n1" File: D:/GitHub/VHDL2023/counter64/output_transformer.vhd Line: 51
+Info (18000): Registers with preset signals will power-up high File: D:/GitHub/VHDL2023/counter64/dtrigger.vhd Line: 9
+Info (21057): Implemented 113 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 3 input pins
-    Info (21059): Implemented 6 output pins
-    Info (21061): Implemented 15 logic cells
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 1 warning
+    Info (21059): Implemented 14 output pins
+    Info (21061): Implemented 96 logic cells
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 3 warnings
     Info: Peak virtual memory: 4763 megabytes
-    Info: Processing ended: Wed Jun 07 15:34:06 2023
-    Info: Elapsed time: 00:00:05
-    Info: Total CPU time (on all processors): 00:00:04
+    Info: Processing ended: Fri Jun 09 01:35:23 2023
+    Info: Elapsed time: 00:00:07
+    Info: Total CPU time (on all processors): 00:00:05
 
 

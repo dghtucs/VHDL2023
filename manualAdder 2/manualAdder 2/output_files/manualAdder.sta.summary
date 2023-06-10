@@ -1,0 +1,89 @@
+------------------------------------------------------------
+Timing Analyzer Summary
+------------------------------------------------------------
+
+Type  : Setup 'clk'
+Slack : -6.802
+TNS   : -129.813
+
+Type  : Setup 'resume'
+Slack : -1.215
+TNS   : -1.215
+
+Type  : Setup 'd_trigger:d5|not_Q'
+Slack : -1.204
+TNS   : -1.204
+
+Type  : Setup 'd_trigger:d4|not_Q'
+Slack : 0.463
+TNS   : 0.000
+
+Type  : Setup 'd_trigger:d2|not_Q'
+Slack : 2.261
+TNS   : 0.000
+
+Type  : Setup 'd_trigger:d3|not_Q'
+Slack : 2.504
+TNS   : 0.000
+
+Type  : Setup 'counter_trigger:d1|not_Q'
+Slack : 4.140
+TNS   : 0.000
+
+Type  : Hold 'clk'
+Slack : -4.309
+TNS   : -8.610
+
+Type  : Hold 'counter_trigger:d1|not_Q'
+Slack : -4.196
+TNS   : -8.390
+
+Type  : Hold 'd_trigger:d3|not_Q'
+Slack : -2.570
+TNS   : -5.128
+
+Type  : Hold 'd_trigger:d2|not_Q'
+Slack : -2.325
+TNS   : -4.640
+
+Type  : Hold 'd_trigger:d4|not_Q'
+Slack : -0.524
+TNS   : -1.041
+
+Type  : Hold 'd_trigger:d5|not_Q'
+Slack : 1.650
+TNS   : 0.000
+
+Type  : Hold 'resume'
+Slack : 1.661
+TNS   : 0.000
+
+Type  : Minimum Pulse Width 'clk'
+Slack : -2.289
+TNS   : -2.289
+
+Type  : Minimum Pulse Width 'resume'
+Slack : -2.289
+TNS   : -2.289
+
+Type  : Minimum Pulse Width 'counter_trigger:d1|not_Q'
+Slack : 0.234
+TNS   : 0.000
+
+Type  : Minimum Pulse Width 'd_trigger:d2|not_Q'
+Slack : 0.234
+TNS   : 0.000
+
+Type  : Minimum Pulse Width 'd_trigger:d3|not_Q'
+Slack : 0.234
+TNS   : 0.000
+
+Type  : Minimum Pulse Width 'd_trigger:d4|not_Q'
+Slack : 0.234
+TNS   : 0.000
+
+Type  : Minimum Pulse Width 'd_trigger:d5|not_Q'
+Slack : 0.234
+TNS   : 0.000
+
+------------------------------------------------------------

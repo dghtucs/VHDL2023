@@ -1,0 +1,105 @@
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.std_logic_arith.all;
+use ieee.std_logic_unsigned.all;
+
+entity lock is
+	port(
+		code: in std_logic_vector(3 downto 0);
+		mode: in std_logic_vector(1 downto 0);
+		clk, rst: in std_logic;
+		unlock: out std_logic;
+		alarm, err: buffer std_logic
+	);
+	subtype pwd1 is integer range 0 to 15;
+	type pwd4 is array (3 downto 0) of pwd1;
+	--password is a 4x4 2D vector
+	subtype states is integer range 0 to 7;
+	--0: check/set bit 0; 1-3: set bit 1-3;
+	--4-6: check bit 4-6; 7: unlock.
+end lock;
+
+architecture arc of lock is
+	constant admin_pwd: pwd4 := (8,8,8,8);
+	--password of admin can be changed here.
+	signal pwd: pwd4 := admin_pwd;
+	signal pwd_in: pwd1;
+	signal ad, us: std_logic;
+	--to control the checking process
+	signal state: states;
+	signal cnt: integer range 0 to 2:= 0;
+	--failed times
+begin
+	pwd_in<=conv_integer(code);
+	process(clk, rst)
+	begin
+		if (rst = '0') then
+			unlock <= '0';
+			err <= '0';
+			state <= 0;
+		elsif (clk'event and clk = '1') then
+			if (mode = "00" and alarm = '0' and cnt = 0) then
+			--set passwd, only when not checking and haven't been wrong
+			--(which means it's unlock or just turn from unlock to lock)
+				case state is
+					when 0|1|2 => pwd(state) <= pwd_in; state <= state + 1;
+					when 3 => pwd(3) <= pwd_in; state <= 7; unlock <= '1';
+					when others => NULL;
+				end case;
+		elsif (mode = "01") then --check password
+				case state is
+					when 0 =>
+						if ((pwd_in = pwd(0) and alarm = '0')
+						or pwd_in = admin_pwd(0)) then
+							if (pwd_in = pwd(0) and alarm = '0') then
+								us <= '1';
+							else
+								us <= '0';
+							end if;
+							if (pwd_in = admin_pwd(0)) then
+								ad <= '1';
+							else
+								ad <= '0';
+							end if;
+							state <= 4;
+							err <= '0';
+						else
+							err <= '1';
+							if (cnt > 1) then
+								alarm <= '1';
+								cnt <= 0;
+							else
+								cnt <= cnt + 1;
+							end if;
+						end if;
+					when 4|5|6 =>
+						if (((pwd_in = pwd(state-3)) and (us = '1')) or
+						((pwd_in = admin_pwd(state-3)) and (ad = '1'))) then
+							if (state = 6) then
+								unlock <= '1';
+								alarm <= '0';
+								cnt <= 0;
+							end if;
+							state <= state + 1;
+							if (pwd_in /= pwd(state-3)) then
+								us <= '0';
+							end if;
+							if (pwd_in /= admin_pwd(state-3)) then
+								ad <= '0';
+							end if;
+						else
+							err <= '1';
+							state <= 0;
+							if (cnt > 1) then
+								alarm <= '1';
+								cnt <= 0;
+							else
+								cnt <= cnt + 1;
+							end if;
+						end if;
+					when others => NULL;
+				end case;
+			end if;
+		end if;
+	end process;
+end arc;

@@ -1,0 +1,45 @@
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
+
+entity light is
+  port (
+    clk     : in std_logic;
+    reset   : in std_logic;
+    car_seg : out integer range 0 to 9;
+    ped_seg : out integer range 0 to 3;
+    led1    : out std_logic; -- 绿灯
+    led2    : out std_logic  -- 红灯
+  );
+end light;
+
+architecture behavior of light is
+  signal car_timer : integer range 0 to 9;
+  signal ped_timer : integer range 0 to 3;
+begin
+  process(clk, reset)
+  begin
+    if (reset = '1') then
+      car_timer <= 9;
+      ped_timer <= 0;
+    elsif rising_edge(clk) then
+      if (car_timer > 0) then
+        car_timer <= car_timer - 1;
+        ped_timer <= 0;
+      elsif (ped_timer > 0) then
+        ped_timer <= ped_timer - 1;
+        car_timer <= 0;
+      else
+        car_timer <= 9;
+        ped_timer <= 3;
+      end if;
+    end if;
+  end process;
+
+  car_seg <= car_timer;
+  ped_seg <= ped_timer;
+
+  -- LED control
+  led1 <= '1' when car_timer > 0 else '0';  -- 绿灯
+  led2 <= '0' when car_timer > 0 else '1';  -- 红灯
+end behavior;

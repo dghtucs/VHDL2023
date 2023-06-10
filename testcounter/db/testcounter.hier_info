@@ -1,0 +1,107 @@
+|testcounter
+clk => Count[0].CLK
+clk => Count[1].CLK
+clk => Count[2].CLK
+clk => Count[3].CLK
+clk => Count[4].CLK
+clk => Count[5].CLK
+clk => Count[6].CLK
+rst => Count.OUTPUTSELECT
+rst => Count.OUTPUTSELECT
+rst => Count.OUTPUTSELECT
+rst => Count.OUTPUTSELECT
+rst => Count.OUTPUTSELECT
+rst => Count.OUTPUTSELECT
+rst => Count.OUTPUTSELECT
+Light6_high[0] <= digit:D1.Light6[0]
+Light6_high[1] <= digit:D1.Light6[1]
+Light6_high[2] <= digit:D1.Light6[2]
+Light6_high[3] <= digit:D1.Light6[3]
+Light6_high[4] <= digit:D1.Light6[4]
+Light6_high[5] <= digit:D1.Light6[5]
+Light6_high[6] <= digit:D1.Light6[6]
+Light6_low[0] <= digit:D2.Light6[0]
+Light6_low[1] <= digit:D2.Light6[1]
+Light6_low[2] <= digit:D2.Light6[2]
+Light6_low[3] <= digit:D2.Light6[3]
+Light6_low[4] <= digit:D2.Light6[4]
+Light6_low[5] <= digit:D2.Light6[5]
+Light6_low[6] <= digit:D2.Light6[6]
+
+
+|testcounter|Digit:D1
+Digit4[0] => Mux0.IN19
+Digit4[0] => Mux1.IN19
+Digit4[0] => Mux2.IN19
+Digit4[0] => Mux3.IN19
+Digit4[0] => Mux4.IN19
+Digit4[0] => Mux5.IN19
+Digit4[0] => Mux6.IN19
+Digit4[1] => Mux0.IN18
+Digit4[1] => Mux1.IN18
+Digit4[1] => Mux2.IN18
+Digit4[1] => Mux3.IN18
+Digit4[1] => Mux4.IN18
+Digit4[1] => Mux5.IN18
+Digit4[1] => Mux6.IN18
+Digit4[2] => Mux0.IN17
+Digit4[2] => Mux1.IN17
+Digit4[2] => Mux2.IN17
+Digit4[2] => Mux3.IN17
+Digit4[2] => Mux4.IN17
+Digit4[2] => Mux5.IN17
+Digit4[2] => Mux6.IN17
+Digit4[3] => Mux0.IN16
+Digit4[3] => Mux1.IN16
+Digit4[3] => Mux2.IN16
+Digit4[3] => Mux3.IN16
+Digit4[3] => Mux4.IN16
+Digit4[3] => Mux5.IN16
+Digit4[3] => Mux6.IN16
+Light6[0] <= Mux6.DB_MAX_OUTPUT_PORT_TYPE
+Light6[1] <= Mux5.DB_MAX_OUTPUT_PORT_TYPE
+Light6[2] <= Mux4.DB_MAX_OUTPUT_PORT_TYPE
+Light6[3] <= Mux3.DB_MAX_OUTPUT_PORT_TYPE
+Light6[4] <= Mux2.DB_MAX_OUTPUT_PORT_TYPE
+Light6[5] <= Mux1.DB_MAX_OUTPUT_PORT_TYPE
+Light6[6] <= Mux0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|testcounter|Digit:D2
+Digit4[0] => Mux0.IN19
+Digit4[0] => Mux1.IN19
+Digit4[0] => Mux2.IN19
+Digit4[0] => Mux3.IN19
+Digit4[0] => Mux4.IN19
+Digit4[0] => Mux5.IN19
+Digit4[0] => Mux6.IN19
+Digit4[1] => Mux0.IN18
+Digit4[1] => Mux1.IN18
+Digit4[1] => Mux2.IN18
+Digit4[1] => Mux3.IN18
+Digit4[1] => Mux4.IN18
+Digit4[1] => Mux5.IN18
+Digit4[1] => Mux6.IN18
+Digit4[2] => Mux0.IN17
+Digit4[2] => Mux1.IN17
+Digit4[2] => Mux2.IN17
+Digit4[2] => Mux3.IN17
+Digit4[2] => Mux4.IN17
+Digit4[2] => Mux5.IN17
+Digit4[2] => Mux6.IN17
+Digit4[3] => Mux0.IN16
+Digit4[3] => Mux1.IN16
+Digit4[3] => Mux2.IN16
+Digit4[3] => Mux3.IN16
+Digit4[3] => Mux4.IN16
+Digit4[3] => Mux5.IN16
+Digit4[3] => Mux6.IN16
+Light6[0] <= Mux6.DB_MAX_OUTPUT_PORT_TYPE
+Light6[1] <= Mux5.DB_MAX_OUTPUT_PORT_TYPE
+Light6[2] <= Mux4.DB_MAX_OUTPUT_PORT_TYPE
+Light6[3] <= Mux3.DB_MAX_OUTPUT_PORT_TYPE
+Light6[4] <= Mux2.DB_MAX_OUTPUT_PORT_TYPE
+Light6[5] <= Mux1.DB_MAX_OUTPUT_PORT_TYPE
+Light6[6] <= Mux0.DB_MAX_OUTPUT_PORT_TYPE
+
+

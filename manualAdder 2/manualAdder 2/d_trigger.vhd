@@ -1,0 +1,27 @@
+LIBRARY IEEE;
+USE IEEE.STD_LOGIC_1164.ALL;
+USE IEEE.STD_LOGIC_ARITH.ALL;
+USE IEEE.STD_LOGIC_UNSIGNED.ALL;
+
+entity d_trigger is
+	port(
+	clk,rst,D: in STD_LOGIC;
+	Q,not_Q: out STD_LOGIC
+	);
+	end d_trigger;
+
+architecture bhv of d_trigger is
+begin
+	process(clk,rst)
+	begin
+	if clk = '1' and clk'event then
+		Q <= D;
+		not_Q <= not D;
+	end if;
+	if rst = '1' then
+		Q <= '0';
+		not_Q <= '1';
+	end if;
+	end process;
+	end bhv;
+	

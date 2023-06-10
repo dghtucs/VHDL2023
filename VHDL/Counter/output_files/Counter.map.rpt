@@ -1,5 +1,5 @@
-Analysis & Elaboration report for Counter
-Fri May 12 17:32:51 2023
+Analysis & Synthesis report for Counter
+Thu Jun 08 16:56:30 2023
 Quartus Prime Version 19.1.0 Build 670 09/22/2019 SJ Lite Edition
 
 
@@ -7,16 +7,23 @@ Quartus Prime Version 19.1.0 Build 670 09/22/2019 SJ Lite Edition
 ; Table of Contents ;
 ---------------------
   1. Legal Notice
-  2. Analysis & Elaboration Summary
-  3. Parallel Compilation
-  4. Analysis & Elaboration Settings
-  5. Port Connectivity Checks: "Counter64:cnt|DTrigger:D5Trigger"
-  6. Port Connectivity Checks: "Counter64:cnt|DTrigger:D4Trigger"
-  7. Port Connectivity Checks: "Counter64:cnt|DTrigger:D3Trigger"
-  8. Port Connectivity Checks: "Counter64:cnt|DTrigger:D2Trigger"
-  9. Port Connectivity Checks: "Counter64:cnt|DTrigger:D1Trigger"
- 10. Port Connectivity Checks: "Counter64:cnt|DTrigger:D0Trigger"
- 11. Analysis & Elaboration Messages
+  2. Analysis & Synthesis Summary
+  3. Analysis & Synthesis Settings
+  4. Parallel Compilation
+  5. Analysis & Synthesis Source Files Read
+  6. Analysis & Synthesis Resource Usage Summary
+  7. Analysis & Synthesis Resource Utilization by Entity
+  8. Registers Removed During Synthesis
+  9. General Register Statistics
+ 10. Port Connectivity Checks: "Cnt60:cnt|DTrigger:Dv"
+ 11. Port Connectivity Checks: "Cnt60:cnt|Cnt6:CH|DTrigger:\labe10:2:Di"
+ 12. Port Connectivity Checks: "Cnt60:cnt|Cnt6:CH|DTrigger:\labe10:1:Di"
+ 13. Port Connectivity Checks: "Cnt60:cnt|Cnt6:CH|DTrigger:\labe10:0:Di"
+ 14. Port Connectivity Checks: "Cnt60:cnt|Cnt10:CL|DTrigger:\labe10:3:Di"
+ 15. Port Connectivity Checks: "Cnt60:cnt|Cnt10:CL|DTrigger:\labe10:2:Di"
+ 16. Port Connectivity Checks: "Cnt60:cnt|Cnt10:CL|DTrigger:\labe10:1:Di"
+ 17. Port Connectivity Checks: "Cnt60:cnt|Cnt10:CL|DTrigger:\labe10:0:Di"
+ 18. Analysis & Synthesis Messages
 
 
 
@@ -40,35 +47,23 @@ https://fpgasoftware.intel.com/eula.
 
 
 
-+-----------------------------------------------------------------------------+
-; Analysis & Elaboration Summary                                              ;
-+-------------------------------+---------------------------------------------+
-; Analysis & Elaboration Status ; Successful - Fri May 12 17:32:51 2023       ;
-; Quartus Prime Version         ; 19.1.0 Build 670 09/22/2019 SJ Lite Edition ;
-; Revision Name                 ; Counter                                     ;
-; Top-level Entity Name         ; Counter                                     ;
-; Family                        ; MAX II                                      ;
-+-------------------------------+---------------------------------------------+
-
-
-+------------------------------------------+
-; Parallel Compilation                     ;
-+----------------------------+-------------+
-; Processors                 ; Number      ;
-+----------------------------+-------------+
-; Number detected on machine ; 20          ;
-; Maximum allowed            ; 14          ;
-;                            ;             ;
-; Average used               ; 1.00        ;
-; Maximum used               ; 1           ;
-;                            ;             ;
-; Usage by Processor         ; % Time Used ;
-;     Processor 1            ; 100.0%      ;
-+----------------------------+-------------+
++---------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                              ;
++-----------------------------+---------------------------------------------+
+; Analysis & Synthesis Status ; Successful - Thu Jun 08 16:56:30 2023       ;
+; Quartus Prime Version       ; 19.1.0 Build 670 09/22/2019 SJ Lite Edition ;
+; Revision Name               ; Counter                                     ;
+; Top-level Entity Name       ; Counter                                     ;
+; Family                      ; MAX II                                      ;
+; Total logic elements        ; 22                                          ;
+; Total pins                  ; 16                                          ;
+; Total virtual pins          ; 0                                           ;
+; UFM blocks                  ; 0 / 1 ( 0 % )                               ;
++-----------------------------+---------------------------------------------+
 
 
 +------------------------------------------------------------------------------------------------------------+
-; Analysis & Elaboration Settings                                                                            ;
+; Analysis & Synthesis Settings                                                                              ;
 +------------------------------------------------------------------+--------------------+--------------------+
 ; Option                                                           ; Setting            ; Default Value      ;
 +------------------------------------------------------------------+--------------------+--------------------+
@@ -138,8 +133,125 @@ https://fpgasoftware.intel.com/eula.
 +------------------------------------------------------------------+--------------------+--------------------+
 
 
++------------------------------------------+
+; Parallel Compilation                     ;
++----------------------------+-------------+
+; Processors                 ; Number      ;
++----------------------------+-------------+
+; Number detected on machine ; 20          ;
+; Maximum allowed            ; 14          ;
+;                            ;             ;
+; Average used               ; 1.00        ;
+; Maximum used               ; 1           ;
+;                            ;             ;
+; Usage by Processor         ; % Time Used ;
+;     Processor 1            ; 100.0%      ;
++----------------------------+-------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                        ;
++----------------------------------+-----------------+-----------------+----------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type       ; File Name with Absolute Path                 ; Library ;
++----------------------------------+-----------------+-----------------+----------------------------------------------+---------+
+; DTrigger.vhd                     ; yes             ; User VHDL File  ; D:/GitHub/VHDL2023/VHDL/Counter/DTrigger.vhd ;         ;
+; Counter.vhd                      ; yes             ; User VHDL File  ; D:/GitHub/VHDL2023/VHDL/Counter/Counter.vhd  ;         ;
+; Cnt10.vhd                        ; yes             ; User VHDL File  ; D:/GitHub/VHDL2023/VHDL/Counter/Cnt10.vhd    ;         ;
+; Cnt6.vhd                         ; yes             ; User VHDL File  ; D:/GitHub/VHDL2023/VHDL/Counter/Cnt6.vhd     ;         ;
+; Cnt60.vhd                        ; yes             ; User VHDL File  ; D:/GitHub/VHDL2023/VHDL/Counter/Cnt60.vhd    ;         ;
+; Digit.vhd                        ; yes             ; User VHDL File  ; D:/GitHub/VHDL2023/VHDL/Counter/Digit.vhd    ;         ;
++----------------------------------+-----------------+-----------------+----------------------------------------------+---------+
+
+
++------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary                                              ;
++---------------------------------------------+--------------------------------------------+
+; Resource                                    ; Usage                                      ;
++---------------------------------------------+--------------------------------------------+
+; Total logic elements                        ; 22                                         ;
+;     -- Combinational with no register       ; 14                                         ;
+;     -- Register only                        ; 0                                          ;
+;     -- Combinational with a register        ; 8                                          ;
+;                                             ;                                            ;
+; Logic element usage by number of LUT inputs ;                                            ;
+;     -- 4 input functions                    ; 10                                         ;
+;     -- 3 input functions                    ; 10                                         ;
+;     -- 2 input functions                    ; 0                                          ;
+;     -- 1 input functions                    ; 2                                          ;
+;     -- 0 input functions                    ; 0                                          ;
+;                                             ;                                            ;
+; Logic elements by mode                      ;                                            ;
+;     -- normal mode                          ; 22                                         ;
+;     -- arithmetic mode                      ; 0                                          ;
+;     -- qfbk mode                            ; 0                                          ;
+;     -- register cascade mode                ; 0                                          ;
+;     -- synchronous clear/load mode          ; 0                                          ;
+;     -- asynchronous clear/load mode         ; 8                                          ;
+;                                             ;                                            ;
+; Total registers                             ; 8                                          ;
+; I/O pins                                    ; 16                                         ;
+; Maximum fan-out node                        ; Cnt60:cnt|Cnt10:CL|DTrigger:\labe10:0:Di|Q ;
+; Maximum fan-out                             ; 12                                         ;
+; Total fan-out                               ; 104                                        ;
+; Average fan-out                             ; 2.74                                       ;
++---------------------------------------------+--------------------------------------------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                                    ;
++----------------------------------+-------------+--------------+------------+------+--------------+--------------+-------------------+------------------+-----------------+------------+---------------------------------------------------+-------------+--------------+
+; Compilation Hierarchy Node       ; Logic Cells ; LC Registers ; UFM Blocks ; Pins ; Virtual Pins ; LUT-Only LCs ; Register-Only LCs ; LUT/Register LCs ; Carry Chain LCs ; Packed LCs ; Full Hierarchy Name                               ; Entity Name ; Library Name ;
++----------------------------------+-------------+--------------+------------+------+--------------+--------------+-------------------+------------------+-----------------+------------+---------------------------------------------------+-------------+--------------+
+; |Counter                         ; 22 (0)      ; 8            ; 0          ; 16   ; 0            ; 14 (0)       ; 0 (0)             ; 8 (0)            ; 0 (0)           ; 0 (0)      ; |Counter                                          ; Counter     ; work         ;
+;    |Cnt60:cnt|                   ; 8 (0)       ; 8            ; 0          ; 0    ; 0            ; 0 (0)        ; 0 (0)             ; 8 (0)            ; 0 (0)           ; 0 (0)      ; |Counter|Cnt60:cnt                                ; Cnt60       ; work         ;
+;       |Cnt10:CL|                 ; 4 (0)       ; 4            ; 0          ; 0    ; 0            ; 0 (0)        ; 0 (0)             ; 4 (0)            ; 0 (0)           ; 0 (0)      ; |Counter|Cnt60:cnt|Cnt10:CL                       ; Cnt10       ; work         ;
+;          |DTrigger:\labe10:0:Di| ; 1 (1)       ; 1            ; 0          ; 0    ; 0            ; 0 (0)        ; 0 (0)             ; 1 (1)            ; 0 (0)           ; 0 (0)      ; |Counter|Cnt60:cnt|Cnt10:CL|DTrigger:\labe10:0:Di ; DTrigger    ; work         ;
+;          |DTrigger:\labe10:1:Di| ; 1 (1)       ; 1            ; 0          ; 0    ; 0            ; 0 (0)        ; 0 (0)             ; 1 (1)            ; 0 (0)           ; 0 (0)      ; |Counter|Cnt60:cnt|Cnt10:CL|DTrigger:\labe10:1:Di ; DTrigger    ; work         ;
+;          |DTrigger:\labe10:2:Di| ; 1 (1)       ; 1            ; 0          ; 0    ; 0            ; 0 (0)        ; 0 (0)             ; 1 (1)            ; 0 (0)           ; 0 (0)      ; |Counter|Cnt60:cnt|Cnt10:CL|DTrigger:\labe10:2:Di ; DTrigger    ; work         ;
+;          |DTrigger:\labe10:3:Di| ; 1 (1)       ; 1            ; 0          ; 0    ; 0            ; 0 (0)        ; 0 (0)             ; 1 (1)            ; 0 (0)           ; 0 (0)      ; |Counter|Cnt60:cnt|Cnt10:CL|DTrigger:\labe10:3:Di ; DTrigger    ; work         ;
+;       |Cnt6:CH|                  ; 3 (0)       ; 3            ; 0          ; 0    ; 0            ; 0 (0)        ; 0 (0)             ; 3 (0)            ; 0 (0)           ; 0 (0)      ; |Counter|Cnt60:cnt|Cnt6:CH                        ; Cnt6        ; work         ;
+;          |DTrigger:\labe10:0:Di| ; 1 (1)       ; 1            ; 0          ; 0    ; 0            ; 0 (0)        ; 0 (0)             ; 1 (1)            ; 0 (0)           ; 0 (0)      ; |Counter|Cnt60:cnt|Cnt6:CH|DTrigger:\labe10:0:Di  ; DTrigger    ; work         ;
+;          |DTrigger:\labe10:1:Di| ; 1 (1)       ; 1            ; 0          ; 0    ; 0            ; 0 (0)        ; 0 (0)             ; 1 (1)            ; 0 (0)           ; 0 (0)      ; |Counter|Cnt60:cnt|Cnt6:CH|DTrigger:\labe10:1:Di  ; DTrigger    ; work         ;
+;          |DTrigger:\labe10:2:Di| ; 1 (1)       ; 1            ; 0          ; 0    ; 0            ; 0 (0)        ; 0 (0)             ; 1 (1)            ; 0 (0)           ; 0 (0)      ; |Counter|Cnt60:cnt|Cnt6:CH|DTrigger:\labe10:2:Di  ; DTrigger    ; work         ;
+;       |DTrigger:Dv|              ; 1 (1)       ; 1            ; 0          ; 0    ; 0            ; 0 (0)        ; 0 (0)             ; 1 (1)            ; 0 (0)           ; 0 (0)      ; |Counter|Cnt60:cnt|DTrigger:Dv                    ; DTrigger    ; work         ;
+;    |Digit:digH|                  ; 7 (7)       ; 0            ; 0          ; 0    ; 0            ; 7 (7)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |Counter|Digit:digH                               ; Digit       ; work         ;
+;    |Digit:digL|                  ; 7 (7)       ; 0            ; 0          ; 0    ; 0            ; 7 (7)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |Counter|Digit:digL                               ; Digit       ; work         ;
++----------------------------------+-------------+--------------+------------+------+--------------+--------------+-------------------+------------------+-----------------+------------+---------------------------------------------------+-------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
++------------------------------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                                                   ;
++---------------------------------------------+--------------------------------------------------------+
+; Register name                               ; Reason for Removal                                     ;
++---------------------------------------------+--------------------------------------------------------+
+; Cnt60:cnt|Cnt6:CH|DTrigger:\labe10:2:Di|nQ  ; Merged with Cnt60:cnt|Cnt6:CH|DTrigger:\labe10:2:Di|Q  ;
+; Cnt60:cnt|Cnt6:CH|DTrigger:\labe10:0:Di|nQ  ; Merged with Cnt60:cnt|Cnt6:CH|DTrigger:\labe10:0:Di|Q  ;
+; Cnt60:cnt|Cnt10:CL|DTrigger:\labe10:3:Di|nQ ; Merged with Cnt60:cnt|Cnt10:CL|DTrigger:\labe10:3:Di|Q ;
+; Cnt60:cnt|Cnt10:CL|DTrigger:\labe10:2:Di|nQ ; Merged with Cnt60:cnt|Cnt10:CL|DTrigger:\labe10:2:Di|Q ;
+; Cnt60:cnt|Cnt10:CL|DTrigger:\labe10:1:Di|nQ ; Merged with Cnt60:cnt|Cnt10:CL|DTrigger:\labe10:1:Di|Q ;
+; Cnt60:cnt|Cnt10:CL|DTrigger:\labe10:0:Di|nQ ; Merged with Cnt60:cnt|Cnt10:CL|DTrigger:\labe10:0:Di|Q ;
+; Total Number of Removed Registers = 6       ;                                                        ;
++---------------------------------------------+--------------------------------------------------------+
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 8     ;
+; Number of registers using Synchronous Clear  ; 0     ;
+; Number of registers using Synchronous Load   ; 0     ;
+; Number of registers using Asynchronous Clear ; 8     ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 2     ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
 +----------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "Counter64:cnt|DTrigger:D5Trigger"                                                   ;
+; Port Connectivity Checks: "Cnt60:cnt|DTrigger:Dv"                                                              ;
 +------+--------+----------+-------------------------------------------------------------------------------------+
 ; Port ; Type   ; Severity ; Details                                                                             ;
 +------+--------+----------+-------------------------------------------------------------------------------------+
@@ -148,8 +260,17 @@ https://fpgasoftware.intel.com/eula.
 +------+--------+----------+-------------------------------------------------------------------------------------+
 
 
++---------------------------------------------------------------------+
+; Port Connectivity Checks: "Cnt60:cnt|Cnt6:CH|DTrigger:\labe10:2:Di" ;
++------+-------+----------+-------------------------------------------+
+; Port ; Type  ; Severity ; Details                                   ;
++------+-------+----------+-------------------------------------------+
+; sd   ; Input ; Info     ; Stuck at VCC                              ;
++------+-------+----------+-------------------------------------------+
+
+
 +----------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "Counter64:cnt|DTrigger:D4Trigger"                                                   ;
+; Port Connectivity Checks: "Cnt60:cnt|Cnt6:CH|DTrigger:\labe10:1:Di"                                            ;
 +------+--------+----------+-------------------------------------------------------------------------------------+
 ; Port ; Type   ; Severity ; Details                                                                             ;
 +------+--------+----------+-------------------------------------------------------------------------------------+
@@ -158,90 +279,96 @@ https://fpgasoftware.intel.com/eula.
 +------+--------+----------+-------------------------------------------------------------------------------------+
 
 
-+----------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "Counter64:cnt|DTrigger:D3Trigger"                                                   ;
-+------+--------+----------+-------------------------------------------------------------------------------------+
-; Port ; Type   ; Severity ; Details                                                                             ;
-+------+--------+----------+-------------------------------------------------------------------------------------+
-; sd   ; Input  ; Info     ; Stuck at VCC                                                                        ;
-; nq   ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
-+------+--------+----------+-------------------------------------------------------------------------------------+
++---------------------------------------------------------------------+
+; Port Connectivity Checks: "Cnt60:cnt|Cnt6:CH|DTrigger:\labe10:0:Di" ;
++------+-------+----------+-------------------------------------------+
+; Port ; Type  ; Severity ; Details                                   ;
++------+-------+----------+-------------------------------------------+
+; sd   ; Input ; Info     ; Stuck at VCC                              ;
++------+-------+----------+-------------------------------------------+
 
 
-+----------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "Counter64:cnt|DTrigger:D2Trigger"                                                   ;
-+------+--------+----------+-------------------------------------------------------------------------------------+
-; Port ; Type   ; Severity ; Details                                                                             ;
-+------+--------+----------+-------------------------------------------------------------------------------------+
-; sd   ; Input  ; Info     ; Stuck at VCC                                                                        ;
-; nq   ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
-+------+--------+----------+-------------------------------------------------------------------------------------+
++----------------------------------------------------------------------+
+; Port Connectivity Checks: "Cnt60:cnt|Cnt10:CL|DTrigger:\labe10:3:Di" ;
++------+-------+----------+--------------------------------------------+
+; Port ; Type  ; Severity ; Details                                    ;
++------+-------+----------+--------------------------------------------+
+; sd   ; Input ; Info     ; Stuck at VCC                               ;
++------+-------+----------+--------------------------------------------+
 
 
-+----------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "Counter64:cnt|DTrigger:D1Trigger"                                                   ;
-+------+--------+----------+-------------------------------------------------------------------------------------+
-; Port ; Type   ; Severity ; Details                                                                             ;
-+------+--------+----------+-------------------------------------------------------------------------------------+
-; sd   ; Input  ; Info     ; Stuck at VCC                                                                        ;
-; nq   ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
-+------+--------+----------+-------------------------------------------------------------------------------------+
++----------------------------------------------------------------------+
+; Port Connectivity Checks: "Cnt60:cnt|Cnt10:CL|DTrigger:\labe10:2:Di" ;
++------+-------+----------+--------------------------------------------+
+; Port ; Type  ; Severity ; Details                                    ;
++------+-------+----------+--------------------------------------------+
+; sd   ; Input ; Info     ; Stuck at VCC                               ;
++------+-------+----------+--------------------------------------------+
 
 
-+----------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "Counter64:cnt|DTrigger:D0Trigger"                                                   ;
-+------+--------+----------+-------------------------------------------------------------------------------------+
-; Port ; Type   ; Severity ; Details                                                                             ;
-+------+--------+----------+-------------------------------------------------------------------------------------+
-; sd   ; Input  ; Info     ; Stuck at VCC                                                                        ;
-; nq   ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
-+------+--------+----------+-------------------------------------------------------------------------------------+
++----------------------------------------------------------------------+
+; Port Connectivity Checks: "Cnt60:cnt|Cnt10:CL|DTrigger:\labe10:1:Di" ;
++------+-------+----------+--------------------------------------------+
+; Port ; Type  ; Severity ; Details                                    ;
++------+-------+----------+--------------------------------------------+
+; sd   ; Input ; Info     ; Stuck at VCC                               ;
++------+-------+----------+--------------------------------------------+
 
 
-+---------------------------------+
-; Analysis & Elaboration Messages ;
-+---------------------------------+
++----------------------------------------------------------------------+
+; Port Connectivity Checks: "Cnt60:cnt|Cnt10:CL|DTrigger:\labe10:0:Di" ;
++------+-------+----------+--------------------------------------------+
+; Port ; Type  ; Severity ; Details                                    ;
++------+-------+----------+--------------------------------------------+
+; sd   ; Input ; Info     ; Stuck at VCC                               ;
++------+-------+----------+--------------------------------------------+
+
+
++-------------------------------+
+; Analysis & Synthesis Messages ;
++-------------------------------+
 Info: *******************************************************************
-Info: Running Quartus Prime Analysis & Elaboration
+Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 19.1.0 Build 670 09/22/2019 SJ Lite Edition
-    Info: Processing started: Fri May 12 17:32:46 2023
-Info: Command: quartus_map --read_settings_files=on --write_settings_files=off Counter -c Counter --analysis_and_elaboration
+    Info: Processing started: Thu Jun 08 16:56:23 2023
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off Counter -c Counter
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 14 of the 14 processors detected
 Info (12021): Found 2 design units, including 1 entities, in source file dtrigger.vhd
-    Info (12022): Found design unit 1: DTrigger-dataflow File: D:/VHDL/Counter/DTrigger.vhd Line: 14
-    Info (12023): Found entity 1: DTrigger File: D:/VHDL/Counter/DTrigger.vhd Line: 6
+    Info (12022): Found design unit 1: DTrigger-dataflow File: D:/GitHub/VHDL2023/VHDL/Counter/DTrigger.vhd Line: 14
+    Info (12023): Found entity 1: DTrigger File: D:/GitHub/VHDL2023/VHDL/Counter/DTrigger.vhd Line: 6
 Info (12021): Found 2 design units, including 1 entities, in source file counter.vhd
-    Info (12022): Found design unit 1: Counter-Count File: D:/VHDL/Counter/Counter.vhd Line: 13
-    Info (12023): Found entity 1: Counter File: D:/VHDL/Counter/Counter.vhd Line: 6
+    Info (12022): Found design unit 1: Counter-Count File: D:/GitHub/VHDL2023/VHDL/Counter/Counter.vhd Line: 13
+    Info (12023): Found entity 1: Counter File: D:/GitHub/VHDL2023/VHDL/Counter/Counter.vhd Line: 6
 Info (12021): Found 2 design units, including 1 entities, in source file cnt10.vhd
-    Info (12022): Found design unit 1: Cnt10-asy10 File: D:/VHDL/Counter/Cnt10.vhd Line: 13
-    Info (12023): Found entity 1: Cnt10 File: D:/VHDL/Counter/Cnt10.vhd Line: 6
+    Info (12022): Found design unit 1: Cnt10-asy10 File: D:/GitHub/VHDL2023/VHDL/Counter/Cnt10.vhd Line: 13
+    Info (12023): Found entity 1: Cnt10 File: D:/GitHub/VHDL2023/VHDL/Counter/Cnt10.vhd Line: 6
 Info (12021): Found 2 design units, including 1 entities, in source file cnt6.vhd
-    Info (12022): Found design unit 1: Cnt6-asy6 File: D:/VHDL/Counter/Cnt6.vhd Line: 13
-    Info (12023): Found entity 1: Cnt6 File: D:/VHDL/Counter/Cnt6.vhd Line: 6
+    Info (12022): Found design unit 1: Cnt6-asy6 File: D:/GitHub/VHDL2023/VHDL/Counter/Cnt6.vhd Line: 13
+    Info (12023): Found entity 1: Cnt6 File: D:/GitHub/VHDL2023/VHDL/Counter/Cnt6.vhd Line: 6
 Info (12021): Found 2 design units, including 1 entities, in source file cnt60.vhd
-    Info (12022): Found design unit 1: Cnt60-asy60 File: D:/VHDL/Counter/Cnt60.vhd Line: 13
-    Info (12023): Found entity 1: Cnt60 File: D:/VHDL/Counter/Cnt60.vhd Line: 6
+    Info (12022): Found design unit 1: Cnt60-asy60 File: D:/GitHub/VHDL2023/VHDL/Counter/Cnt60.vhd Line: 13
+    Info (12023): Found entity 1: Cnt60 File: D:/GitHub/VHDL2023/VHDL/Counter/Cnt60.vhd Line: 6
 Info (12021): Found 2 design units, including 1 entities, in source file digit.vhd
-    Info (12022): Found design unit 1: digit-d File: D:/VHDL/Counter/Digit.vhd Line: 13
-    Info (12023): Found entity 1: Digit File: D:/VHDL/Counter/Digit.vhd Line: 6
+    Info (12022): Found design unit 1: digit-d File: D:/GitHub/VHDL2023/VHDL/Counter/Digit.vhd Line: 13
+    Info (12023): Found entity 1: Digit File: D:/GitHub/VHDL2023/VHDL/Counter/Digit.vhd Line: 6
 Info (12021): Found 2 design units, including 1 entities, in source file stopwatch.vhd
-    Info (12022): Found design unit 1: Stopwatch-watch File: D:/VHDL/Counter/Stopwatch.vhd Line: 13
-    Info (12023): Found entity 1: Stopwatch File: D:/VHDL/Counter/Stopwatch.vhd Line: 6
-Info (12021): Found 2 design units, including 1 entities, in source file counter64.vhd
-    Info (12022): Found design unit 1: Counter64-Behavioral File: D:/VHDL/Counter/Counter64.vhd Line: 14
-    Info (12023): Found entity 1: Counter64 File: D:/VHDL/Counter/Counter64.vhd Line: 7
+    Info (12022): Found design unit 1: Stopwatch-watch File: D:/GitHub/VHDL2023/VHDL/Counter/Stopwatch.vhd Line: 13
+    Info (12023): Found entity 1: Stopwatch File: D:/GitHub/VHDL2023/VHDL/Counter/Stopwatch.vhd Line: 6
 Info (12127): Elaborating entity "Counter" for the top level hierarchy
-Info (12128): Elaborating entity "Counter64" for hierarchy "Counter64:cnt" File: D:/VHDL/Counter/Counter.vhd Line: 28
-Warning (10541): VHDL Signal Declaration warning at Counter64.vhd(22): used implicit default value for signal "Rd" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: D:/VHDL/Counter/Counter64.vhd Line: 22
-Warning (10036): Verilog HDL or VHDL warning at Counter64.vhd(24): object "nQ" assigned a value but never read File: D:/VHDL/Counter/Counter64.vhd Line: 24
-Info (12128): Elaborating entity "DTrigger" for hierarchy "Counter64:cnt|DTrigger:D0Trigger" File: D:/VHDL/Counter/Counter64.vhd Line: 35
-Info (12128): Elaborating entity "Digit" for hierarchy "Digit:digL" File: D:/VHDL/Counter/Counter.vhd Line: 29
-Info: Quartus Prime Analysis & Elaboration was successful. 0 errors, 3 warnings
+Info (12128): Elaborating entity "Cnt60" for hierarchy "Cnt60:cnt" File: D:/GitHub/VHDL2023/VHDL/Counter/Counter.vhd Line: 28
+Info (12128): Elaborating entity "Cnt10" for hierarchy "Cnt60:cnt|Cnt10:CL" File: D:/GitHub/VHDL2023/VHDL/Counter/Cnt60.vhd Line: 36
+Info (12128): Elaborating entity "DTrigger" for hierarchy "Cnt60:cnt|Cnt10:CL|DTrigger:\labe10:0:Di" File: D:/GitHub/VHDL2023/VHDL/Counter/Cnt10.vhd Line: 25
+Info (12128): Elaborating entity "Cnt6" for hierarchy "Cnt60:cnt|Cnt6:CH" File: D:/GitHub/VHDL2023/VHDL/Counter/Cnt60.vhd Line: 37
+Info (12128): Elaborating entity "Digit" for hierarchy "Digit:digL" File: D:/GitHub/VHDL2023/VHDL/Counter/Counter.vhd Line: 29
+Info (21057): Implemented 38 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 2 input pins
+    Info (21059): Implemented 14 output pins
+    Info (21061): Implemented 22 logic cells
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 1 warning
     Info: Peak virtual memory: 4764 megabytes
-    Info: Processing ended: Fri May 12 17:32:51 2023
-    Info: Elapsed time: 00:00:05
-    Info: Total CPU time (on all processors): 00:00:03
+    Info: Processing ended: Thu Jun 08 16:56:30 2023
+    Info: Elapsed time: 00:00:07
+    Info: Total CPU time (on all processors): 00:00:06
 
 

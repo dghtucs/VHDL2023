@@ -1,5 +1,5 @@
 Assembler report for Counter
-Fri May 12 17:15:59 2023
+Thu Jun 08 16:56:34 2023
 Quartus Prime Version 19.1.0 Build 670 09/22/2019 SJ Lite Edition
 
 
@@ -10,7 +10,7 @@ Quartus Prime Version 19.1.0 Build 670 09/22/2019 SJ Lite Edition
   2. Assembler Summary
   3. Assembler Settings
   4. Assembler Generated Files
-  5. Assembler Device Options: D:/VHDL/Counter/output_files/Counter.pof
+  5. Assembler Device Options: D:/GitHub/VHDL2023/VHDL/Counter/output_files/Counter.pof
   6. Assembler Messages
 
 
@@ -38,7 +38,7 @@ https://fpgasoftware.intel.com/eula.
 +---------------------------------------------------------------+
 ; Assembler Summary                                             ;
 +-----------------------+---------------------------------------+
-; Assembler Status      ; Successful - Fri May 12 17:15:59 2023 ;
+; Assembler Status      ; Successful - Thu Jun 08 16:56:34 2023 ;
 ; Revision Name         ; Counter                               ;
 ; Top-level Entity Name ; Counter                               ;
 ; Family                ; MAX II                                ;
@@ -53,23 +53,23 @@ https://fpgasoftware.intel.com/eula.
 +--------+---------+---------------+
 
 
-+------------------------------------------+
-; Assembler Generated Files                ;
-+------------------------------------------+
-; File Name                                ;
-+------------------------------------------+
-; D:/VHDL/Counter/output_files/Counter.pof ;
-+------------------------------------------+
++----------------------------------------------------------+
+; Assembler Generated Files                                ;
++----------------------------------------------------------+
+; File Name                                                ;
++----------------------------------------------------------+
+; D:/GitHub/VHDL2023/VHDL/Counter/output_files/Counter.pof ;
++----------------------------------------------------------+
 
 
-+--------------------------------------------------------------------+
-; Assembler Device Options: D:/VHDL/Counter/output_files/Counter.pof ;
-+----------------+---------------------------------------------------+
-; Option         ; Setting                                           ;
-+----------------+---------------------------------------------------+
-; JTAG usercode  ; 0x00193581                                        ;
-; Checksum       ; 0x001939F9                                        ;
-+----------------+---------------------------------------------------+
++------------------------------------------------------------------------------------+
+; Assembler Device Options: D:/GitHub/VHDL2023/VHDL/Counter/output_files/Counter.pof ;
++----------------+-------------------------------------------------------------------+
+; Option         ; Setting                                                           ;
++----------------+-------------------------------------------------------------------+
+; JTAG usercode  ; 0x0018FBD3                                                        ;
+; Checksum       ; 0x0018FE43                                                        ;
++----------------+-------------------------------------------------------------------+
 
 
 +--------------------+
@@ -78,14 +78,14 @@ https://fpgasoftware.intel.com/eula.
 Info: *******************************************************************
 Info: Running Quartus Prime Assembler
     Info: Version 19.1.0 Build 670 09/22/2019 SJ Lite Edition
-    Info: Processing started: Fri May 12 17:15:59 2023
+    Info: Processing started: Thu Jun 08 16:56:34 2023
 Info: Command: quartus_asm --read_settings_files=off --write_settings_files=off Counter -c Counter
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (115031): Writing out detailed assembly data for power analysis
 Info (115030): Assembler is generating device programming files
 Info: Quartus Prime Assembler was successful. 0 errors, 1 warning
     Info: Peak virtual memory: 4665 megabytes
-    Info: Processing ended: Fri May 12 17:15:59 2023
+    Info: Processing ended: Thu Jun 08 16:56:34 2023
     Info: Elapsed time: 00:00:00
     Info: Total CPU time (on all processors): 00:00:00
 

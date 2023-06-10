@@ -1,0 +1,27 @@
+LIBRARY IEEE;
+USE IEEE.STD_LOGIC_1164.ALL;
+USE IEEE.STD_LOGIC_ARITH.ALL;
+USE IEEE.STD_LOGIC_UNSIGNED.ALL;
+
+entity manualAdder is
+	port(
+		clk,rst:in STD_LOGIC;
+		Q: out STD_LOGIC_VECTOR(3 downto 0)
+	);
+end manualAdder;
+
+architecture bhv of manualAdder is
+	signal not_q1,not_q2,not_q3,not_q4:STD_LOGIC:=1;
+	component d_trigger is
+	port(
+		clk,rst,D:in STD_LOGIC;
+		Q,not_Q:out STD_LOGIC
+		);
+		end component;
+	begin
+			d1: d_trigger port map(clk => clk, rst => rst,not_q1=>D, Q(0)=>Q,not_q1=>not_Q);
+			d2: d_trigger port map(clk => not_q1,rst => rst,not_q2=>D, Q(1)=>Q, not_q2 =>not_Q);
+			d3: d_trigger port map(clk => not_q2,rst => rst, not_q3=>D, Q(2)=>Q, not_q3 =>not_Q);
+			d4: d_trigger port map(clk => not_q3, rst => rst, not_q4 => D, Q(4) => Q, not_q4 => not_Q);
+	end bhv;
+	

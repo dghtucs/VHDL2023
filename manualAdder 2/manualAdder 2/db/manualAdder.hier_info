@@ -1,0 +1,294 @@
+|manualAdder
+clk => clock.DATAA
+rst => counter_trigger:d1.rst
+rst => d_trigger:d2.rst
+rst => d_trigger:d3.rst
+rst => d_trigger:d4.rst
+rst => d_trigger:d5.rst
+rst => d_trigger:d6.rst
+resume => r.CLK
+H[0] << output_transformer:out1.H[0]
+H[1] << output_transformer:out1.H[1]
+H[2] << output_transformer:out1.H[2]
+H[3] << output_transformer:out1.H[3]
+H[4] << output_transformer:out1.H[4]
+H[5] << output_transformer:out1.H[5]
+H[6] << output_transformer:out1.H[6]
+L[0] << output_transformer:out1.L[0]
+L[1] << output_transformer:out1.L[1]
+L[2] << output_transformer:out1.L[2]
+L[3] << output_transformer:out1.L[3]
+L[4] << output_transformer:out1.L[4]
+L[5] << output_transformer:out1.L[5]
+L[6] << output_transformer:out1.L[6]
+
+
+|manualAdder|counter_trigger:d1
+clk => counter[0].CLK
+clk => counter[1].CLK
+clk => counter[2].CLK
+clk => counter[3].CLK
+clk => counter[4].CLK
+clk => counter[5].CLK
+clk => counter[6].CLK
+clk => counter[7].CLK
+clk => counter[8].CLK
+clk => counter[9].CLK
+clk => counter[10].CLK
+clk => counter[11].CLK
+clk => counter[12].CLK
+clk => counter[13].CLK
+clk => counter[14].CLK
+clk => counter[15].CLK
+clk => counter[16].CLK
+clk => counter[17].CLK
+clk => counter[18].CLK
+clk => counter[19].CLK
+clk => not_Q~reg0.CLK
+clk => Q~reg0.CLK
+rst => counter[0].ACLR
+rst => counter[1].ACLR
+rst => counter[2].ACLR
+rst => counter[3].ACLR
+rst => counter[4].ACLR
+rst => counter[5].ACLR
+rst => counter[6].ACLR
+rst => counter[7].ACLR
+rst => counter[8].ACLR
+rst => counter[9].ACLR
+rst => counter[10].ACLR
+rst => counter[11].ACLR
+rst => counter[12].ACLR
+rst => counter[13].ACLR
+rst => counter[14].ACLR
+rst => counter[15].ACLR
+rst => counter[16].ACLR
+rst => counter[17].ACLR
+rst => counter[18].ACLR
+rst => counter[19].ACLR
+rst => not_Q~reg0.PRESET
+rst => Q~reg0.ACLR
+D => Q~reg0.DATAIN
+D => not_Q~reg0.DATAIN
+Q <= Q~reg0.DB_MAX_OUTPUT_PORT_TYPE
+not_Q <= not_Q~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|manualAdder|d_trigger:d2
+clk => not_Q~reg0.CLK
+clk => Q~reg0.CLK
+rst => not_Q~reg0.PRESET
+rst => Q~reg0.ACLR
+D => Q~reg0.DATAIN
+D => not_Q~reg0.DATAIN
+Q <= Q~reg0.DB_MAX_OUTPUT_PORT_TYPE
+not_Q <= not_Q~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|manualAdder|d_trigger:d3
+clk => not_Q~reg0.CLK
+clk => Q~reg0.CLK
+rst => not_Q~reg0.PRESET
+rst => Q~reg0.ACLR
+D => Q~reg0.DATAIN
+D => not_Q~reg0.DATAIN
+Q <= Q~reg0.DB_MAX_OUTPUT_PORT_TYPE
+not_Q <= not_Q~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|manualAdder|d_trigger:d4
+clk => not_Q~reg0.CLK
+clk => Q~reg0.CLK
+rst => not_Q~reg0.PRESET
+rst => Q~reg0.ACLR
+D => Q~reg0.DATAIN
+D => not_Q~reg0.DATAIN
+Q <= Q~reg0.DB_MAX_OUTPUT_PORT_TYPE
+not_Q <= not_Q~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|manualAdder|d_trigger:d5
+clk => not_Q~reg0.CLK
+clk => Q~reg0.CLK
+rst => not_Q~reg0.PRESET
+rst => Q~reg0.ACLR
+D => Q~reg0.DATAIN
+D => not_Q~reg0.DATAIN
+Q <= Q~reg0.DB_MAX_OUTPUT_PORT_TYPE
+not_Q <= not_Q~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|manualAdder|d_trigger:d6
+clk => not_Q~reg0.CLK
+clk => Q~reg0.CLK
+rst => not_Q~reg0.PRESET
+rst => Q~reg0.ACLR
+D => Q~reg0.DATAIN
+D => not_Q~reg0.DATAIN
+Q <= Q~reg0.DB_MAX_OUTPUT_PORT_TYPE
+not_Q <= not_Q~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|manualAdder|output_transformer:out1
+Q[0] => LessThan0.IN12
+Q[0] => LessThan1.IN12
+Q[0] => LessThan2.IN12
+Q[0] => LessThan3.IN12
+Q[0] => LessThan4.IN12
+Q[0] => LessThan5.IN12
+Q[0] => ntl:n2.N[0]
+Q[1] => LessThan0.IN11
+Q[1] => LessThan1.IN11
+Q[1] => Add0.IN10
+Q[1] => LessThan2.IN11
+Q[1] => LessThan3.IN11
+Q[1] => Add2.IN10
+Q[1] => LessThan4.IN11
+Q[1] => LessThan5.IN11
+Q[1] => Add4.IN10
+Q[1] => t1.DATAA
+Q[1] => t1.DATAB
+Q[1] => t1.DATAB
+Q[1] => temp[1].DATAB
+Q[2] => LessThan0.IN10
+Q[2] => LessThan1.IN10
+Q[2] => Add0.IN9
+Q[2] => LessThan2.IN10
+Q[2] => Add1.IN8
+Q[2] => LessThan3.IN10
+Q[2] => Add2.IN9
+Q[2] => LessThan4.IN10
+Q[2] => LessThan5.IN10
+Q[2] => Add4.IN9
+Q[2] => Add5.IN8
+Q[2] => t1.DATAB
+Q[2] => temp[2].DATAB
+Q[3] => LessThan0.IN9
+Q[3] => LessThan1.IN9
+Q[3] => Add0.IN8
+Q[3] => LessThan2.IN9
+Q[3] => Add1.IN7
+Q[3] => LessThan3.IN9
+Q[3] => Add2.IN8
+Q[3] => LessThan4.IN9
+Q[3] => Add3.IN6
+Q[3] => LessThan5.IN9
+Q[3] => Add4.IN8
+Q[3] => Add5.IN7
+Q[3] => temp[3].DATAB
+Q[4] => LessThan0.IN8
+Q[4] => LessThan1.IN8
+Q[4] => Add0.IN7
+Q[4] => LessThan2.IN8
+Q[4] => Add1.IN6
+Q[4] => LessThan3.IN8
+Q[4] => Add2.IN7
+Q[4] => LessThan4.IN8
+Q[4] => Add3.IN5
+Q[4] => LessThan5.IN8
+Q[4] => Add4.IN7
+Q[4] => Add5.IN6
+Q[5] => LessThan0.IN7
+Q[5] => LessThan1.IN7
+Q[5] => Add0.IN6
+Q[5] => LessThan2.IN7
+Q[5] => Add1.IN5
+Q[5] => LessThan3.IN7
+Q[5] => Add2.IN6
+Q[5] => LessThan4.IN7
+Q[5] => Add3.IN4
+Q[5] => LessThan5.IN7
+Q[5] => Add4.IN6
+Q[5] => Add5.IN5
+H[0] <= ntl:n1.L[0]
+H[1] <= ntl:n1.L[1]
+H[2] <= ntl:n1.L[2]
+H[3] <= ntl:n1.L[3]
+H[4] <= ntl:n1.L[4]
+H[5] <= ntl:n1.L[5]
+H[6] <= ntl:n1.L[6]
+L[0] <= ntl:n2.L[0]
+L[1] <= ntl:n2.L[1]
+L[2] <= ntl:n2.L[2]
+L[3] <= ntl:n2.L[3]
+L[4] <= ntl:n2.L[4]
+L[5] <= ntl:n2.L[5]
+L[6] <= ntl:n2.L[6]
+
+
+|manualAdder|output_transformer:out1|ntl:n1
+N[0] => Mux0.IN19
+N[0] => Mux1.IN19
+N[0] => Mux2.IN19
+N[0] => Mux3.IN19
+N[0] => Mux4.IN19
+N[0] => Mux5.IN19
+N[0] => Mux6.IN19
+N[1] => Mux0.IN18
+N[1] => Mux1.IN18
+N[1] => Mux2.IN18
+N[1] => Mux3.IN18
+N[1] => Mux4.IN18
+N[1] => Mux5.IN18
+N[1] => Mux6.IN18
+N[2] => Mux0.IN17
+N[2] => Mux1.IN17
+N[2] => Mux2.IN17
+N[2] => Mux3.IN17
+N[2] => Mux4.IN17
+N[2] => Mux5.IN17
+N[2] => Mux6.IN17
+N[3] => Mux0.IN16
+N[3] => Mux1.IN16
+N[3] => Mux2.IN16
+N[3] => Mux3.IN16
+N[3] => Mux4.IN16
+N[3] => Mux5.IN16
+N[3] => Mux6.IN16
+L[0] <= Mux6.DB_MAX_OUTPUT_PORT_TYPE
+L[1] <= Mux5.DB_MAX_OUTPUT_PORT_TYPE
+L[2] <= Mux4.DB_MAX_OUTPUT_PORT_TYPE
+L[3] <= Mux3.DB_MAX_OUTPUT_PORT_TYPE
+L[4] <= Mux2.DB_MAX_OUTPUT_PORT_TYPE
+L[5] <= Mux1.DB_MAX_OUTPUT_PORT_TYPE
+L[6] <= Mux0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|manualAdder|output_transformer:out1|ntl:n2
+N[0] => Mux0.IN19
+N[0] => Mux1.IN19
+N[0] => Mux2.IN19
+N[0] => Mux3.IN19
+N[0] => Mux4.IN19
+N[0] => Mux5.IN19
+N[0] => Mux6.IN19
+N[1] => Mux0.IN18
+N[1] => Mux1.IN18
+N[1] => Mux2.IN18
+N[1] => Mux3.IN18
+N[1] => Mux4.IN18
+N[1] => Mux5.IN18
+N[1] => Mux6.IN18
+N[2] => Mux0.IN17
+N[2] => Mux1.IN17
+N[2] => Mux2.IN17
+N[2] => Mux3.IN17
+N[2] => Mux4.IN17
+N[2] => Mux5.IN17
+N[2] => Mux6.IN17
+N[3] => Mux0.IN16
+N[3] => Mux1.IN16
+N[3] => Mux2.IN16
+N[3] => Mux3.IN16
+N[3] => Mux4.IN16
+N[3] => Mux5.IN16
+N[3] => Mux6.IN16
+L[0] <= Mux6.DB_MAX_OUTPUT_PORT_TYPE
+L[1] <= Mux5.DB_MAX_OUTPUT_PORT_TYPE
+L[2] <= Mux4.DB_MAX_OUTPUT_PORT_TYPE
+L[3] <= Mux3.DB_MAX_OUTPUT_PORT_TYPE
+L[4] <= Mux2.DB_MAX_OUTPUT_PORT_TYPE
+L[5] <= Mux1.DB_MAX_OUTPUT_PORT_TYPE
+L[6] <= Mux0.DB_MAX_OUTPUT_PORT_TYPE
+
+

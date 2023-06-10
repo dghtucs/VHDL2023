@@ -25,7 +25,7 @@ begin
 		Di:DTrigger port map(D(i),clk,Rd,'1',Q(i),nQ(i));
 	end generate labe10;
 	D(0)<=v xor Q(0);
-	D(1)<=((not v) and Q(1))or (V and (nQ(2) and (Q(1) xor Q(0))));
+	D(1)<=((not v) and Q(1))or (v and (nQ(2) and (Q(1) xor Q(0))));
 	D(2)<=((not v)and Q(2)) or (v and ((Q(2) and nQ(0)) or (Q(1) and Q(0))));
 	Digit(2 downto 0)<=Q;
 	Digit(3)<='0';

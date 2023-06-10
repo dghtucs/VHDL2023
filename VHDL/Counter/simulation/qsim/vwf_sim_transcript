@@ -7,7 +7,7 @@ Note: if both ModelSim-Altera and ModelSim executables are available, ModelSim-A
 
 **** Generating the ModelSim Testbench ****
 
-quartus_eda --gen_testbench --tool=modelsim_oem --format=vhdl --write_settings_files=off Counter -c Counter --vector_source="D:/VHDL/Counter/Waveform3.vwf" --testbench_file="D:/VHDL/Counter/simulation/qsim/Waveform3.vwf.vht"
+quartus_eda --gen_testbench --tool=modelsim_oem --format=vhdl --write_settings_files=off Counter -c Counter --vector_source="D:/VHDL/Counter/Waveform1.vwf" --testbench_file="D:/VHDL/Counter/simulation/qsim/Waveform1.vwf.vht"
 
 Info: *******************************************************************
 Info: Running Quartus Prime EDA Netlist Writer
@@ -26,8 +26,8 @@ Info: Running Quartus Prime EDA Netlist Writer
     Info: Intel and sold by Intel or its authorized distributors.  Please
     Info: refer to the applicable agreement for further details, at
     Info: https://fpgasoftware.intel.com/eula.
-    Info: Processing started: Fri May 12 14:56:19 2023
-Info: Command: quartus_eda --gen_testbench --tool=modelsim_oem --format=vhdl --write_settings_files=off Counter -c Counter --vector_source=D:/VHDL/Counter/Waveform3.vwf --testbench_file=D:/VHDL/Counter/simulation/qsim/Waveform3.vwf.vht
+    Info: Processing started: Thu Jun 08 16:59:15 2023
+Info: Command: quartus_eda --gen_testbench --tool=modelsim_oem --format=vhdl --write_settings_files=off Counter -c Counter --vector_source=D:/VHDL/Counter/Waveform1.vwf --testbench_file=D:/VHDL/Counter/simulation/qsim/Waveform1.vwf.vht
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 
 Completed successfully. 
@@ -53,13 +53,13 @@ Info: Running Quartus Prime EDA Netlist Writer
     Info: Intel and sold by Intel or its authorized distributors.  Please
     Info: refer to the applicable agreement for further details, at
     Info: https://fpgasoftware.intel.com/eula.
-    Info: Processing started: Fri May 12 14:56:20 2023
+    Info: Processing started: Thu Jun 08 16:59:16 2023
 Info: Command: quartus_eda --write_settings_files=off --simulation=on --functional=on --flatten_buses=off --tool=modelsim_oem --format=vhdl --output_directory=D:/VHDL/Counter/simulation/qsim/ Counter -c Counter
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (204019): Generated file Counter.vho in folder "D:/VHDL/Counter/simulation/qsim//" for EDA simulation tool
 Info: Quartus Prime EDA Netlist Writer was successful. 0 errors, 1 warning
     Info: Peak virtual memory: 4625 megabytes
-    Info: Processing ended: Fri May 12 14:56:20 2023
+    Info: Processing ended: Thu Jun 08 16:59:16 2023
     Info: Elapsed time: 00:00:00
     Info: Total CPU time (on all processors): 00:00:00
 
@@ -67,7 +67,7 @@ Completed successfully.
 
 **** Generating the ModelSim .do script ****
 
-D:/VHDL/Counter/simulation/qsim/Counter.do generated.
+D:/GitHub/VHDL2023/VHDL/Counter/simulation/qsim/Counter.do generated.
 
 Completed successfully. 
 
@@ -77,15 +77,15 @@ C:/intelFPGA/19.1/modelsim_ase/win32aloem/vsim -c -do Counter.do
 
 Reading C:/intelFPGA/19.1/modelsim_ase/tcl/vsim/pref.tcl
 
-
 # 10.5b
+
 
 # do Counter.do
 
 # ** Warning: (vlib-34) Library already exists at "work".
 
 # Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 14:56:22 on May 12,2023
+# Start time: 16:59:19 on Jun 08,2023
 # vcom -work work Counter.vho 
 # -- Loading package STANDARD
 # -- Loading package TEXTIO
@@ -96,22 +96,24 @@ Reading C:/intelFPGA/19.1/modelsim_ase/tcl/vsim/pref.tcl
 # -- Loading package maxii_components
 # -- Compiling entity Stopwatch
 # -- Compiling architecture structure of Stopwatch
-# End time: 14:56:22 on May 12,2023, Elapsed time: 0:00:00
+
+# End time: 16:59:19 on Jun 08,2023, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 
 # Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 14:56:23 on May 12,2023
-# vcom -work work Waveform3.vwf.vht 
+# Start time: 16:59:19 on Jun 08,2023
+# vcom -work work Waveform1.vwf.vht 
 # -- Loading package STANDARD
 # -- Loading package TEXTIO
 # -- Loading package std_logic_1164
 # -- Compiling entity Stopwatch_vhd_vec_tst
 # -- Compiling architecture Stopwatch_arch of Stopwatch_vhd_vec_tst
-# End time: 14:56:23 on May 12,2023, Elapsed time: 0:00:00
+
+# End time: 16:59:19 on Jun 08,2023, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 
 # vsim -novopt -c -t 1ps -L maxii -L altera -L altera_mf -L 220model -L sgate -L altera_lnsim work.Stopwatch_vhd_vec_tst 
-# Start time: 14:56:23 on May 12,2023
+# Start time: 16:59:19 on Jun 08,2023
 # Loading std.standard
 # Loading std.textio(body)
 # Loading ieee.std_logic_1164(body)
@@ -126,24 +128,58 @@ Reading C:/intelFPGA/19.1/modelsim_ase/tcl/vsim/pref.tcl
 # Loading maxii.maxii_lcell(vital_le_atom)
 # Loading maxii.maxii_asynch_lcell(vital_le)
 # Loading maxii.maxii_lcell_register(vital_le_reg)
-# ** Warning: Design size of 12771 statements exceeds ModelSim-Intel FPGA Starter Edition recommended capacity.
+# ** Warning: Design size of 12776 statements exceeds ModelSim-Intel FPGA Starter Edition recommended capacity.
 # Expect performance to be adversely affected.
 # after#31
 
-# End time: 14:56:24 on May 12,2023, Elapsed time: 0:00:01
+# End time: 16:59:20 on Jun 08,2023, Elapsed time: 0:00:01
 # Errors: 0, Warnings: 1
 
 Completed successfully. 
 
 **** Converting ModelSim VCD to vector waveform ****
 
-Reading D:/VHDL/Counter/Waveform3.vwf...
+Reading D:/GitHub/VHDL2023/VHDL/Counter/Waveform1.vwf...
 
-Reading D:/VHDL/Counter/simulation/qsim/Counter.msim.vcd...
+Reading D:/GitHub/VHDL2023/VHDL/Counter/simulation/qsim/Counter.msim.vcd...
 
 Processing channel transitions... 
 
-Writing the resulting VWF to D:/VHDL/Counter/simulation/qsim/Counter_20230512145624.sim.vwf
+Warning: clk - signal not found in VCD.
+
+Warning: H[6] - signal not found in VCD.
+
+Warning: H[5] - signal not found in VCD.
+
+Warning: H[4] - signal not found in VCD.
+
+Warning: H[3] - signal not found in VCD.
+
+Warning: H[2] - signal not found in VCD.
+
+Warning: H[1] - signal not found in VCD.
+
+Warning: H[0] - signal not found in VCD.
+
+Warning: L[6] - signal not found in VCD.
+
+Warning: L[5] - signal not found in VCD.
+
+Warning: L[4] - signal not found in VCD.
+
+Warning: L[3] - signal not found in VCD.
+
+Warning: L[2] - signal not found in VCD.
+
+Warning: L[1] - signal not found in VCD.
+
+Warning: L[0] - signal not found in VCD.
+
+Warning: pau - signal not found in VCD.
+
+Warning: rst - signal not found in VCD.
+
+Writing the resulting VWF to D:/GitHub/VHDL2023/VHDL/Counter/simulation/qsim/Counter_20230608165920.sim.vwf
 
 Finished VCD to VWF conversion.
 

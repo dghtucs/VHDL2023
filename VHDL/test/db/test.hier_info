@@ -1,0 +1,33 @@
+|test
+clk => cnt[0].CLK
+clk => cnt[1].CLK
+clk => cnt[2].CLK
+clk => cnt[3].CLK
+clk => cnt[4].CLK
+clk => cnt[5].CLK
+clk => unlock_reg.CLK
+clk => alarm_reg.CLK
+clk => m[0].CLK
+clk => m[1].CLK
+clk => m[2].CLK
+clk => m[3].CLK
+clk => m[4].CLK
+clk => m[5].CLK
+rst => m.OUTPUTSELECT
+rst => m.OUTPUTSELECT
+rst => m.OUTPUTSELECT
+rst => m.OUTPUTSELECT
+rst => m.OUTPUTSELECT
+rst => m.OUTPUTSELECT
+rst => alarm_reg.OUTPUTSELECT
+rst => unlock_reg.OUTPUTSELECT
+rst => cnt[2].ENA
+rst => cnt[1].ENA
+rst => cnt[0].ENA
+rst => cnt[3].ENA
+rst => cnt[4].ENA
+rst => cnt[5].ENA
+alarm <= alarm_reg.DB_MAX_OUTPUT_PORT_TYPE
+unlock <= unlock_reg.DB_MAX_OUTPUT_PORT_TYPE
+
+

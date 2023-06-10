@@ -1,0 +1,54 @@
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
+
+entity testcounter is
+    port(
+        clk : in std_logic;
+        rst : in std_logic;
+        Light6_digit1 : out std_logic_vector(6 downto 0);  -- for first digit
+        Light6_digit2 : out std_logic_vector(6 downto 0)  -- for second digit
+    );
+end testcounter;
+
+architecture a of testcounter is
+    signal count : integer range 0 to 60 := 0;  -- counter
+    signal digit1, digit2 : std_logic_vector(3 downto 0);  -- for counter digits
+    
+    component Digit is
+        port(
+            Digit4 : in std_logic_vector(3 downto 0);
+            Light6 : out std_logic_vector(6 downto 0)
+        );
+    end component;
+
+begin
+    -- instantiate digit decoder for ones place
+    D1: Digit port map (
+        Digit4 => digit1,
+        Light6 => Light6_digit1
+    );
+
+    -- instantiate digit decoder for tens place
+    D2: Digit port map (
+        Digit4 => digit2,
+        Light6 => Light6_digit2
+    );
+
+    process(clk, rst)
+    begin
+        if rst = '1' then  -- synchronous reset
+            count <= 0;
+        elsif rising_edge(clk) then
+            if count = 60 then
+                count <= 0;
+            else
+                count <= count + 1;
+            end if;
+        end if;
+    end process;
+
+    -- split the count into tens and ones for output
+    digit1 <= std_logic_vector(to_unsigned(count mod 10, 4));  -- ones
+    digit2 <= std_logic_vector(to_unsigned(count / 10, 4));  -- tens
+end a;

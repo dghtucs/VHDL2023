@@ -18,14 +18,14 @@ architecture Count of Counter is
 		);
 	end component;
 
-	component Counter64
+	component Cnt60
 		port(
 			clk, rst: in std_logic;
 			DigitH, DigitL: out std_logic_vector(3 downto 0));
 	end component;
 	signal DigitH, DigitL: std_logic_vector(3 downto 0);
 begin
-	cnt: Counter64 port map(clk,rst, DigitH, DigitL);
+	cnt: Cnt60 port map(clk,rst, DigitH, DigitL);
 	digL: Digit port map(DigitH,H);
 	digH: Digit port map(DigitL,L);
 end Count;

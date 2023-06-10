@@ -1,6 +1,6 @@
 |Counter
-clk => Counter64:cnt.clk
-rst => Counter64:cnt.rst
+clk => Cnt60:cnt.clk
+rst => Cnt60:cnt.rst
 H[0] << Digit:digL.Light6[0]
 H[1] << Digit:digL.Light6[1]
 H[2] << Digit:digL.Light6[2]
@@ -17,25 +17,39 @@ L[5] << Digit:digH.Light6[5]
 L[6] << Digit:digH.Light6[6]
 
 
-|Counter|Counter64:cnt
-clk => DTrigger:D0Trigger.CP
-clk => DTrigger:D1Trigger.CP
-clk => DTrigger:D2Trigger.CP
-clk => DTrigger:D3Trigger.CP
-clk => DTrigger:D4Trigger.CP
-clk => DTrigger:D5Trigger.CP
-rst => ~NO_FANOUT~
-DigitL[0] <= DTrigger:D0Trigger.Q
-DigitL[1] <= DTrigger:D1Trigger.Q
-DigitL[2] <= DTrigger:D2Trigger.Q
-DigitL[3] <= DTrigger:D3Trigger.Q
-DigitH[0] <= DTrigger:D4Trigger.Q
-DigitH[1] <= DTrigger:D5Trigger.Q
-DigitH[2] <= <GND>
-DigitH[3] <= <GND>
+|Counter|Cnt60:cnt
+clk => Cnt10:CL.clk
+clk => Cnt6:CH.clk
+clk => DTrigger:Dv.CP
+rst => Cnt10:CL.Rd
+rst => Cnt6:CH.Rd
+rst => DTrigger:Dv.Rd
+DigitL[0] <= Cnt10:CL.Digit[0]
+DigitL[1] <= Cnt10:CL.Digit[1]
+DigitL[2] <= Cnt10:CL.Digit[2]
+DigitL[3] <= Cnt10:CL.Digit[3]
+DigitH[0] <= Cnt6:CH.Digit[0]
+DigitH[1] <= Cnt6:CH.Digit[1]
+DigitH[2] <= Cnt6:CH.Digit[2]
+DigitH[3] <= Cnt6:CH.Digit[3]
 
 
-|Counter|Counter64:cnt|DTrigger:D0Trigger
+|Counter|Cnt60:cnt|Cnt10:CL
+clk => DTrigger:labe10:0:Di.CP
+clk => DTrigger:labe10:1:Di.CP
+clk => DTrigger:labe10:2:Di.CP
+clk => DTrigger:labe10:3:Di.CP
+Rd => DTrigger:labe10:0:Di.Rd
+Rd => DTrigger:labe10:1:Di.Rd
+Rd => DTrigger:labe10:2:Di.Rd
+Rd => DTrigger:labe10:3:Di.Rd
+Digit[0] <= DTrigger:labe10:0:Di.Q
+Digit[1] <= DTrigger:labe10:1:Di.Q
+Digit[2] <= DTrigger:labe10:2:Di.Q
+Digit[3] <= DTrigger:labe10:3:Di.Q
+
+
+|Counter|Cnt60:cnt|Cnt10:CL|DTrigger:\labe10:0:Di
 D => Q~reg0.DATAIN
 D => nQ~reg0.DATAIN
 CP => nQ~reg0.CLK
@@ -48,7 +62,7 @@ Q <= Q~reg0.DB_MAX_OUTPUT_PORT_TYPE
 nQ <= nQ~reg0.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|Counter|Counter64:cnt|DTrigger:D1Trigger
+|Counter|Cnt60:cnt|Cnt10:CL|DTrigger:\labe10:1:Di
 D => Q~reg0.DATAIN
 D => nQ~reg0.DATAIN
 CP => nQ~reg0.CLK
@@ -61,7 +75,7 @@ Q <= Q~reg0.DB_MAX_OUTPUT_PORT_TYPE
 nQ <= nQ~reg0.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|Counter|Counter64:cnt|DTrigger:D2Trigger
+|Counter|Cnt60:cnt|Cnt10:CL|DTrigger:\labe10:2:Di
 D => Q~reg0.DATAIN
 D => nQ~reg0.DATAIN
 CP => nQ~reg0.CLK
@@ -74,7 +88,7 @@ Q <= Q~reg0.DB_MAX_OUTPUT_PORT_TYPE
 nQ <= nQ~reg0.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|Counter|Counter64:cnt|DTrigger:D3Trigger
+|Counter|Cnt60:cnt|Cnt10:CL|DTrigger:\labe10:3:Di
 D => Q~reg0.DATAIN
 D => nQ~reg0.DATAIN
 CP => nQ~reg0.CLK
@@ -87,7 +101,25 @@ Q <= Q~reg0.DB_MAX_OUTPUT_PORT_TYPE
 nQ <= nQ~reg0.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|Counter|Counter64:cnt|DTrigger:D4Trigger
+|Counter|Cnt60:cnt|Cnt6:CH
+clk => DTrigger:labe10:0:Di.CP
+clk => DTrigger:labe10:1:Di.CP
+clk => DTrigger:labe10:2:Di.CP
+Rd => DTrigger:labe10:0:Di.Rd
+Rd => DTrigger:labe10:1:Di.Rd
+Rd => DTrigger:labe10:2:Di.Rd
+v => D[0].IN1
+v => D.IN1
+v => D.IN1
+v => D.IN1
+v => D.IN1
+Digit[0] <= DTrigger:labe10:0:Di.Q
+Digit[1] <= DTrigger:labe10:1:Di.Q
+Digit[2] <= DTrigger:labe10:2:Di.Q
+Digit[3] <= <GND>
+
+
+|Counter|Cnt60:cnt|Cnt6:CH|DTrigger:\labe10:0:Di
 D => Q~reg0.DATAIN
 D => nQ~reg0.DATAIN
 CP => nQ~reg0.CLK
@@ -100,7 +132,33 @@ Q <= Q~reg0.DB_MAX_OUTPUT_PORT_TYPE
 nQ <= nQ~reg0.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|Counter|Counter64:cnt|DTrigger:D5Trigger
+|Counter|Cnt60:cnt|Cnt6:CH|DTrigger:\labe10:1:Di
+D => Q~reg0.DATAIN
+D => nQ~reg0.DATAIN
+CP => nQ~reg0.CLK
+CP => Q~reg0.CLK
+Rd => Q.IN0
+Rd => nQ~reg0.PRESET
+Rd => Q~reg0.ACLR
+Sd => Q.IN1
+Q <= Q~reg0.DB_MAX_OUTPUT_PORT_TYPE
+nQ <= nQ~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|Counter|Cnt60:cnt|Cnt6:CH|DTrigger:\labe10:2:Di
+D => Q~reg0.DATAIN
+D => nQ~reg0.DATAIN
+CP => nQ~reg0.CLK
+CP => Q~reg0.CLK
+Rd => Q.IN0
+Rd => nQ~reg0.PRESET
+Rd => Q~reg0.ACLR
+Sd => Q.IN1
+Q <= Q~reg0.DB_MAX_OUTPUT_PORT_TYPE
+nQ <= nQ~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|Counter|Cnt60:cnt|DTrigger:Dv
 D => Q~reg0.DATAIN
 D => nQ~reg0.DATAIN
 CP => nQ~reg0.CLK
